@@ -32,7 +32,12 @@ export default function AboutPage() {
           style={{ display: isOpen ? 'flex' : 'none'}}
         >
           <div className="modal-content">
-            <span onClick={closeModal}><PiXBold /></span>
+            <span 
+              onClick={closeModal} 
+              style={{ cursor: 'pointer', float: 'right'}}
+            >
+              <PiXBold />
+            </span>
             <h2>Origin Story</h2>
             <p>
               The origin story of the mythical squid starts in a basement in Pennsylvania. In the late 1980&apos;s, pre-dating the home studio revolution, this basement was filled with full stack P.A. speakers, fender blackface amplifiers, drum sets and a hot wood burning stove. Monthly jam sessions among working professionals would take place in the quiet woods outside of Malvern. The blue blood of old moneyed horse stables would sway gently to the dissipated thump of Santa covers. There were good players, there were those who showed up to party and in the middle of it all was my brother and I. At bedtime the session would play &quot;I aint your stepping stone&quot; by the Monkeys to put us kids to sleep. It was loud and sloppy, but it always worked.
