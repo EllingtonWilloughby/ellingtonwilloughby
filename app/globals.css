@@ -38,3 +38,34 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-image: url('/gifs/lavalamp.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
