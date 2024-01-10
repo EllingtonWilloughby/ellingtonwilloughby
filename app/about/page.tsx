@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import { useState } from 'react'
 import { PiXBold } from 'react-icons/pi';
 
@@ -12,6 +13,7 @@ export default function AboutPage() {
   return (
     <div>
         <h1>About</h1>
+        <Link href="/" className="absolute top-12 left-10">home</Link>
         <p>Ellington Willoughby and the Mythical Squid is a high-energy psychedelic-pop six piece band from SE Portland, Oregon.
         </p>
 

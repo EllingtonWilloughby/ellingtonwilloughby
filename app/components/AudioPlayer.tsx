@@ -81,7 +81,7 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
   }
 
   return (
-    <section className="absolute left-1/2 transform -translate-x-1/2 bottom-4 w-full flex justify-between items-baseline p-8">
+    <section className="audio-player">
       <div className="flex justify-center items-center w-full">
         {isPlaying ? (
           <button onClick={handlePause} className="">
