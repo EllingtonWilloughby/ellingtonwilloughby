@@ -2,26 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --black: #0d1b2aff; /*rich-black*/
+    --light: #fafafaff; /*seasalt*/
+    --foreground: #363635ff; /*jet*/
+    --background: #f8f4e3ff; /*cosmic-latte*/
+    --primary: #c1bfc9ff; /*french-gray*/
+    --secondary: #68596bff; /*eggplant*/
+    --accent: #8e9aafff; /*cool-gray*/
+    --auxillary: #373f51ff; /*navy-town*/
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --black: #0d1b2aff; /*rich-black*/
+    --light: #fafafaff; /*seasalt*/
+    --foreground: #f8f4e3ff; /*cosmic-latte*/
+    --background: #363635ff; /*jet*/
+    --primary: #68596bff; /*eggplant*/
+    --secondary: #9a8c98ff; /*rose-quartz*/
+    --accent: #8e9aafff; /*cool-gray*/
+    --auxillary: #373f51ff; /*navy-town*/
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
