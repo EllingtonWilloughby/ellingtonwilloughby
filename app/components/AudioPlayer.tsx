@@ -18,7 +18,6 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
   const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
   const [volume, setVolume] = useState<number>(50);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function initializeAudio() {
@@ -38,7 +37,8 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
         howl.unload();
       }
     };
-  }, [playlist, currentSongIndex, howl, volume]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playlist, currentSongIndex]);
 
   useEffect(() => {
     setVolume(volume);
@@ -86,31 +86,31 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
     <section className="audio-player">
       <div className="flex justify-center items-center w-full">
         {isPlaying ? (
-          <button onClick={handlePause} className="">
+          <button onClick={handlePause}>
             <PiPauseBold size={32} />
           </button>
         ) : (
-          <button onClick={handlePlay} className="">
+          <button onClick={handlePlay}>
             <PiPlayBold size={32} />
           </button>
         )}
       </div>
       <div className="flex justify-center items-center w-full">
-        <button onClick={stopSong} className="">
+        <button onClick={stopSong}>
           <PiStopBold size={32} />
         </button>
       </div>
       <div className="flex justify-center items-center w-full">
-        <button onClick={previousSong} className="">
+        <button onClick={previousSong}>
           <PiSkipBackBold size={32} />
         </button>
       </div>
       <div className="flex justify-center items-center w-full">
-        <button onClick={playNextSong} className="">
+        <button onClick={playNextSong}>
           <PiSkipForwardBold size={32} />
         </button>
       </div>
-      <div className="volume-container" ref={containerRef}>
+      <div className="volume-container">
         <input
           className="volume-slider"
           type="range"
