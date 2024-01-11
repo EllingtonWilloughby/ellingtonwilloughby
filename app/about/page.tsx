@@ -11,9 +11,9 @@ export default function AboutPage() {
   const closeModal = () => setIsOpen(false)
 
   return (
-    <div>
+    <div className="min-h-screen p-12">
         <h1>About</h1>
-        <Link href="/" className="absolute top-12 left-10">home</Link>
+        <Link href="/" className="absolute top-8 left-8">home</Link>
         <p>Ellington Willoughby and the Mythical Squid is a high-energy psychedelic-pop six piece band from SE Portland, Oregon.
         </p>
 
