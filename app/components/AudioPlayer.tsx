@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Howl } from 'howler';
 import {
   PiPauseBold,
@@ -16,8 +16,9 @@ interface AudioPlayerProps {
 export default function AudioPlayer({ playlist }: AudioPlayerProps) {
   const [howl, setHowl] = useState<Howl | null>(null);
   const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
-  const [volume, setVolume] = useState<number>(0.5);
+  const [volume, setVolume] = useState<number>(50);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function initializeAudio() {
@@ -73,13 +74,14 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
   }
 
   function handleVolumeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
     const newVolume = parseFloat(event.target.value);
     setVolume(newVolume);
     if (howl) {
       howl.volume(newVolume);
     }
   }
-
+ 
   return (
     <section className="audio-player">
       <div className="flex justify-center items-center w-full">
@@ -108,13 +110,13 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
           <PiSkipForwardBold size={32} />
         </button>
       </div>
-      <div className="slidercontainer">
+      <div className="volume-container" ref={containerRef}>
         <input
-          className="slider"
+          className="volume-slider"
           type="range"
           min="0"
-          max="1"
-          step="0.01"
+          max="100"
+          step="1"
           value={volume}
           onChange={handleVolumeChange}
         />
