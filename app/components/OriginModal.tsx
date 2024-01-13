@@ -1,19 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PiXBold } from 'react-icons/pi';
 import Modal from 'react-modal';
-
-const customStyles = {
-  content: {
-    height: '100vh',
-    width: '100vw',
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
 interface OriginModalProps {
   isOpen: boolean;
@@ -22,57 +9,76 @@ interface OriginModalProps {
 
 export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
   return (
-    <div>
-     {isOpen &&
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Origin Story"
-      >
-        <button onClick={closeModal}><PiXBold size={24} /></button>
-            <h2 className="text-center w-full">Origin Story</h2>
-            <p>
-              The origin story of the mythical squid starts in a basement in Pennsylvania. In the late 1980&apos;s, pre-dating the home studio revolution, this basement was filled with full stack P.A. speakers, fender blackface amplifiers, drum sets and a hot wood burning stove. Monthly jam sessions among working professionals would take place in the quiet woods outside of Malvern. The blue blood of old moneyed horse stables would sway gently to the dissipated thump of Santa covers. There were good players, there were those who showed up to party and in the middle of it all was my brother and I. At bedtime the session would play &quot;I aint your stepping stone&quot; by the Monkeys to put us kids to sleep. It was loud and sloppy, but it always worked.
+    <div className="origin-modal">
+      {isOpen &&
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          contentLabel="Origin Story"
+        >
+          <button onClick={closeModal}>
+            <PiXBold size={32} />
+          </button>
+          <div className="origin-modal-content">
+
+            <h2 className="text-center w-full underline">Origin Story</h2>
+
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              The origin story of the mythical squid begins in a Pennsylvania basement in the late 1980&apos;s, pre-dating the home studio revolution. This basement was filled with full stack P.A. speakers, authentic vintage fender blackface amplifiers, a drum set and a hot wood burning stove. Monthly jam sessions among working professionals would take place in the quiet woods outside of Malvern, Pennsylvania. 
+            </p>
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-2 mb-3">
+              The blue blood of old moneyed horse stables would sway gently to the dissipated thump of covers of songs by Santana. There were good players and bad, and some who just showed up to party. In the middle of all of it, was my brother & I. At bedtime, like clockwork, the session would play &quot;I aint your stepping stone&quot; by the Monkeys to put us kids to sleep. It was loud, and it always worked.
             </p>
 
-            <h3>
-              The First Go
-            </h3>
-            <p>
-              Being surrounded by music and musical gear it was hard not to want to be a part of it all. My father taught my brother and I how to play the guitar, drawing chord diagrams and tabs for the licks of classic Who, Santa and Beatles songs. The drum set was also a very fun to smash on for the few minutes after school before everyone else got home. Slowly we learned to play and at the same time I began to write originals.  By the time we were juniors in High School the first band had formed.
+            <h3>The First Go</h3>
+
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              It was difficult, growing up surrounded by music and musical gear, not to want to be a part of it. My father taught my brother and I how to play the guitar, drawing chord diagrams and tabs for the licks of classic songs by the Who, Santa and the Beatles. The drum set was also there to smash on for a few minutes after school before everyone else got home. Slowly but surely, we learned to play music. Around this same time, I began to write original songs. By the time we were juniors in High School our own first band had formed.
             </p>
 
-            <h2>XKJ</h2>
-            <p>
-              XKJ - The Xylophone Killed Jazz. The name came from a wacky little booked written by a wacky little man. As we read through it in science class the lead singer at the time, who looked and sounded like Janis Joplin, tossed it out and having no better option we said sure. In my later years as I dove heavily into collecting old jazz records, the sentiment stuck and I do not own any records with a xylophone on it. It was an odd and not very good band as most highschool bands are. But it was fun and we all learned a lot. We even did a recording session, which thankfully is lost to time.  The drummer was older and left for college. For the rest of us, our senior year was more about fun than music so it wound down and we all left for college.
+            <h3>XKJ</h3>
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              The band was called the Xylophone Killed Jazz, a name that came from a wacky little book written by a wacky little man that we all read in school. It was in science class, and our lead singer at the time, who looked and sounded like Janis Joplin, offered it up as a good band name, and - not having anything better in mind - we all agreed. 
+              </p>
+
+              <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
+              Later in life, as I dove head-first and heavily into collecting old jazz records, something about the sentiment stuck with me, and to this day, I do not own any records with a xylophone on it. Eventually, the drummer and guitarist (who were older than the rest of us), left to college. Our senior year was all about having fun and the band wound down through that year, and we all soon left for college.
             </p>
 
-            <p className="d">
-              I ended up following the drummer to college in Virgina. On my college application I said I &quot;liked music&quot;. Turns out this one little sentence would have a major impact of my musical life. To the credit of the college staff they assigned me to a roommate who also &quot;liked music&quot; and thusly on the first day of school entered Nordhaus WarriorHead. In his wake came a bass guitar, a stereo and 20+ years of continual musical collaboration. We ended up resurrecting XKJ with my old high school drummer and picked up a wonderful lead guitarist. At this point I was the acoustic guitarist/lead singer with Nordhaus on bass. We did two recording sessions. The first was self-recorded in a house with an old Tascam Porta studio. The second we saved up enough cash from playing around town to book some time in a real studio outside of Washington D.C. We learned a lot over the three years we all played together. But listening back, we still had so much to learn.
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
+              I would follow in the drummer&apos;s footsteps, going to college in Virginia. On my college application I wrote that I &quot;liked music&quot;. This one little seemingly innocuous comment would have a major impact in my life. To the credit of the college staff, they assigned me to a roommate who also &quot;liked music&quot;. Thus, on the first day of school entered Nordhaus WarriorHead. In his wake came a bass guitar, a stereo and 20+ years of continual musical collaboration. 
+              </p>
+
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
+              We soon resurrected XKJ with the original drummer, and a wonderful new lead guitarist. I played the acoustic guitar and sang lead, with Nordhaus on bass. This time, we had two recording sessions! The first was self-recorded in a house with an old Tascam Porta studio. The second we saved up enough cash from playing around town to book some time in a real studio outside of Washington D.C. We learned a lot over the next three years. Listening back now though, we still had much to learn.
             </p>
 
-            <h2>Noiseland</h2>
-            <p>
-              Both the drummer and the lead guitarist graduated and for our senior year in college Nordhaus and I started a new experimental project name Noiseland. Nordhaus started producing electronic music in Fruity Loops, while I had a little studio space setup in my room to mess around with ProTools. We were sharing a house with two other good friends and had a jolly time of it. Both of use explored what music could be and pushed ourselves in new and exciting directions. There were some good musical ideas scattered among the noise and we ended up releasing two albums as Noiseland.
+            <h3>Noiseland</h3>
+
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              Eventually, the drummer and the lead guitarist both graduated from college. During our senior year, Nordhaus and I started a new experimental project called Noiseland. Nordhaus started producing electronic music in a program called Fruity Loops, while I had set up a little studio space in my room to record with ProTools.  We were both exploring what music could be and pushed ourselves in new and exciting directions. There were some good musical ideas scattered among the noise and we ended up releasing two albums as Noiseland. At this point, we were sharing a house with two other friends and we all had a lot of fun together. 
             </p>
 
-            <h2>The Alphabetically</h2>
-            <p>
-              After college a few years went by and by various routes my brother Jason, Nordhaus (whose real name is Josh) and myself ended up in S.E. Portland. We formed a band called &quot;The Alphabetically&quot; and practiced every Thursday night. A tradition we still continue. We self-recorded an album, with Josh handling production, mixing and bass, Jason on electric lead guitar and myself on acoustic and lead vocals. Damn it was fun. We played several shows around town and then for some reason we turned it all upside down.</p>
+            <h3>The Alphabetically</h3>
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              After college, people moved on, moved out and moved up. A few years after college, and by some cosmic orchestration my brother Jason, Nordhaus and myself ended up in SE Portland. We formed a band called &quot;The Alphabetically&quot; and practiced every Thursday night. A tradition continued to this day! So wherever you are in the world, if its Thursday night, know we are practicing! We soon self-recorded an album, with Josh handling production, mixing and bass, Jason on electric lead guitar and myself on acoustic and lead vocals. It was damn fun. We played several shows around town and then for some reason we turned it all upside down.</p>
 
-            <h2>Ellington Willoughby and the Andrew Jacksons</h2>
-            <p>
-              Josh switched to electric guitar, I switched to piano and production and Jason jumped on the synthesizers. I had been working at my day job with a killer musician and after a few practices Jon joined the band. The drums and bass were all programmed in Ableton Live and we had programmed a light show to the full record. We did full light/laser shows in our basement studio pumped with fog and bliss. Our first album &quot;Moonflower&quot; was recorded at the Hallowed Halls in FoPo and we kept playing around town, everywhere from the Star Theatre to the Bunk Bar.</p>
+            <h3>Ellington Willoughby and the Andrew Jacksons</h3>
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              Nordhaus soon switched to electric guitar, I switched to piano and production and Jason jumped on the synthesizers. I had been working at my day job with a killer musician and after a few practices Jon joined the band. The drums and bass were all programmed in Ableton Live and we had a programmed light show synchronized to the full record. We did full light/laser shows in our basement studio pumped with fog and bliss. Our first album &quot;Moonflower&quot; was recorded at the Hallowed Halls in FoPo and we kept playing around town, everywhere from the Star Theatre to the Bunk Bar.</p>
 
-            <h2>Ellington Willoughby and the Mythical Squid</h2>
-            <p>
-              Turns out Jon&apos;s buddy Adam is also my neighbor and a damn fine musician to boot. So after a few practices Adam joined the band. First on bass then moving on to Drums. We ditched the computer and went all live. Jason picked up the congas. Rounding it all out we brought Jesse in on Bass (best Craigslist score ever), who plays with a number of groups around town and leads his own group: Neptune Groove Orchestra.  So now after 20 years of music we arrive at the present. Still lots to learn and still fun as hell. We&apos;re continuously recording in our home studio and try to play out every two months or so. Our shows are getting bigger and our sound is getting tighter. It&apos;s been a journey and we&apos;re nowhere near the destination.
+
+            <h3>Ellington Willoughby and the Mythical Squid</h3>
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
+              Eventually, Jon asked if he could invite a friend to practice, and that friend was Adam. By chance, Adam happened to be my neighbor and a damn fine musician to boot. So after a few practices Adam joined the band. First on bass then moving on to Drums. We ditched the computer and went all live. Jason picked up the congas. Rounding it all out we brought Jesse in on Bass (best Craigslist score ever), who plays with a number of groups around town and leads his own group: Neptune Groove Orchestra.
             </p>
-
-        
-      </Modal>
-}
-    </div>
-  );
-}
+            <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
+              So now after 20 years of music we arrive at the present. Still lots to learn and still fun as hell. We&apos;re continuously recording in our home studio and try to play out every two months or so. Our shows are getting bigger and our sound is getting tighter. It&apos;s been a journey and we&apos;re nowhere near destination.
+            </p>
+          </div>
+          
+        </Modal>
+  }
+      </div>
+    );
+  }
