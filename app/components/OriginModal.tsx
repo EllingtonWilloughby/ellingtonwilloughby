@@ -1,11 +1,7 @@
 import React from 'react';
 import { PiXBold } from 'react-icons/pi';
 import Modal from 'react-modal';
-
-interface OriginModalProps {
-  isOpen: boolean;
-  closeModal: () => void;
-}
+import { type OriginModalProps } from '../../lib/types';
 
 export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
   return (

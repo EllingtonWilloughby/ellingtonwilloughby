@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {  type AudioPlayerProps } from '../../lib/types';
 import { Howl } from 'howler';
 import {
   PiPauseBold,
@@ -8,10 +9,6 @@ import {
   PiSkipForwardBold,
   PiStopBold,
 } from 'react-icons/pi';
-
-interface AudioPlayerProps {
-  playlist: string[];
-}
 
 export default function AudioPlayer({ playlist }: AudioPlayerProps) {
   const [howl, setHowl] = useState<Howl | null>(null);
