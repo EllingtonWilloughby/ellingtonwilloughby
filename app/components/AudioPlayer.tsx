@@ -1,6 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import {  type AudioPlayerProps } from '../../lib/types';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { type AudioPlayerProps } from '../../lib/types';
 import { Howl } from 'howler';
 import {
   PiPauseBold,
@@ -38,8 +38,10 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
   }, [playlist, currentSongIndex]);
 
   useEffect(() => {
+    if (howl) {
     setVolume(volume);
-  }, [volume]);
+    }
+  }, [volume, howl]);
 
   function handlePlay() {
     if (howl) {
@@ -60,9 +62,10 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
     if (howl) {
       howl.stop();
     }
+    setIsPlaying(false);
   }
 
-  function playNextSong() {
+  function nextSong() {
     setCurrentSongIndex((prevIndex) => (prevIndex + 1) % playlist.length);
   }
 
@@ -70,7 +73,7 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
     setCurrentSongIndex((prevIndex) => ((prevIndex - 1 + playlist.length) % playlist.length));
   }
 
-  function handleVolumeChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleVolumeChange(event: ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
     const newVolume = parseFloat(event.target.value);
     setVolume(newVolume);
@@ -103,19 +106,22 @@ export default function AudioPlayer({ playlist }: AudioPlayerProps) {
         </button>
       </div>
       <div className="flex justify-center items-center w-full">
-        <button onClick={playNextSong}>
+        <button onClick={nextSong}>
           <PiSkipForwardBold size={32} />
         </button>
       </div>
-      <div className="volume-container">
+      <div className="flex justify-center items-center w-full">
         <input
-          className="volume-slider"
           type="range"
           min="0"
           max="100"
           step="1"
+          className="vertical-colume-slider"
           value={volume}
           onChange={handleVolumeChange}
+          style={{
+            WebkitAppearance: 'slider-vertical',
+          }}
         />
       </div>
     </section>

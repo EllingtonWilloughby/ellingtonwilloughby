@@ -196,3 +196,13 @@ a:hover {
   background-color: var(--light);
   opacity: 0.76;
 }
+
+.vertical-volume-slider {
+  writing-mode: bt-rl; 
+  width: 1.2rem; 
+  height: 14rem;
+  margin: 0.8rem;
+  -webkit-appearance: slider-vertical; 
+  -moz-appearance: slider-vertical; 
+  appearance: slider-vertical;
+}
