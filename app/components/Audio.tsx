@@ -11,11 +11,9 @@ import {
 
 export default function Audio() {
   const {
-    currentSongIndex,
     isPlaying,
     volume,
-    handlePlay,
-    handlePause,
+    togglePlayPause,
     handleStop,
     handleNextSong,
     handlePrevSong,
@@ -25,19 +23,19 @@ export default function Audio() {
   } = useAudio();
 
   return (
-     <div>
-      <h2>{currentSong.title}</h2>
-      <p>Duration: {currentSong.duration} seconds</p>
-      <div>
-        <button onClick={handlePrevSong}><PiSkipBackBold /></button>
-        <button onClick={isPlaying ? handlePause : handlePlay}>
-          {isPlaying ? <PiPauseBold /> : <PiPlayBold />}
+    <div className="w-full flex flex-col justify-center items-center px-24 mb-12 py-12">
+      <p className="py-2">Current Song: {currentSong.title}, {currentSong.duration}</p>
+      <section  className="max-w-lg w-full flex justify-between py-2">
+        <button onClick={togglePlayPause}>
+          {isPlaying ? <PiPauseBold size={32} /> : <PiPlayBold size={32} />}
         </button>
-        <button onClick={handleStop}><PiStopBold /></button>
-        <button onClick={handleNextSong}><PiSkipForwardBold /></button>
-      </div>
-      <div>
-        <label htmlFor="volume">Volume:</label>
+        <button onClick={handleStop}><PiStopBold size={32} /></button>
+        <button onClick={handlePrevSong}><PiSkipBackBold size={32} /></button>
+        <button onClick={handleNextSong}><PiSkipForwardBold size={32} /></button>
+        <button onClick={toggleMute}>
+        {volume === 0 ? <PiSpeakerXBold size={32} /> : <PiSpeakerHighBold size={32} />}
+        </button>
+        <label htmlFor="volume"></label>
         <input
           type="range"
           id="volume"
@@ -46,14 +44,9 @@ export default function Audio() {
           max={1}
           step={0.1}
           value={volume}
-          onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+          onChange={handleVolumeChange}
         />
-      </div>
-      <div>
-        <button onClick={toggleMute}>
-          {volume === 0 ? <PiSpeakerXBold /> : <PiSpeakerHighBold />}
-        </button>
-      </div>
+      </section>
     </div>
   );
 }

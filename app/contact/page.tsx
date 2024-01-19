@@ -1,12 +1,9 @@
-
 import React from 'react';
-import BackgroundContainer from '../components/BackgroundContainer';
 import Link from 'next/link';
 import Logo from '../components/Logo';
 
 export default function Contact() {
   return (
-    <BackgroundContainer backgroundImage={'/gifs/abstract.gif'} backgroundOpacity={0.6}>
       <div className="outer-contact-sheet">
         <h2 className="underline text-center w-full">Contact</h2>
           <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
@@ -23,7 +20,6 @@ export default function Contact() {
           </Link>
         </div>
       </div>
-    </BackgroundContainer>
   );
 
 }
