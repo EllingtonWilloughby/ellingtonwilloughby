@@ -1,7 +1,7 @@
+'use client'
 import Navigation from './components/Navigation'
 import Logo from './components/Logo'
-import AudioPlayer from './components/AudioPlayer'
-import { playlist } from '@/lib/data'
+import Audio from './components/Audio'
 import BackgroundContainer from './components/BackgroundContainer'
 
 export default function Home() {
@@ -16,12 +16,10 @@ export default function Home() {
         </header>
 
         <div className="w-screen flex justify-center">
-          <Logo height={550} width={550} />
+          <Logo height={650} width={650} />
         </div>
 
-        <div>
-          <AudioPlayer playlist={playlist} />
-        </div>
+        <div><Audio /></div>
     
       </main>
     </BackgroundContainer>

@@ -31,7 +31,7 @@ export default function AboutPage() {
         </p>
         
         <div className="text-sm/4 sm:text-base/5 md:text-lg/6 subpixel-antialiased my-4">
-          <p className="text-sm/4 sm:text-base/5 md:text-lg/6 subpixel-antialiased my-4">Band Members:</p>
+          <p className="text-sm/4 sm:text-base/5 md:text-lg/6 subpixel-antialiased my-4">Members:</p>
           <ul>
             <li>Tim Gottgetreau</li>
             <li>Jason Gottgetreu</li>
@@ -41,7 +41,7 @@ export default function AboutPage() {
             <li>Adam Robson</li> 
           </ul>
         </div>    
-        <button onClick={openModal} className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white p-2 rounded-lg">Origin Story</button>
+        <button onClick={openModal} className="mt-8 bg-black text-white p-2 rounded-lg">Origin Story</button>
 
         <div className="modal-content">
           <OriginModal isOpen={isOpen} closeModal={closeModal}/>

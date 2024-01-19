@@ -4,7 +4,7 @@ import { LogoProps } from '../../lib/types'
 export default function Logo({ height, width }: LogoProps) {
   return (
     <Image
-      src="/images/ew_logo.svg"
+      src="/images/ew.svg"
       alt="ellington willoughby logo"
       height={height}
       width={width}
