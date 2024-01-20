@@ -116,7 +116,7 @@ target the html range element
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  width: 30%;
+  width: 100%;
   cursor: pointer;
   outline: none;
   border-radius: 1rem;
