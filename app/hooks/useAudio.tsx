@@ -26,11 +26,7 @@ export function useAudio() {
         }
       });
       
-      sound.current.once('load', () => {
-        setIsPlaying(true);
-        sound.current?.play();
-      });
-    } 
+    }
 
     initializeHowler();
 
@@ -76,20 +72,22 @@ export function useAudio() {
   }
 
   function handleNextSong() {
-  sound.current?.stop();
-  setCurrentSongIndex((prevIndex) =>
-    prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
-  );
-  setIsPlaying(true);
-}
+    sound.current?.stop();
+    setCurrentSongIndex((prevIndex) =>
+      prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
+    );
+    sound.current?.play();
+    setIsPlaying(true);
+  }
 
-function handlePrevSong() {
-  sound.current?.stop();
-  setCurrentSongIndex((prevIndex) =>
-    prevIndex === 0 ? playlist.length - 1 : prevIndex - 1
-  );
-  setIsPlaying(true);
-}
+  function handlePrevSong() {
+    sound.current?.stop();
+    setCurrentSongIndex((prevIndex) =>
+      prevIndex === 0 ? playlist.length - 1 : prevIndex - 1
+    );
+    sound.current?.play();
+    setIsPlaying(true);
+  }
 
   function handleVolumeChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault()
@@ -99,15 +97,15 @@ function handlePrevSong() {
     sound.current?.volume(newVolume)
   }
 
-function toggleMute() {
-  if (!isMuted) {
-    setVolumeBeforeMute(volume)
-    setVolume(0)
-  } else {
-    setVolume(volumeBeforeMute)
+  function toggleMute() {
+    if (!isMuted) {
+      setVolumeBeforeMute(volume)
+      setVolume(0)
+    } else {
+      setVolume(volumeBeforeMute)
+    }
+    setIsMuted((prevIsMuted) => !prevIsMuted)
   }
-  setIsMuted((prevIsMuted) => !prevIsMuted)
-}
 
   const currentSong = playlist[currentSongIndex]
 
