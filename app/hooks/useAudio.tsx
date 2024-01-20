@@ -14,6 +14,7 @@ export function useAudio() {
   const sound = useRef<Howl | null>(null)
 
   useEffect(() => {
+    
     function initializeHowler() {
       sound.current = new Howl({
         preload: 'metadata',
@@ -24,8 +25,12 @@ export function useAudio() {
           handleNextSong()
         }
       });
-
-    };
+      
+      sound.current.once('load', () => {
+        setIsPlaying(true);
+        sound.current?.play();
+      });
+    } 
 
     initializeHowler();
 
@@ -71,18 +76,20 @@ export function useAudio() {
   }
 
   function handleNextSong() {
-    setCurrentSongIndex((prevIndex) =>
-      prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
-    );
-    setIsPlaying(true)
-  }
+  sound.current?.stop();
+  setCurrentSongIndex((prevIndex) =>
+    prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
+  );
+  setIsPlaying(true);
+}
 
-  function handlePrevSong() {
-    setCurrentSongIndex((prevIndex) =>
-      prevIndex === 0 ? playlist.length - 1 : prevIndex - 1
-    );
-    setIsPlaying(true)
-  }
+function handlePrevSong() {
+  sound.current?.stop();
+  setCurrentSongIndex((prevIndex) =>
+    prevIndex === 0 ? playlist.length - 1 : prevIndex - 1
+  );
+  setIsPlaying(true);
+}
 
   function handleVolumeChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault()

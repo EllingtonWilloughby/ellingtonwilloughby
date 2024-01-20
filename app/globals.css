@@ -96,19 +96,147 @@ a:hover {
   width: 100vw;
 }
 
-#volume {
-  transform: rotate(-90deg);
-  position: absolute;
-  right: 22rem;
+/*
+volume range element: 
+
+i. the range element
+is handled differently
+depending on the browser
+
+ii. browsers will break
+down the range element
+into two parts:
+"track" & "thumb"
+*/
+
+/*
+target the html range element
+*/
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 1rem;
+  background: #ccc;
 }
+
+/*
+target the id selector
+*/
+
+#volume {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transform: rotate(-90deg);
+}
+
+/*
+track for chrome browser
+*/
 
 input[type='range']::-webkit-slider-runnable-track {
-  background: var(--accent);
-  border-radius: 8px;
+  background: #ccc;
+  border-radius: 0.5rem;
 }
 
-input[type='range']::-webkit-slider-thumb {
+#volume::-webkit-slider-runnable-track {
+  height: 1rem;
+  border-radius: 0.5rem;
+}
+
+/*
+track for mozilla browser
+*/
+
+#volume::-moz-range-track {
+  height: 1rem;
+  border-radius: 0.5rem;
+  background: #ccc;
+}
+
+/*
+thumb for chrome browser
+*/
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1rem;
+  width: 1rem;
   background-color: var(--text);
-  background: var(--text);
-  color: var(--text);
+  border-radius: 50%;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+
+#volume::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--text);
+  border-radius: 50%;
+  border: 1px solid var(--background);
+}
+
+/*
+thumb for mozilla browser
+*/
+
+input[type="range"]::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--text);
+  border-radius: 50%;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+
+#volume::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--text);
+  border-radius: 50%;
+  border: 1px solid var(--background);
+}
+
+/* 
+thumb hover, active, focus states for chrome browser
+*/
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 1px 1px 1px 7px rgba(250, 250, 250, 0.2);
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px 9px rgba(250, 250, 250, 0.2);
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px 9px rgba(250, 250, 250, 0.2);
+}
+
+/*
+thumb hover, active, focus states for mozilla browser
+*/
+
+input[type="range"]::-moz-range-thumb:hover {
+  box-shadow: 1px 1px 1px 7px rgba(250, 250, 250, 0.2);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  box-shadow: 1px 1px 1px 9px rgba(250, 250, 250, 0.2);
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 1px 1px 1px 9px rgba(250, 250, 250, 0.2);
 }
