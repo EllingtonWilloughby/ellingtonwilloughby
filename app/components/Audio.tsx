@@ -11,6 +11,7 @@ import {
 
 export default function Audio() {
   const {
+    elapsedTime,
     isPlaying,
     volume,
     togglePlayPause,
@@ -23,9 +24,12 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <div className="w-full flex flex-col justify-center items-center px-24 mb-12 py-12">
-      <p className="py-2">Current Song: {currentSong.title}, {currentSong.duration}</p>
-      <section  className="max-w-lg w-full flex justify-between py-2">
+    <div className="w-full flex flex-col justify-center items-center px-24 mb-12">
+      <section className="max-w-md w-full min-h-full h-full flex justify-between items-center">
+        <div className="py-2 h-8">{isPlaying ? `Now Playing: ${currentSong.title}` : ''}</div>
+        <div className="py-2 h-8">{isPlaying ? `${elapsedTime} of ${currentSong.duration}` : ''}</div>
+      </section>
+      <section  className="max-w-md w-full flex justify-between py-2">
         <button onClick={togglePlayPause}>
           {isPlaying ? <PiPauseBold size={32} /> : <PiPlayBold size={32} />}
         </button>

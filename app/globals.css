@@ -101,3 +101,14 @@ a:hover {
   position: absolute;
   right: 22rem;
 }
+
+input[type='range']::-webkit-slider-runnable-track {
+  background: var(--accent);
+  border-radius: 8px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  background-color: var(--text);
+  background: var(--text);
+  color: var(--text);
+}

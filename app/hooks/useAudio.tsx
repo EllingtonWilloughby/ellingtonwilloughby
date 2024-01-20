@@ -6,9 +6,10 @@ import { playlist } from '../../lib/data'
 export function useAudio() {
   const [currentSongIndex, setCurrentSongIndex] = useState<number>(0)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
-  const [volume, setVolume] = useState<number>(0)
+  const [volume, setVolume] = useState<number>(0.5)
   const [volumeBeforeMute, setVolumeBeforeMute] = useState<number>(0)
   const [isMuted, setIsMuted] = useState<boolean>(false)
+  const [elapsedTime, setElapsedTime] = useState<string>('00:00');
 
   const sound = useRef<Howl | null>(null)
 
@@ -16,6 +17,7 @@ export function useAudio() {
     function initializeHowler() {
       sound.current = new Howl({
         preload: 'metadata',
+        autoplay: false,
         src: [playlist[currentSongIndex].url],
         volume: 0.5,
         onend: () => {
@@ -30,7 +32,28 @@ export function useAudio() {
     return () => {
       sound.current?.unload();
     };
-  }, [currentSongIndex, volume]);
+  }, [currentSongIndex]);
+
+
+  useEffect(() => {
+    if (!isMuted) {
+      sound.current?.volume(volume)
+    } else {
+      sound.current?.volume(0)
+    }
+  }, [volume, isMuted])
+
+  useEffect(() => {
+  if (isPlaying) {
+    const interval = setInterval(() => {
+      const seconds = Math.floor(sound.current?.seek() as number);
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+      setElapsedTime(`${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`);
+    }, 1000);
+    return () => clearInterval(interval);
+  }
+}, [isPlaying]);
 
   function togglePlayPause() {
     if (!isPlaying) {
@@ -65,28 +88,24 @@ export function useAudio() {
     event.preventDefault()
     const newVolume = parseFloat(event.target.value)
     setVolume(newVolume)
+    setVolumeBeforeMute(newVolume)
     sound.current?.volume(newVolume)
   }
 
-  function toggleMute() {
-    setIsMuted((prevIsMuted) => !prevIsMuted)
-    if (!isMuted) {
-      setVolumeBeforeMute(volume)
-      setIsMuted(true)
-      setVolume(0)
-    } else {
-      setVolume(volumeBeforeMute)
-      setIsMuted(false)
-    }
-    if (isPlaying){
-      sound.current?.volume(volumeBeforeMute)
-      sound.current?.play()
-    }
+function toggleMute() {
+  if (!isMuted) {
+    setVolumeBeforeMute(volume)
+    setVolume(0)
+  } else {
+    setVolume(volumeBeforeMute)
   }
+  setIsMuted((prevIsMuted) => !prevIsMuted)
+}
 
   const currentSong = playlist[currentSongIndex]
 
   return {
+    elapsedTime,
     currentSongIndex,
     isPlaying,
     volume,
