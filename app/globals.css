@@ -146,11 +146,14 @@ track for chrome browser
 input[type='range']::-webkit-slider-runnable-track {
   background: #ccc;
   border-radius: 0.5rem;
+  border: var(--text) 2px solid;
 }
 
 #volume::-webkit-slider-runnable-track {
   height: 1rem;
   border-radius: 0.5rem;
+  border: var(--text) 2px solid;
+
 }
 
 /*
