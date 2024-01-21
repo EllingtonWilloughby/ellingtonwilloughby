@@ -26,10 +26,10 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <div className="w-full flex flex-col justify-center items-center px-24 mb-12">
+    <div className="w-full flex flex-col justify-center items-center px-24">
       
 
-      <section  className="max-w-md w-full flex justify-between py-2">
+      <section  className="max-w-md w-full flex justify-between items-end pt-12">
         <button onClick={togglePlayPause}>
           {isPlaying ? <PiPlayPauseBold size={32} /> : <PiPlayBold size={32} />}
         </button>
@@ -49,7 +49,7 @@ export default function Audio() {
 
 
 
-      <section className="min-w-md absolute right-24">
+      <section className="max-w-md absolute right-0 sm:right-6 md:right-16 lg:right-40 pb-2">
         <label htmlFor="volume"></label>
         <input
           type="range"
@@ -63,12 +63,12 @@ export default function Audio() {
         />
       </section>  
 
-      <section className="max-w-md w-full min-h-full h-full flex justify-between items-center">
-        <div className="h-12 py-4">{
+      <section className="max-w-md w-full mt-2 md:mt-6">
+        <div className="h-10 py-4">{
           isPlaying 
-            ? `Now Playing: ${currentSong.title} | ${elapsedTime} of ${currentSong.duration}`
+            ? `Now Playing: ${currentSong.title}  |  ${elapsedTime} of ${currentSong.duration}`
             : elapsedTime !== '00:00' 
-              ? `Current Song: ${currentSong.title} (Paused) | ${elapsedTime} of ${currentSong.duration}`
+              ? `Current Song: ${currentSong.title} (Paused)  |  ${elapsedTime} of ${currentSong.duration}`
               : ''}</div>
       </section>
     </div>

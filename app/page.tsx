@@ -10,7 +10,7 @@ export default function Home() {
         <Navigation />
       </header>
 
-      <div className="w-screen flex justify-center">
+      <div className="w-screen flex justify-center items-start">
         <Logo height={650} width={650} />
       </div>
 
