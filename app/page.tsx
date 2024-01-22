@@ -1,7 +1,8 @@
+'use client'
 import Navigation from './components/Navigation'
 import Logo from './components/Logo'
-import AudioPlayer from './components/AudioPlayer'
-import { playlist } from '@/lib/data'
+import Audio from './components/Audio'
+import DarkModeButton from './components/DarkModeButton'
 
 export default function Home() {
   return (
@@ -10,14 +11,16 @@ export default function Home() {
         <Navigation />
       </header>
 
-      <div>
-        <Logo />
+      <div className="w-screen flex justify-center items-start">
+        <Logo height={650} width={650} />
       </div>
 
       <div>
-        <AudioPlayer playlist={playlist} />
+        <Audio />
       </div>
-    
+      <div className="fixed bottom-6 left-6">
+        <DarkModeButton />
+      </div>
     </main>
   )
 }

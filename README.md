@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Tailwind Responsive Design Breakpoints
+
+0px     -   639px     mobile
+640px   -   767px     small
+768px   -   1023px    medium
+1024px  -   1279px    large
+1280px  -   1535px    x-large
+1536px  -   all       2x-large
