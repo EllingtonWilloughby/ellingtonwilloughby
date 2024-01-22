@@ -18,7 +18,7 @@ export default function Home() {
       <div>
         <Audio />
       </div>
-      <div className="fixed bottom-8 left-8">
+      <div className="fixed bottom-6 left-6">
         <DarkModeButton />
       </div>
     </main>

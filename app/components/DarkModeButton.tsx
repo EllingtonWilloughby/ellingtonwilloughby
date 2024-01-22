@@ -1,23 +1,27 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { PiMoon, PiMoonStars } from 'react-icons/pi'
 import { useDarkMode } from '../../lib/context/ColorSchemeContext'
 
 export default function DarkModeButton() {
-  const { darkMode, toggleDarkMode } = useDarkMode();
-
+  const { showText, darkMode, toggleDarkMode } = useDarkMode();
+  
   return (
     <div 
       onClick={toggleDarkMode}
       className={
-        `hover: cursor-pointer toggle-text-wrap text-sm md:text-base/4 lg:text-lg/5 flex flex-col items-center`
+        `hover: cursor-pointer flex flex-col items-start p-2`
       }
     >
       {darkMode 
-        ? <PiMoon style={{color: 'var(--primary)' }} size={24} className="mr-2"/> 
-        : <PiMoonStars style={{color: 'var(--primary)'}} size={24} className="mr-2"/>}
+        ? <PiMoon size={24} /> 
+        : <PiMoonStars size={24} />}
 
-        <span className="toggle-text">{darkMode ? 'light mode' : 'dark mode'}</span>
+      <div className="h-8 w-40 text-xs/5">
+        {showText && (
+          <span>{darkMode ? 'Click for Light Mode' : 'Click for Dark Mode'}</span>
+        )}
+      </div>
     </div>
   )
 }

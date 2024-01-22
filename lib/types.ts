@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export interface AudioPlayerProps {
   playlist: SongType[];
@@ -33,4 +33,14 @@ export interface Song {
 
 export interface UseAudioProps {
   playlist: Song[];
+}
+
+export interface DarkModeContextProps {
+  showText: boolean
+  darkMode: boolean
+  toggleDarkMode: () => void
+}
+
+export interface DarkModeProviderProps {
+  children: React.ReactNode
 }
