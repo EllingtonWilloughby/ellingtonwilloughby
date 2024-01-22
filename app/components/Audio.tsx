@@ -8,18 +8,15 @@ import {
   PiSpeakerXBold,
   PiSpeakerHighBold,
   PiSpeakerLowBold,
+  PiSpeakerNoneBold,
 } from 'react-icons/pi'
-import { useRef, useState } from "react";
 
 export default function Audio() {
-  const [isAdjusting, setIsAdjusting] = useState<boolean>(false);
-  const volumeControlRef = useRef<HTMLDivElement>(null);
 
   const {
     elapsedTime,
     isPlaying,
     volume,
-    setVolume,
     handlePlayPause,
     handleStop,
     handleNextSong,
@@ -44,9 +41,11 @@ export default function Audio() {
         {
           volume === 0 
             ? <PiSpeakerXBold size={32} />
-            : volume < .75
-              ? <PiSpeakerLowBold size={32} />
-              : <PiSpeakerHighBold size={32} />
+            : volume < .5
+              ? <PiSpeakerNoneBold size={32} />
+              : volume < .75
+                ? <PiSpeakerLowBold size={32} />
+                : <PiSpeakerHighBold size={32} />
         }
         </button>
       </div>
@@ -58,7 +57,6 @@ export default function Audio() {
         <input
           type="range"
           id="volume"
-          className=""
           name="volume"
           min={0}
           max={1}
@@ -73,7 +71,7 @@ export default function Audio() {
           isPlaying 
             ? `Now Playing: ${currentSong.title}  |  ${elapsedTime} of ${currentSong.duration}`
             : elapsedTime !== '00:00' 
-              ? `Current Song: ${currentSong.title} (Paused)  |  ${elapsedTime} of ${currentSong.duration}`
+              ? `Now Playing: ${currentSong.title} (Paused)  |  ${elapsedTime} of ${currentSong.duration}`
               : ''}</div>
       </div>
       </div>
