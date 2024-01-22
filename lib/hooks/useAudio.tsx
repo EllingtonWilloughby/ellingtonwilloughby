@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { Howl } from 'howler'
-import { playlist } from '../../lib/data'
+import { playlist } from '../data'
 
 export function useAudio() {
   const [currentSongIndex, setCurrentSongIndex] = useState<number>(0)
@@ -56,7 +56,7 @@ export function useAudio() {
   }
 }, [isPlaying]);
 
-  function togglePlayPause() {
+  function handlePlayPause() {
     if (!isPlaying) {
       sound.current?.play()
       setIsPlaying(true)
@@ -114,7 +114,8 @@ export function useAudio() {
     currentSongIndex,
     isPlaying,
     volume,
-    togglePlayPause,
+    setVolume,
+    handlePlayPause,
     handleStop,
     handleNextSong,
     handlePrevSong,

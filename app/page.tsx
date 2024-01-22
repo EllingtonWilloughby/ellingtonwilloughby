@@ -2,6 +2,7 @@
 import Navigation from './components/Navigation'
 import Logo from './components/Logo'
 import Audio from './components/Audio'
+import DarkModeButton from './components/DarkModeButton'
 
 export default function Home() {
   return (
@@ -17,7 +18,9 @@ export default function Home() {
       <div>
         <Audio />
       </div>
-  
+      <div className="fixed bottom-8 left-8">
+        <DarkModeButton />
+      </div>
     </main>
   )
 }

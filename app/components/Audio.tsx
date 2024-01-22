@@ -1,22 +1,26 @@
-import { useAudio } from "../hooks/useAudio";
+import { useAudio } from "../../lib/hooks/useAudio";
 import {
   PiPlayBold,
-  PiPauseBold,
+  PiPlayPauseBold,
   PiStopBold,
   PiSkipBackBold,
   PiSkipForwardBold,
   PiSpeakerXBold,
   PiSpeakerHighBold,
   PiSpeakerLowBold,
-  PiPlayPauseBold
 } from 'react-icons/pi'
+import { useRef, useState } from "react";
 
 export default function Audio() {
+  const [isAdjusting, setIsAdjusting] = useState<boolean>(false);
+  const volumeControlRef = useRef<HTMLDivElement>(null);
+
   const {
     elapsedTime,
     isPlaying,
     volume,
-    togglePlayPause,
+    setVolume,
+    handlePlayPause,
     handleStop,
     handleNextSong,
     handlePrevSong,
@@ -26,11 +30,11 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <div className="w-full flex flex-col justify-center items-center px-24">
+    <div className="relative right-4 max-w-screen-sm mx-auto w-full flex flex-col justify-center items-center px-24">
       
 
-      <section  className="max-w-md w-full flex justify-between items-end pt-12">
-        <button onClick={togglePlayPause}>
+      <section  className="max-w-screen-sm w-full flex justify-between items-end pt-12">
+        <button onClick={handlePlayPause}>
           {isPlaying ? <PiPlayPauseBold size={32} /> : <PiPlayBold size={32} />}
         </button>
         <button onClick={handleStop}><PiStopBold size={32} /></button>
@@ -49,7 +53,7 @@ export default function Audio() {
 
 
 
-      <section className="max-w-md absolute right-0 sm:right-6 md:right-16 lg:right-40 pb-2">
+      <section className="max-w-screen-sm absolute right-0 sm:right-6 md:right-16 lg:right-40 pb-2">
         <label htmlFor="volume"></label>
         <input
           type="range"
@@ -63,7 +67,7 @@ export default function Audio() {
         />
       </section>  
 
-      <section className="max-w-md w-full mt-2 md:mt-6">
+      <section className="max-w-screen-sm w-full mt-2 md:mt-6">
         <div className="h-10 py-4">{
           isPlaying 
             ? `Now Playing: ${currentSong.title}  |  ${elapsedTime} of ${currentSong.duration}`
