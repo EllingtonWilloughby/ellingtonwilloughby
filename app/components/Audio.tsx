@@ -27,10 +27,10 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <div className="relative max-w-screen-lg mx-auto w-full flex flex-col justify-center items-center px-24">
+    <div className="relative max-w-screen-md mx-auto w-full flex flex-col justify-center items-center px-24">
       <div className="relative max-w-screen-md mx-auto w-full pr-8 pb-8">
 
-      <div className="max-w-screen-sm w-full flex justify-between items-end pt-12">
+      <div className="max-w-screen-sm w-full flex justify-between items-end">
         <button onClick={handlePlayPause}>
           {isPlaying ? <PiPlayPauseBold size={32} /> : <PiPlayBold size={32} />}
         </button>
@@ -50,9 +50,7 @@ export default function Audio() {
         </button>
       </div>
 
-
-
-      <div className="max-w-screen-md absolute -right-16 transform -translate-y-1/2">
+      <div className="max-w-screen-md absolute -right-20 transform -translate-y-1/2">
         <label htmlFor="volume"></label>
         <input
           type="range"

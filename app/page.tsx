@@ -7,7 +7,7 @@ import DarkModeButton from './components/DarkModeButton'
 import Logo from './components/Logo'
 import Navigation from './components/Navigation'
 import bgi from '../public/images/prim.png'
-import bgii from '../public/images/surt.gif'
+import bgii from '../public/images/loop.gif'
 
 export default function Home() {
   const { darkMode } = useDarkMode()
@@ -22,12 +22,12 @@ export default function Home() {
         </header>
         
         <div className="w-screen flex justify-center mx-auto">
-          <Logo height={650} width={650} />
+          <Logo height={600} width={600} />
         </div>
           <div>
             <Audio />
           </div>
-          <div className="fixed bottom-6 left-6">
+          <div className="absolute bottom-6 left-6">
             <DarkModeButton />
           </div>
       </Container>
