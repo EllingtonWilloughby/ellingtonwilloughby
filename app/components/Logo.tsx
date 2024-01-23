@@ -1,17 +1,17 @@
 'use client'
-import { useEffect, useState } from 'react';
 import darkLogo from '../../public/images/ew_logo_dk.svg'
 import lightLogo from '../../public/images/ew_logo.svg'
 import Image from 'next/image';
 import { LogoProps } from '../../lib/types'
+import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
 export default function Logo({ height, width }: LogoProps) {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const { darkMode } = useDarkMode()
   
   return (
     <div>
       <Image
-        src={isDarkMode ? darkLogo : lightLogo}
+        src={darkMode ? darkLogo : lightLogo}
         alt="ellington willoughby logo"
         height={height}
         width={width}

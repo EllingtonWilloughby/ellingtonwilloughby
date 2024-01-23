@@ -28,7 +28,7 @@ export default function Audio() {
 
   return (
     <div className="relative max-w-screen-lg mx-auto w-full flex flex-col justify-center items-center px-24">
-      <div className="relative max-w-screen-md mx-auto w-full pr-8">
+      <div className="relative max-w-screen-md mx-auto w-full pr-8 pb-8">
 
       <div className="max-w-screen-sm w-full flex justify-between items-end pt-12">
         <button onClick={handlePlayPause}>
@@ -67,12 +67,13 @@ export default function Audio() {
       </div>  
 
       <div className="max-w-screen-sm w-full mt-2 md:mt-6">
-        <div className="h-10 py-4">{
+        <div className="h-10 pt-4">{
           isPlaying 
             ? `Now Playing: ${currentSong.title}  |  ${elapsedTime} of ${currentSong.duration}`
             : elapsedTime !== '00:00' 
               ? `Now Playing: ${currentSong.title} (Paused)  |  ${elapsedTime} of ${currentSong.duration}`
-              : ''}</div>
+                : ''}
+        </div>
       </div>
       </div>
     </div>
