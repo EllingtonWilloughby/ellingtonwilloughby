@@ -8,7 +8,7 @@ export interface SongType {
   url: string;
   duration: string;
 }
- 
+
 export interface OriginModalProps {
   isOpen: boolean;
   closeModal: () => void;
@@ -43,4 +43,9 @@ export interface DarkModeContextProps {
 
 export interface DarkModeProviderProps {
   children: React.ReactNode
+}
+
+export interface NavLinkProps {
+  href: string;
+  children: ReactNode;
 }

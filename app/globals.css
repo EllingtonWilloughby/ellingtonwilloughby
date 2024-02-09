@@ -7,13 +7,13 @@
   box-sizing: border-box;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 
-  --text: #363635ff; /*jet*/
+  --text: #122f2bff; /*jet*/
   --background: #fafafaff;; /*seasalt*/
   --primary: #c1bfc9ff; /*french-gray*/
   --secondary: #68596bff; /*eggplant*/
@@ -23,7 +23,7 @@
 
 body.dark-mode {
   --text: #fafafaff; /*cosmic-latte*/
-  --background: #363635ff; /*jet*/
+  --background: #122f2bff; /*jet*/
   --primary: #68596bff; /*eggplant*/
   --secondary: #9a8c98ff; /*rose-quartz*/
   --accent: #8e9aafff; /*cool-gray*/
@@ -42,7 +42,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--background);
-  color: var(--light);
+  color: var(--text);
   margin: 0;
   padding: 0;
   display: flex;
@@ -112,7 +112,7 @@ a:hover {
 }
 
 /*
-volume range element: 
+volume range element:
 
 i. the range element
 is handled differently
@@ -235,7 +235,7 @@ input[type="range"]::-moz-range-thumb {
   transition: border 0.2s ease-in-out;
 }
 
-/* 
+/*
 thumb hover, active, focus states for chrome browser
 */
 
