@@ -1,6 +1,5 @@
 'use client'
 
-import { useDarkMode } from '@/lib/context/ColorSchemeContext'
 import Audio from './components/Audio'
 import Container from './components/Container'
 import DarkModeButton from './components/DarkModeButton'
