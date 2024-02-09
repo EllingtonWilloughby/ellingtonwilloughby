@@ -8,9 +8,6 @@ import Logo from './components/Logo'
 import Navigation from './components/Navigation'
 
 export default function Home() {
-  const { darkMode } = useDarkMode()
-
-  const bg = darkMode ? 'bgii' : 'bgi'
 
   return (
     <main className="min-h-screen flex flex-col justify-around items-center">
