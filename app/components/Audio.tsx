@@ -1,8 +1,7 @@
 import { useAudio } from "../../lib/hooks/useAudio";
 import {
   PiPlayBold,
-  PiPlayPauseBold,
-  PiStopBold,
+  PiPauseBold,
   PiSkipBackBold,
   PiSkipForwardBold,
   PiSpeakerXBold,
@@ -18,7 +17,6 @@ export default function Audio() {
     isPlaying,
     volume,
     handlePlayPause,
-    handleStop,
     handleNextSong,
     handlePrevSong,
     handleVolumeChange,
@@ -32,16 +30,15 @@ export default function Audio() {
 
       <div className="max-w-screen-sm w-full flex justify-between items-end">
         <button onClick={handlePlayPause}>
-          {isPlaying ? <PiPlayPauseBold size={32} /> : <PiPlayBold size={32} />}
+          {isPlaying ? <PiPauseBold size={32} /> : <PiPlayBold size={32} />}
         </button>
-        <button onClick={handleStop}><PiStopBold size={32} /></button>
         <button onClick={handlePrevSong}><PiSkipBackBold size={32} /></button>
         <button onClick={handleNextSong}><PiSkipForwardBold size={32} /></button>
         <button onClick={toggleMute}>
         {
-          volume === 0 
+          volume === 0
             ? <PiSpeakerXBold size={32} />
-            : volume < .5
+            : volume < .25
               ? <PiSpeakerNoneBold size={32} />
               : volume < .75
                 ? <PiSpeakerLowBold size={32} />
@@ -62,13 +59,13 @@ export default function Audio() {
           value={volume}
           onChange={handleVolumeChange}
         />
-      </div>  
+      </div>
 
       <div className="max-w-screen-sm w-full mt-2 md:mt-6">
         <div className="h-10 pt-4">{
-          isPlaying 
+          isPlaying
             ? `Now Playing: ${currentSong.title}  |  ${elapsedTime} of ${currentSong.duration}`
-            : elapsedTime !== '00:00' 
+            : elapsedTime !== '00:00'
               ? `Now Playing: ${currentSong.title} (Paused)  |  ${elapsedTime} of ${currentSong.duration}`
                 : ''}
         </div>

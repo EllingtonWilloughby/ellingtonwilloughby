@@ -14,18 +14,18 @@ export function useAudio() {
   const sound = useRef<Howl | null>(null)
 
   useEffect(() => {
-    
+
     function initializeHowler() {
       sound.current = new Howl({
         preload: 'metadata',
-        autoplay: false,
+        autoplay: isPlaying,
         src: [playlist[currentSongIndex].url],
         volume: 0.5,
         onend: () => {
           handleNextSong()
         }
       });
-      
+
     }
 
     initializeHowler();
@@ -33,7 +33,7 @@ export function useAudio() {
     return () => {
       sound.current?.unload();
     };
-  }, [currentSongIndex]);
+  }, [currentSongIndex, isPlaying]);
 
 
   useEffect(() => {
@@ -66,26 +66,17 @@ export function useAudio() {
     }
   }
 
-  function handleStop() {
-    sound.current?.stop()
-    setIsPlaying(false)
-  }
-
   function handleNextSong() {
-    sound.current?.stop();
     setCurrentSongIndex((prevIndex) =>
       prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
     );
-    sound.current?.play();
     setIsPlaying(true);
   }
 
   function handlePrevSong() {
-    sound.current?.stop();
     setCurrentSongIndex((prevIndex) =>
       prevIndex === 0 ? playlist.length - 1 : prevIndex - 1
     );
-    sound.current?.play();
     setIsPlaying(true);
   }
 
@@ -116,7 +107,6 @@ export function useAudio() {
     volume,
     setVolume,
     handlePlayPause,
-    handleStop,
     handleNextSong,
     handlePrevSong,
     handleVolumeChange,
