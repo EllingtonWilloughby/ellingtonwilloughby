@@ -111,6 +111,27 @@ a:hover {
   margin: 0 auto;
 }
 
+/* audio player controls */
+
+.control-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 1rem;
+}
+
+.control {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 /*
 volume range element:
 

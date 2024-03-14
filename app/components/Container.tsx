@@ -1,6 +1,6 @@
 import { useDarkMode } from '@/lib/context/ColorSchemeContext'
 import Image from 'next/image'
-import darkBg from '../../public/images/loop_75.gif'
+import darkBg from '../../public/gif/loop_75.gif'
 import lightBg from '../../public/images/prim.svg'
 import React from 'react'
 

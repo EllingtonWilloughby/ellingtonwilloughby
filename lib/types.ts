@@ -49,3 +49,9 @@ export interface NavLinkProps {
   href: string;
   children: ReactNode;
 }
+
+export interface NowPlayingPropTypes {
+  isPlaying: boolean;
+  currentSong: SongType;
+  elapsedTime: string;
+}

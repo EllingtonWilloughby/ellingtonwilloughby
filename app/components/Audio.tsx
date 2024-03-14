@@ -1,3 +1,5 @@
+'use client'
+import { useState } from "react";
 import { useAudio } from "../../lib/hooks/useAudio";
 import {
   PiPlayBold,
@@ -9,9 +11,10 @@ import {
   PiSpeakerLowBold,
   PiSpeakerNoneBold,
 } from 'react-icons/pi'
+import NowPlaying from "./NowPlaying";
 
 export default function Audio() {
-
+  const [volumeSlider, setVolumeSlider] = useState<boolean>(false);
   const {
     elapsedTime,
     isPlaying,
@@ -21,56 +24,71 @@ export default function Audio() {
     handlePrevSong,
     handleVolumeChange,
     toggleMute,
-    currentSong,
+    currentSong
   } = useAudio();
 
   return (
-    <div className="relative max-w-screen-md mx-auto w-full flex flex-col justify-center items-center px-24">
-      <div className="relative max-w-screen-md mx-auto w-full pr-8 pb-8">
+    <section className="relative max-w-screen-md mx-auto w-full flex flex-col justify-center items-center px-24">
+      <div className="control-container max-w-screen-sm mx-auto w-full flex justify-between items-center">
+        <div className="control">
+          <button onClick={handlePlayPause}>
+            {isPlaying
+              ? <PiPauseBold size={32} />
+              : <PiPlayBold size={32} />}
+          </button>
+        </div>
 
-      <div className="max-w-screen-sm w-full flex justify-between items-end">
-        <button onClick={handlePlayPause}>
-          {isPlaying ? <PiPauseBold size={32} /> : <PiPlayBold size={32} />}
-        </button>
-        <button onClick={handlePrevSong}><PiSkipBackBold size={32} /></button>
-        <button onClick={handleNextSong}><PiSkipForwardBold size={32} /></button>
-        <button onClick={toggleMute}>
-        {
-          volume === 0
-            ? <PiSpeakerXBold size={32} />
-            : volume < .25
-              ? <PiSpeakerNoneBold size={32} />
-              : volume < .75
-                ? <PiSpeakerLowBold size={32} />
-                : <PiSpeakerHighBold size={32} />
-        }
-        </button>
-      </div>
+        <div className="control">
+          <button onClick={handlePrevSong}>
+            <PiSkipBackBold size={32} />
+          </button>
+        </div>
 
-      <div className="max-w-screen-md absolute -right-20 transform -translate-y-1/2">
-        <label htmlFor="volume"></label>
-        <input
-          type="range"
-          id="volume"
-          name="volume"
-          min={0}
-          max={1}
-          step={0.1}
-          value={volume}
-          onChange={handleVolumeChange}
-        />
-      </div>
+        <div className="control">
+          <button onClick={handleNextSong}>
+            <PiSkipForwardBold size={32} />
+          </button>
+        </div>
 
-      <div className="max-w-screen-sm w-full mt-2 md:mt-6">
-        <div className="h-10 pt-4">{
-          isPlaying
-            ? `Now Playing: ${currentSong.title}  |  ${elapsedTime} of ${currentSong.duration}`
-            : elapsedTime !== '00:00'
-              ? `Now Playing: ${currentSong.title} (Paused)  |  ${elapsedTime} of ${currentSong.duration}`
-                : ''}
+        <div
+          className="control"
+          onMouseEnter={() => setVolumeSlider(true)}
+          onMouseLeave={() => setVolumeSlider(false)}
+        >
+          <button
+            onClick={toggleMute}
+          >
+            {volume === 0
+              ? <PiSpeakerXBold size={32} />
+              : volume < .25
+                ? <PiSpeakerNoneBold size={32} />
+                : volume < .75
+                  ? <PiSpeakerLowBold size={32} />
+                  : <PiSpeakerHighBold size={32} />
+            }
+
+            {volumeSlider && (
+                <input
+                  type="range"
+                  id="volume"
+                  name="volume"
+                  min={0}
+                  max={1}
+                  step={0.1}
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  className="absolute"
+                />
+            )}
+          </button>
         </div>
       </div>
-      </div>
-    </div>
+
+      <NowPlaying
+        isPlaying={isPlaying}
+        currentSong={currentSong}
+        elapsedTime={elapsedTime}
+      />
+    </section>
   );
 }

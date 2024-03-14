@@ -8,7 +8,10 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Ellington Willoughby',
   description: 'Ellington Willoughby & the Mythical Squid',
-  icons: '/images/ew_logo.svg',
+  icons: [
+    '/images/ew_logo.svg',
+    '/images/ew_logo_dk.svg',
+  ]
 }
 
 export default function RootLayout({
