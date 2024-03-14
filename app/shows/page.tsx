@@ -2,8 +2,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Showslt from '@/public/images/shows.svg';
-import Showsdk from '@/public/images/shows_dk.svg';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
 export default function Shows() {
@@ -14,9 +12,9 @@ export default function Shows() {
       {
         darkMode
           ? (
-            <Image src={Showsdk} height={500} width={500} alt="shows heading" className="-mt-20 -mb-20" />
+            <Image src="/images/shows_dk.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20" />
           ) : (
-            <Image src={Showslt} height={500} width={500} alt="shows heading" className="-mt-20 -mb-20" />
+            <Image src="/images/shows.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20" />
           )
       }
        <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>

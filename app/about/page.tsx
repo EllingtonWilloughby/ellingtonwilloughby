@@ -2,8 +2,6 @@
 import { useState } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
-import About from '@/public/images/about.svg'
-import Aboutdk from '@/public/images/about_dk.svg'
 import OriginModal from '../components/OriginModal';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
@@ -22,8 +20,8 @@ export default function AboutPage() {
   return (
     <div className="relative h-screen w-screen max-w-screen-lg mx-auto flex flex-col items-center justify-start p-10 m-4">
       {darkMode
-        ? (<Image src={Aboutdk} height={500} width={500} alt="about heading" className="-mt-20 -mb-20" />)
-          : (<Image src={About} height={500} width={500} alt="about heading" className="-mt-20 -mb-20" />)
+        ? (<Image src="/images/about_dk.svg" height={500} width={500} alt="about heading" className="-mt-20 -mb-20" />)
+          : (<Image src="/images/about.svg" height={500} width={500} alt="about heading" className="-mt-20 -mb-20" />)
       }
 
         <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
