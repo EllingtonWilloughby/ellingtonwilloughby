@@ -1,10 +1,10 @@
 'use client'
-import Link from 'next/link';
 import { useState } from 'react'
-import About from '../../public/images/about.svg'
-import Aboutdk from '../../public/images/about_dk.svg'
-import OriginModal from '../components/OriginModal';
+import Link from 'next/link';
 import Image from 'next/image';
+import About from '@/public/images/about.svg'
+import Aboutdk from '@/public/images/about_dk.svg'
+import OriginModal from '../components/OriginModal';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
 export default function AboutPage() {

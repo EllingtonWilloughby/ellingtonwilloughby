@@ -2,8 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Musiclt from '../../public/images/music.svg';
-import Musicdk from '../../public/images/music_dk.svg';
+import Musiclt from '@/public/images/music.svg';
+import Musicdk from '@/public/images/music_dk.svg';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
 export default function Music() {

@@ -2,9 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Contactlt from '../../public/images/contact.svg';
-import Contactdk from '../../public/images/contact_dk.svg';
-import Horizon from '../../public/images/horizon.gif';
+import Contactlt from '@/public/images/contact.svg';
+import Contactdk from '@/public/images/contact_dk.svg';
+import Horizon from '@/public/images/horizon.gif';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
 export default function Contact() {
