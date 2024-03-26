@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
+import { HomeRounded } from '@mui/icons-material';
 
 export default function Shows() {
   const { darkMode } = useDarkMode();
@@ -17,7 +18,7 @@ export default function Shows() {
             <Image src="/images/shows.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20" />
           )
       }
-       <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
+       <Link href="/" className="absolute top-8 left-8 text-sm"><HomeRounded/></Link>
       </div>
   );
 

@@ -21,13 +21,13 @@ export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
               <h2 className="text-center w-full underline text-3xl font-light subpixel-antialiased">Origin Story</h2>
                 <div className="px-8 my-4">
                   <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
-                    The origin story of the mythical squid begins in a Pennsylvania basement in the late 1980&apos;s, pre-dating the home studio revolution. The basement was filled with full stack P.A. speakers, authentic vintage fender blackface amplifiers, a drum set and a hot wood burning stove. Monthly jam sessions among working professionals would take place in the quiet woods outside of Malvern, Pennsylvania. 
+                    The origin story of the mythical squid begins in a Pennsylvania basement in the late 1980&apos;s, pre-dating the home studio revolution. The basement was filled with full stack P.A. speakers, authentic vintage fender blackface amplifiers, a drum set and a hot wood burning stove. Monthly jam sessions among working professionals would take place in the quiet woods outside of Malvern, Pennsylvania.
                   </p>
                   <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-2 mb-3">
                     The blue blood of old moneyed horse stables would sway gently to the dissipated thump of covers of songs by Santana. There were good players and bad, and some who just showed up to party. In the middle of all of it, was my brother & I. At bedtime, like clockwork, the session would play &quot;I aint your stepping stone&quot; by the Monkeys to put us kids to sleep. It was loud...and it always worked.
                   </p>
                 </div>
-            </div>  
+            </div>
 
             <div className="max-w-screen-lg mx-auto">
               <h3 className="text-center w-full text-xl subpixel-antialiased">The First Go</h3>
@@ -37,19 +37,19 @@ export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
                   </p>
                 </div>
             </div>
-            
+
             <div className="max-w-screen-lg mx-auto">
               <h3 className="text-center w-full text-xl subpixel-antialiased">XKJ</h3>
                 <div className="px-8 my-4">
                   <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
-                    The band was called the Xylophone Killed Jazz, a name that came from a wacky little book written by a wacky little man that we all read in school. It was in science class, and our lead singer at the time, who looked and sounded like Janis Joplin, offered it up as a good band name, and we all agreed. 
+                    The band was called the Xylophone Killed Jazz, a name that came from a wacky little book written by a wacky little man that we all read in school. It was in science class, and our lead singer at the time, who looked and sounded like Janis Joplin, offered it up as a good band name, and we all agreed.
                   </p>
                   <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
                     Later in life, as I dove head-first and heavily into collecting old jazz records, something about the sentiment stuck with me, and to this day, I do not own any records with a xylophone on it. Eventually, the drummer and guitarist (being older than the rest of us), left to college. Soon we all would do the same.
                   </p>
 
                   <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
-                    I would follow in the drummer&apos;s footsteps, going to college in Virginia. On my college application I wrote that I &quot;liked music&quot;. This one little seemingly innocuous comment would have a major impact in my life. To the credit of the college staff, they assigned me to a roommate who also &quot;liked music&quot;. Thus, on the first day of school entered Nordhaus WarriorHead. In his wake came a bass guitar, a stereo and 20+ years of continual musical collaboration. 
+                    I would follow in the drummer&apos;s footsteps, going to college in Virginia. On my college application I wrote that I &quot;liked music&quot;. This one little seemingly innocuous comment would have a major impact in my life. To the credit of the college staff, they assigned me to a roommate who also &quot;liked music&quot;. Thus, on the first day of school entered Nordhaus WarriorHead. In his wake came a bass guitar, a stereo and 20+ years of continual musical collaboration.
                   </p>
 
                   <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
@@ -91,7 +91,7 @@ export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
                   Eventually, Jon asked if he could invite a friend to practice, and that friend was Adam. By chance, Adam happened to be my neighbor and a damn fine musician to boot. So after a few practices Adam joined the band. First on bass then moving on to Drums. We ditched the computer and went all live. Jason picked up the congas. Rounding it all out we brought Jesse in on Bass (best Craigslist score), who played with a number of groups around town and led his own group: Neptune Groove Orchestra. Soon Jesse moved to Seattle and we brought in the amazing bassist, and all around great guy, Dan.
                 </p>
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
-                  So now after 20 years of music we arrive at the present. Still lots to learn and still fun as hell. We&apos;re continuously recording in our home studio and try to play out every two months or so. Our shows are getting bigger and our sound is getting tighter. It&apos;s been a journey and we&apos;re nowhere near destination.
+                  20 years of music brings us to the present. Still lots to learn and still fun as hell. We&apos;re continuously recording in our home studios and play out every three months or so. Our shows are getting bigger and our sound is getting tighter. It&apos;s been a journey and we&apos;re nowhere near destination.
                 </p>
               </div>
               </div>
