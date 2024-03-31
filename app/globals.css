@@ -111,6 +111,9 @@ a:hover {
   margin: 0 auto;
 }
 
+.origin-modal-content {
+  color: var(--background);
+}
 /* audio player controls */
 
 .control-container {
