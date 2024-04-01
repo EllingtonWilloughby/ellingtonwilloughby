@@ -25,27 +25,27 @@ export default function Shows() {
           </thead>
           <tbody>
             <tr>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">
                 05-18-2024
               </td>
-              <td className="text-sm subpixel-antialiased">7 PM</td>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">7 PM</td>
+              <td className="text-xs subpixel-antialiased">
                 Starday Tavern 6517 SE Foster Rd, Portland, OR 97206
               </td>
             </tr>
             <tr>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">
                 TBD
               </td>
-              <td className="text-sm subpixel-antialiased">TBD</td>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">TBD</td>
+              <td className="text-xs subpixel-antialiased">
                 Buddystock 1997 State Road, Mosier, OR 97040
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-       <Image src="/images/live.jpeg" height={500} width={500} alt="live music" className="my-10 rounded-lg" />
+       <Image src="/images/live.jpeg" height={500} width={500} alt="image of the wall in the studio" className="my-10 rounded-lg" />
       </div>
   );
 

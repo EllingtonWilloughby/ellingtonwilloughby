@@ -28,8 +28,8 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <section className="relative max-w-screen-md mx-auto w-full flex flex-col justify-center items-center px-24">
-      <div className="control-container max-w-screen-sm mx-auto w-full flex justify-between items-center">
+    <section className="relative max-w-screen-md px-12">
+      <div className="w-full flex justify-between">
         <div className="control">
           <span onClick={handlePlayPause}>
             {isPlaying

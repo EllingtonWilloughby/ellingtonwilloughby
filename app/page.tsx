@@ -17,11 +17,11 @@ export default function Home() {
             <Logo height={500} width={500} />
           </div>
 
-          <div>
+          <div className="w-full">
             <Audio />
           </div>
 
-          <div className="absolute bottom-6 left-6">
+          <div className="absolute bottom-2 left-6">
             <DarkModeButton />
           </div>
         </div>
