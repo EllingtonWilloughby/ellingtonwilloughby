@@ -8,12 +8,12 @@ export default function Shows() {
   const { darkMode } = useDarkMode();
 
   return (
-    <div className="relative min-h-screen max-w-screen-lg w-full mx-auto flex flex-col justify-start items-center p-6">
+    <div className="relative min-h-screen max-w-screen-md w-full mx-auto flex flex-col justify-start items-center p-6">
       {darkMode
           ? (<Image src="/images/shows_dk.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20 pt-6" />)
           : (<Image src="/images/shows.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20 pt-6" />)}
       <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
-      <div className="w-full max-w-screen-sm mt-10">
+      <div className="w-full max-w-screen-sm mx-auto mt-10 flex justify-center items-end">
         <table>
           <thead>
             <tr>
@@ -44,6 +44,7 @@ export default function Shows() {
           </tbody>
         </table>
       </div>
+       <Image src="/images/live.jpeg" height={500} width={500} alt="live music" className="my-10" />
       </div>
   );
 
