@@ -2,14 +2,14 @@
 import { useState } from "react";
 import { useAudio } from "../../lib/hooks/useAudio";
 import {
-  PiPlayBold,
-  PiPauseBold,
-  PiSkipBackBold,
-  PiSkipForwardBold,
-  PiSpeakerXBold,
-  PiSpeakerHighBold,
-  PiSpeakerLowBold,
-  PiSpeakerNoneBold,
+  PiPlayFill,
+  PiPauseFill,
+  PiSkipBackFill,
+  PiSkipForwardFill,
+  PiSpeakerXFill,
+  PiSpeakerHighFill,
+  PiSpeakerLowFill,
+  PiSpeakerNoneFill,
 } from 'react-icons/pi'
 import NowPlaying from "./NowPlaying";
 
@@ -28,26 +28,26 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <section className="relative max-w-screen-md mx-auto w-full flex flex-col justify-center items-center px-24">
-      <div className="control-container max-w-screen-sm mx-auto w-full flex justify-between items-center">
+    <section className="relative max-w-screen-md px-12">
+      <div className="w-full flex justify-between">
         <div className="control">
-          <button onClick={handlePlayPause}>
+          <span onClick={handlePlayPause}>
             {isPlaying
-              ? <PiPauseBold size={32} />
-              : <PiPlayBold size={32} />}
-          </button>
+              ? <PiPauseFill size={32} />
+              : <PiPlayFill size={32} />}
+          </span>
         </div>
 
         <div className="control">
-          <button onClick={handlePrevSong}>
-            <PiSkipBackBold size={32} />
-          </button>
+          <span onClick={handlePrevSong}>
+            <PiSkipBackFill size={32} />
+          </span>
         </div>
 
         <div className="control">
-          <button onClick={handleNextSong}>
-            <PiSkipForwardBold size={32} />
-          </button>
+          <span onClick={handleNextSong}>
+            <PiSkipForwardFill size={32} />
+          </span>
         </div>
 
         <div
@@ -55,16 +55,16 @@ export default function Audio() {
           onMouseEnter={() => setVolumeSlider(true)}
           onMouseLeave={() => setVolumeSlider(false)}
         >
-          <button
+          <span
             onClick={toggleMute}
           >
             {volume === 0
-              ? <PiSpeakerXBold size={32} />
+              ? <PiSpeakerXFill size={32} />
               : volume < .25
-                ? <PiSpeakerNoneBold size={32} />
+                ? <PiSpeakerNoneFill size={32} />
                 : volume < .75
-                  ? <PiSpeakerLowBold size={32} />
-                  : <PiSpeakerHighBold size={32} />
+                  ? <PiSpeakerLowFill size={32} />
+                  : <PiSpeakerHighFill size={32} />
             }
 
             {volumeSlider && (
@@ -80,7 +80,7 @@ export default function Audio() {
                   className="absolute"
                 />
             )}
-          </button>
+          </span>
         </div>
       </div>
 

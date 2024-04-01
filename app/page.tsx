@@ -9,23 +9,24 @@ import Logo from './components/Logo'
 export default function Home() {
 
   return (
-    <main className="relative min-h-screen max-w-screen-lg w-full mx-auto flex flex-col justify-start items-center p-6">
+    <main className="relative min-h-screen w-full mx-auto flex flex-col justify-start items-center">
       <Container>
         <Header />
-        <div className="flex flex-col justify-start">
+         <div className="flex flex-col justify-start">
           <div className='w-full flex justify-center'>
             <Logo height={500} width={500} />
           </div>
 
-          <div>
+          <div className="w-full">
             <Audio />
           </div>
 
-          <div className="absolute bottom-6 left-6">
+          <div className="absolute bottom-2 left-6">
             <DarkModeButton />
           </div>
         </div>
       </Container>
+
     </main>
   )
 }

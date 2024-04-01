@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
-import { HomeRounded } from '@mui/icons-material';
+import { PiHouseFill } from 'react-icons/pi';
 
 export default function Shows() {
   const { darkMode } = useDarkMode();
@@ -13,8 +13,8 @@ export default function Shows() {
       {darkMode
           ? (<Image src="/images/shows_dk.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20 pt-6" />)
           : (<Image src="/images/shows.svg" height={500} width={500} alt="shows heading" className="-mt-20 -mb-20 pt-6" />)}
-      <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
-      <div className="w-full max-w-screen-sm mx-auto mt-10 flex justify-center items-end">
+      <Link href="/" className="absolute top-8 left-8 text-sm"><PiHouseFill size="24" /></Link>
+      <div className="w-full max-w-screen-sm mx-auto mt-10 flex justify-center">
         <table>
           <thead>
             <tr>
@@ -25,27 +25,27 @@ export default function Shows() {
           </thead>
           <tbody>
             <tr>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">
                 05-18-2024
               </td>
-              <td className="text-sm subpixel-antialiased">7 PM</td>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">7 PM</td>
+              <td className="text-xs subpixel-antialiased">
                 Starday Tavern 6517 SE Foster Rd, Portland, OR 97206
               </td>
             </tr>
             <tr>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">
                 TBD
               </td>
-              <td className="text-sm subpixel-antialiased">TBD</td>
-              <td className="text-sm subpixel-antialiased">
+              <td className="text-xs subpixel-antialiased">TBD</td>
+              <td className="text-xs subpixel-antialiased">
                 Buddystock 1997 State Road, Mosier, OR 97040
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-       <Image src="/images/live.jpeg" height={500} width={500} alt="live music" className="my-10" />
+       <Image src="/images/live.jpeg" height={500} width={500} alt="image of the wall in the studio" className="my-10 rounded-lg" />
       </div>
   );
 
