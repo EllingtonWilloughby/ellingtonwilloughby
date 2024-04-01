@@ -67,6 +67,10 @@ a:hover {
   font-weight: 600;
 }
 
+a.active {
+  color: var(--accent);
+}
+
 button {
   color: var(--text);
   border: 2px solid var(--accent);
