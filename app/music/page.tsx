@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
+import { PiHouseFill } from 'react-icons/pi';
 
 export default function Music() {
   const { darkMode } = useDarkMode();
@@ -12,7 +13,7 @@ export default function Music() {
       {darkMode
           ? (<Image src="/images/music_dk.svg" height={500} width={500} alt="music heading" className="-mt-20 -mb-20 pt-6" />)
           : (<Image src="/images/music.svg" height={500} width={500} alt="music heading" className="-mt-20 -mb-20 pt-6" />)}
-      <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
+      <Link href="/" className="absolute top-8 left-8 text-sm"><PiHouseFill size={24} /></Link>
       <div className="container flex flex-col justify-start items-center mt-6">
         <table>
           <tbody className="flex flex-col justify-start items-center">

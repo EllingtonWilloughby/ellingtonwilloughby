@@ -21,8 +21,9 @@ export default function Contact() {
           className="text-center font-normal text-xl/8 subpixel-antialiased underline pt-12">{` ellingtonwilloughby@gmail.com`}</Link>
         , or by reaching out on our <Link href="https://www.facebook.com/EllingtonWilloughby">Facebook</Link>.
       </div>
-      <Image src="/images/j.jpeg" height={500} width={500} alt="hi j! bye j!" className="absolute bottom-8" />
+
       <p className="my-12 text-center text-base/5 sm:text-lg/6 md:text-xl/7 subpixel-antialiased">Peace.</p>
+       <Image src="/images/j.jpeg" height={500} width={500} alt="hi j! bye j!" className="absolute bottom-8" />
       </div>
   );
 

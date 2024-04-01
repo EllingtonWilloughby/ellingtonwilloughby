@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import OriginModal from '../components/OriginModal';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
-import { HomeRounded } from '@mui/icons-material';
+import { PiHouseFill } from 'react-icons/pi';
 
 export default function AboutPage() {
   const { darkMode } = useDarkMode();
@@ -23,7 +23,7 @@ export default function AboutPage() {
       {darkMode
         ? (<Image src="/images/about_dk.svg" height={500} width={500} alt="about heading" className="-mt-20 -mb-20 pt-6" />)
           : (<Image src="/images/about.svg" height={500} width={500} alt="about heading" className="-mt-20 -mb-20 pt-6" />)}
-      <Link href="/" className="absolute top-8 left-8 text-sm"><HomeRounded /></Link>
+      <Link href="/" className="absolute top-8 left-8 text-sm"><PiHouseFill size={24} /></Link>
       <div className="container flex flex-col justify-start items-center">
         <p className="text-base/4 sm:text-lg/5 md:text-xl/6 subpixel-antialiased mt-8">Ellington Willoughby and the Mythical Squid is a six-person psychedelic-pop band from SE Portland, Oregon.</p>
         <p className="text-base/4 sm:text-lg/5 md:text-xl/6 subpixel-antialiased my-8 px-6">

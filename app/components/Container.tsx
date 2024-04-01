@@ -19,7 +19,8 @@ export default function Container({ children }: ContainerProps) {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         width: '100%',
-        height: 'auto'
+        height: 'auto',
+        opacity: 0.8
       }}>
       <div className="z-40 max-w-screen-md mx-auto p-6">{children}</div>
     </div>

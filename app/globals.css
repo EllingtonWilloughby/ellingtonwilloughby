@@ -162,6 +162,7 @@ button:hover {
 .album-image {
   height: auto;
   transition: transform 0.3s ease;
+  border-radius: 5px;
 }
 
 .album-name {
@@ -176,14 +177,14 @@ button:hover {
   justify-content: center;
 
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: var(--text);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--background);
   padding: 4px 8px;
   font-size: 1.3rem;
-  border-radius: 5px;
+  border-radius: 8px;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.9s ease, visibility 0s linear 0.3s;
+  transition: opacity 0.7s ease, visibility 0s linear 0.3s;
 }
 
 .album-container:hover .album-name {
@@ -200,15 +201,11 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid black;
 }
 
-td, th {
-  border: 1px solid black;
-  padding: 0.7rem;
-
+tr > td:last-child {
+  text-align: right;
 }
-
 
 /*
 volume range element:
