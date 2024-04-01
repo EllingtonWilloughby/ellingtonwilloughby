@@ -13,7 +13,7 @@ export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
           contentLabel="Origin Story"
         >
           <button onClick={closeModal}>
-            <PiXBold size={32} />
+            <PiXBold size={32} color='black' />
           </button>
 
           <div className="origin-modal-content">

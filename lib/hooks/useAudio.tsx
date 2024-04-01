@@ -4,12 +4,16 @@ import { Howl } from 'howler'
 import { playlist } from '../data'
 
 export function useAudio() {
-  const [currentSongIndex, setCurrentSongIndex] = useState<number>(0)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
+
+  const [songIndex, setSongIndex] = useState<number>(0)
+
+  const [seek, setSeek] = useState<number>(0)
+  const [elapsedTime, setElapsedTime] = useState<string>('00:00')
+
   const [volume, setVolume] = useState<number>(0.5)
   const [volumeBeforeMute, setVolumeBeforeMute] = useState<number>(0)
   const [isMuted, setIsMuted] = useState<boolean>(false)
-  const [elapsedTime, setElapsedTime] = useState<string>('00:00');
 
   const sound = useRef<Howl | null>(null)
 
@@ -19,22 +23,23 @@ export function useAudio() {
       sound.current = new Howl({
         preload: 'metadata',
         autoplay: isPlaying,
-        src: [playlist[currentSongIndex].url],
+        src: [playlist[songIndex].url],
         volume: 0.5,
         onend: () => {
           handleNextSong()
         }
       });
 
+      if (isPlaying) {
+        sound.current?.seek(seek);
+      }
     }
-
     initializeHowler();
 
     return () => {
       sound.current?.unload();
     };
-  }, [currentSongIndex, isPlaying]);
-
+  }, [seek, songIndex, isPlaying]);
 
   useEffect(() => {
     if (!isMuted) {
@@ -63,21 +68,24 @@ export function useAudio() {
     } else {
       sound.current?.pause()
       setIsPlaying(false)
+      setSeek(sound.current?.seek() as number)
     }
   }
 
   function handleNextSong() {
-    setCurrentSongIndex((prevIndex) =>
+    setSongIndex((prevIndex) =>
       prevIndex === playlist.length - 1 ? 0 : prevIndex + 1
     );
     setIsPlaying(true);
+    setSeek(0)
   }
 
   function handlePrevSong() {
-    setCurrentSongIndex((prevIndex) =>
+    setSongIndex((prevIndex) =>
       prevIndex === 0 ? playlist.length - 1 : prevIndex - 1
     );
     setIsPlaying(true);
+    setSeek(0);
   }
 
   function handleVolumeChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -98,14 +106,12 @@ export function useAudio() {
     setIsMuted((prevIsMuted) => !prevIsMuted)
   }
 
-  const currentSong = playlist[currentSongIndex]
+  const currentSong = playlist[songIndex]
 
   return {
     elapsedTime,
-    currentSongIndex,
     isPlaying,
     volume,
-    setVolume,
     handlePlayPause,
     handleNextSong,
     handlePrevSong,
