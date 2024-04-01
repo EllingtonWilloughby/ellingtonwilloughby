@@ -3,7 +3,7 @@ import NavLink from './NavLink';
 
 export default function Navigation() {
   return (
-    <nav className="max-w-screen-md flex justify-between">
+    <nav className="w-full h-full flex justify-between items-end mx-2 p-2">
       <NavLink href="/">home</NavLink>
       <NavLink href="/about">about</NavLink>
       <NavLink href="/music">music</NavLink>

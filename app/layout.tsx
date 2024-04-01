@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Cairo_Play } from 'next/font/google'
 import './globals.css'
 import { DarkModeProvider } from '@/lib/context/ColorSchemeContext'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-const inter = Inter({ subsets: ['latin'] })
+import Header from './components/Header'
+const cairo = Cairo_Play({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Ellington Willoughby',
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <DarkModeProvider>
-        <body className={inter.className}>
+        <body className={cairo.className}>
           {children}
           <SpeedInsights />
         </body>

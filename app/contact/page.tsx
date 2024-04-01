@@ -8,7 +8,7 @@ export default function Contact() {
   const { darkMode } = useDarkMode();
 
   return (
-      <div className="relative h-screen w-screen max-w-screen-lg mx-auto flex flex-col items-center justify-start p-8 m-4">
+      <div className="relative min-h-screen max-w-screen-lg w-full mx-auto flex flex-col justify-start items-center p-6">
       {darkMode
         ? (
          <Image src="/images/contact_dk.svg" height={500} width={500} alt="contact heading" className="-mt-20 -mb-20" />
@@ -27,7 +27,6 @@ export default function Contact() {
       </p>
 
       <p className="my-12 text-center text-base/5 sm:text-lg/6 md:text-xl/7 subpixel-antialiased">Peace.</p>
-      <Image src="/gif/horizon.gif" height={500} width={500} alt="horizon gif" className="mt-6" />
       </div>
   );
 

@@ -1,8 +1,8 @@
 import { useDarkMode } from '@/lib/context/ColorSchemeContext'
 import Image from 'next/image'
+import React from 'react'
 import darkBg from '../../public/gif/loop_75.gif'
 import lightBg from '../../public/images/prim.svg'
-import React from 'react'
 
 interface ContainerProps {
   children: React.ReactNode

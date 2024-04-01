@@ -1,44 +1,44 @@
+'use client'
 import React from 'react';
 import Link from 'next/link';
-import Button from '@mui/material/Button';
-import { NavLinkProps } from '@/lib/types';
+import { usePathname } from 'next/navigation';
+import styled from '@emotion/styled';
 
-export default function NavLink({ href, children }: NavLinkProps) {
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+}
 
-  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
+export default function NavLink({
+  href,
+  children
+}: NavLinkProps) {
 
-  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  const CustomLink = styled.a`
+    color: var(--text);
+    font-size: 1.3rem;
+    font-weight: 300;
+    text-decoration: none;
+    margin: 1rem 0;
+    transition: color 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: var(--accent);
+    }
+  `;
 
   return (
-    <div
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      className="w-full text-center"
-    >
-      <Link href={href}>
-        <Button variant='text' sx={{
-          color: 'var(--text)',
-          fontWeight: 400,
-          textTransform: 'none',
-          lineHeight: 1.75,
-          borderRadius: '4px',
-          borderColor: 'var(--text)',
-          backgroundColor: 'transparent',
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            backgroundColor: 'var(--text)',
-            color: 'var(--background)',
-            border: '1px solid'
-
-          }
-        }}
-        className="text-sm sm:text-base md:text-lg">{children}</Button>
+      <Link href={href} passHref prefetch={true}>
+      <CustomLink className={isActive ? 'active' : ''}>{ children }</CustomLink>
       </Link>
-    </div>
   );
 };
 
