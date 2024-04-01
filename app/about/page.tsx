@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import OriginModal from '../components/OriginModal';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
+import { HomeRounded } from '@mui/icons-material';
 
 export default function AboutPage() {
   const { darkMode } = useDarkMode();
@@ -22,7 +23,7 @@ export default function AboutPage() {
       {darkMode
         ? (<Image src="/images/about_dk.svg" height={500} width={500} alt="about heading" className="-mt-20 -mb-20 pt-6" />)
           : (<Image src="/images/about.svg" height={500} width={500} alt="about heading" className="-mt-20 -mb-20 pt-6" />)}
-      <Link href="/" className="absolute top-8 left-8 text-sm">home</Link>
+      <Link href="/" className="absolute top-8 left-8 text-sm"><HomeRounded /></Link>
       <div className="container flex flex-col justify-start items-center">
         <p className="text-base/5 sm:text-lg/6 md:text-xl/7 subpixel-antialiased mt-8 p-6">Ellington Willoughby and the Mythical Squidis a six-person psychedelic-pop band from SE Portland, Oregon.</p>
         <p className="text-base/5 sm:text-lg/6 md:text-xl/7 subpixel-antialiased px-6">

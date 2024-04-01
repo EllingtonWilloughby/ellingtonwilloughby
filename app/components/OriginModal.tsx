@@ -91,7 +91,7 @@ export default function OriginModal({isOpen, closeModal}: OriginModalProps) {
                   Eventually, Jon asked if he could invite a friend to practice, and that friend was Adam. By chance, Adam happened to be my neighbor and a damn fine musician to boot. So after a few practices Adam joined the band. First on bass then moving on to Drums. We ditched the computer and went all live. Jason picked up the congas. Rounding it all out we brought Jesse in on Bass (best Craigslist score), who played with a number of groups around town and led his own group: Neptune Groove Orchestra. Soon Jesse moved to Seattle and we brought in the amazing bassist, and all around great guy, Dan.
                 </p>
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased my-2">
-                  So now after 20 years of music we arrive at the present. Still lots to learn and still fun as hell. We&apos;re continuously recording in our home studio and try to play out every two months or so. Our shows are getting bigger and our sound is getting tighter. It&apos;s been a journey and we&apos;re nowhere near destination.
+                  20 years of music brings us to the present. Still lots to learn and still fun as hell. We&apos;re continuously recording in our home studios and play out every three months or so. Our shows are getting bigger and our sound is getting tighter. It&apos;s been a journey and we&apos;re nowhere near destination.
                 </p>
               </div>
               </div>

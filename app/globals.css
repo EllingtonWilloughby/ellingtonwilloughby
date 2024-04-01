@@ -67,6 +67,22 @@ a:hover {
   font-weight: 600;
 }
 
+button {
+  color: var(--text);
+  border: 2px solid var(--accent);
+  background-color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  border-radius: 8px;
+}
+
+button:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .background-container {
   position: relative;
   min-height: 100vh;
@@ -102,6 +118,8 @@ a:hover {
   min-height: 100%;
   width: 100%;
   margin: 0 auto;
+  color: var(--text);
+  background-color: var(--background);
 }
 
 .origin-modal-content {

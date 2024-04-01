@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDarkMode } from '@/lib/context/ColorSchemeContext';
+import { HomeRounded } from '@mui/icons-material';
 
 export default function Shows() {
   const { darkMode } = useDarkMode();
