@@ -1,8 +1,7 @@
 import { useDarkMode } from '@/lib/context/ColorSchemeContext'
-import Image from 'next/image'
 import React from 'react'
-import darkBg from '../../public/gif/loop_75.gif'
-import lightBg from '../../public/images/prim.svg'
+import darkBg from '@/public/gif/loop_75.gif'
+import lightBg from '@/public/images/bg_main.svg'
 
 interface ContainerProps {
   children: React.ReactNode
@@ -11,18 +10,18 @@ interface ContainerProps {
 export default function Container({ children }: ContainerProps) {
   const { darkMode } = useDarkMode()
   return (
-    <div
-      className="background-container"
+    <main
+      className="bg-gradient-to-t from-gray-900 to-gray-100"
       style={{
         backgroundImage: `url(${darkMode ? darkBg.src : lightBg.src})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        width: '100%',
-        height: 'auto',
-        opacity: 0.8
+        backgroundPosition: 'right top',
+        width: '100dvw',
+        height: '100dvh',
+        border: '1px solid red'
       }}>
-      <div className="z-40 max-w-screen-md mx-auto p-6">{children}</div>
-    </div>
+      <div className="">{children}</div>
+    </main>
   )
 }

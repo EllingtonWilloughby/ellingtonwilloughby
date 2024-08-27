@@ -13,21 +13,22 @@
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 
-  --text: #122f2bff; /*jet*/
-  --background: #fafafaff;; /*seasalt*/
-  --primary: #c1bfc9ff; /*french-gray*/
-  --secondary: #68596bff; /*eggplant*/
-  --accent: #8e9aafff; /*cool-gray*/
+  --text: #333333ff; /*jet*/
+  --background: #ffffffff;; /*seasalt*/
+  --primary: #fef10bff; /*french-gray*/
+  --secondary: #fd4206ff; /*eggplant*/
+  --accent: #6edcdcff; /*cool-gray*/
   --auxillary: #373f51ff; /*navy-town*/
 }
 
+/*
 body.dark-mode {
-  --text: #fafafaff; /*cosmic-latte*/
-  --background: #122f2bff; /*jet*/
-  --primary: #68596bff; /*eggplant*/
-  --secondary: #9a8c98ff; /*rose-quartz*/
-  --accent: #8e9aafff; /*cool-gray*/
-  --auxillary: #f8f4e3ff; /*cosmic-latte*/
+  --text: #ffffffff; 
+  --background: #333333ff;
+  --primary: #fef10bff;
+  --secondary: #fd4206ff;
+  --accent: #6edcdcff;
+  --auxillary: #f8f4e3ff;
 
   width: 100vw;
   min-height: 100vh;
@@ -35,7 +36,6 @@ body.dark-mode {
   color: var(--text);
 }
 
-html,
 body {
   font-size: 100%;
   width: 100vw;
@@ -114,10 +114,8 @@ button:hover {
 .main-logo {
   width: 100%;
   margin: 0 auto;
-
-
 }
-/* origin modal */
+
 .origin-modal {
   min-height: 100%;
   width: 100%;
@@ -129,7 +127,6 @@ button:hover {
 .origin-modal-content {
   color: var(--background);
 }
-/* audio player controls */
 
 .control {
   position: relative;
@@ -138,14 +135,10 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
-
-/* Music page classes */
 
 .album-container {
   position: relative;
-  /* Ensure the container only takes the necessary space */
   display: inline-block;
   margin: 0.35rem;
 }
@@ -187,7 +180,6 @@ button:hover {
   font-size: 0.8rem;
 }
 
-/* Classes for table on Shows page */
 
 table {
   width: 100%;
@@ -214,7 +206,7 @@ into two parts:
 /*
 target the html range element
 */
-
+/*
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -227,11 +219,12 @@ input[type="range"] {
   background: #ccc;
   transform: rotate(-90deg);
 }
+  */
 
 /*
 target the id selector
 */
-
+/*
 #volume {
   -webkit-appearance: none;
   appearance: none;
@@ -244,11 +237,11 @@ target the id selector
   background: #ccc;
   transform: rotate(-90deg);
 }
-
+*/
 /*
 track for chrome browser
 */
-
+/*
 input[type='range']::-webkit-slider-runnable-track {
   background: #ccc;
   height: 1rem;
@@ -266,7 +259,7 @@ input[type='range']::-webkit-slider-runnable-track {
 /*
 track for mozilla browser
 */
-
+/*
 #volume::-moz-range-track {
   background: #ccc;
   height: 1rem;
@@ -277,7 +270,7 @@ track for mozilla browser
 /*
 thumb for chrome browser
 */
-
+/*
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -303,7 +296,7 @@ input[type="range"]::-webkit-slider-thumb {
 /*
 thumb for mozilla browser
 */
-
+/*
 input[type="range"]::-moz-range-thumb {
   height: 0.75rem;
   width: 0.75rem;
@@ -325,7 +318,7 @@ input[type="range"]::-moz-range-thumb {
 /*
 thumb hover, active, focus states for chrome browser
 */
-
+/*
 input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: 1px 1px 1px 7px rgba(250, 250, 250, 0.2);
   border: 1px solid var(--text);
@@ -346,7 +339,7 @@ input[type="range"]:focus::-webkit-slider-thumb {
 /*
 thumb hover, active, focus states for mozilla browser
 */
-
+/*
 input[type="range"]::-moz-range-thumb:hover {
   box-shadow: 1px 1px 1px 7px rgba(250, 250, 250, 0.2);
   border: 1px solid var(--text);
@@ -364,3 +357,4 @@ input[type="range"]:focus::-moz-range-thumb {
   border: 1px solid var(--text);
 
 }
+*/
