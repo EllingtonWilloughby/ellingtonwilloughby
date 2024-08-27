@@ -14,12 +14,12 @@ export default function DarkModeButton() {
       }
     >
       {darkMode
-        ? <PiMoon size={24} />
-        : <PiMoonStars size={24} />}
+        ? <PiMoon size={32} />
+        : <PiMoonStars size={32} />}
 
       <div className="h-8 w-40 text-xs/5">
         {showText && (
-          <span>{darkMode ? 'Chill Mode' : 'Party Time'}</span>
+          <span className="text-lg">{darkMode ? 'Chill Mode' : 'Party Time'}</span>
         )}
       </div>
     </div>

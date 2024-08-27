@@ -10,26 +10,20 @@
   text-rendering: optimizeLegibility;
 }
 
-@media screen and (prefers-color-scheme: light) {
-  :root {
-    --text: #333333ff;
-    --background: #ffffffff;;
-    --primary: #fef10bff;
-    --secondary: #fd4206ff;
-    --accent: #6edcdcff;
-    --auxillary: #373f51ff;
-  }
+:root {
+  --text: #333333ff;
+  --background: #ffffffff;;
+  --primary: #fef10bff;
+  --secondary: #fd4206ff;
+  --accent: #6edcdcff;
+  --auxillary: #373f51ff;
 }
 
-@media screen and (prefers-color-scheme: dark) {
-  :root {
-    --text: #ffffffff; 
-    --background: #333333ff;
-    --primary: #fef10bff;
-    --secondary: #fd4206ff;
-    --accent: #6edcdcff;
-    --auxillary: #f8f4e3ff;
-  }
+body.dark-mode {
+  --text: #ffffffff;
+  --background: #333333ff;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 body {

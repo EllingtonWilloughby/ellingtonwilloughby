@@ -1,6 +1,6 @@
 import { useDarkMode } from '@/lib/context/ColorSchemeContext'
 import React from 'react'
-import darkBg from '@/public/gif/loop_75.gif'
+import darkBg from '@/public/images/dk_bg.png'
 import lightBg from '@/public/images/bgmain.svg'
 
 interface ContainerProps {
@@ -11,6 +11,7 @@ export default function Container({ children }: ContainerProps) {
   const { darkMode } = useDarkMode()
   return (
     <main
+    className="w-full max-w-screen-2xl mx-auto"
       style={{
         backgroundImage: `url(${darkMode ? darkBg.src : lightBg.src})`,
         backgroundSize: 'cover',
@@ -18,7 +19,6 @@ export default function Container({ children }: ContainerProps) {
         backgroundPosition: `center top`,
         width: '100dvw',
         height: '100dvh',
-        opacity: `${darkMode ? '1' : '0.8'}`
       }}>
       <div className="">{children}</div>
     </main>
