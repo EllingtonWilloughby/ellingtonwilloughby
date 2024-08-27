@@ -10,7 +10,7 @@ export default function DarkModeButton() {
     <div
       onClick={toggleDarkMode}
       className={
-        `hover: cursor-pointer flex flex-col items-start p-2`
+        `absolute bottom-12 left-24 sm:left-32 md:left-40 lg:left-64 hover:cursor-pointer flex flex-col items-start p-2`
       }
     >
       {darkMode

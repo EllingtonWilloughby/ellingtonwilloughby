@@ -2,54 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-
-  --text: #333333ff; /*jet*/
-  --background: #ffffffff;; /*seasalt*/
-  --primary: #fef10bff; /*french-gray*/
-  --secondary: #fd4206ff; /*eggplant*/
-  --accent: #6edcdcff; /*cool-gray*/
-  --auxillary: #373f51ff; /*navy-town*/
 }
 
-/*
-body.dark-mode {
-  --text: #ffffffff; 
-  --background: #333333ff;
-  --primary: #fef10bff;
-  --secondary: #fd4206ff;
-  --accent: #6edcdcff;
-  --auxillary: #f8f4e3ff;
+@media screen and (prefers-color-scheme: light) {
+  :root {
+    --text: #333333ff;
+    --background: #ffffffff;;
+    --primary: #fef10bff;
+    --secondary: #fd4206ff;
+    --accent: #6edcdcff;
+    --auxillary: #373f51ff;
+  }
+}
 
-  width: 100vw;
-  min-height: 100vh;
-  background-color: var(--background);
-  color: var(--text);
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --text: #ffffffff; 
+    --background: #333333ff;
+    --primary: #fef10bff;
+    --secondary: #fd4206ff;
+    --accent: #6edcdcff;
+    --auxillary: #f8f4e3ff;
+  }
 }
 
 body {
-  font-size: 100%;
-  width: 100vw;
+  max-width: 100dvw;
   min-width: 320px;
-  min-height: 100vh;
+  margin: 0 auto;
+  min-height: 100dvh;
   background-color: var(--background);
   color: var(--text);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-size: 100%;
 }
+
+@media screen and (max-width: 650px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }  
+}
+
+
+/*
 
 a {
   color: var(--text);
@@ -189,24 +196,16 @@ table {
 tr > td:last-child {
   text-align: right;
 }
-
-/*
-volume range element:
-
-i. the range element
-is handled differently
-depending on the browser
-
-ii. browsers will break
-down the range element
-into two parts:
-"track" & "thumb"
 */
+
+vol.hidden {
+  display: none;
+}
 
 /*
 target the html range element
 */
-/*
+
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -217,14 +216,12 @@ input[type="range"] {
   overflow: hidden;
   height: 1rem;
   background: #ccc;
-  transform: rotate(-90deg);
 }
-  */
 
 /*
 target the id selector
 */
-/*
+
 #volume {
   -webkit-appearance: none;
   appearance: none;
@@ -235,48 +232,48 @@ target the id selector
   overflow: hidden;
   height: 1rem;
   background: #ccc;
-  transform: rotate(-90deg);
+
 }
-*/
+
 /*
-track for chrome browser
+track for chrome
 */
-/*
+
 input[type='range']::-webkit-slider-runnable-track {
   background: #ccc;
   height: 1rem;
   border-radius: 0.5rem;
-  border: var(--text) 2px solid;
+  border: var(--background) 1px solid;
 }
 
 #volume::-webkit-slider-runnable-track {
   background: #ccc;
   height: 1rem;
   border-radius: 0.5rem;
-  border: var(--text) 2px solid;
+  border: var(--background) 1px solid;
 }
 
 /*
-track for mozilla browser
+track for moz
 */
-/*
+
 #volume::-moz-range-track {
   background: #ccc;
   height: 1rem;
   border-radius: 0.5rem;
-  border: var(--text) 2px solid;
+  border: var(--background) 1px solid;
 }
 
 /*
-thumb for chrome browser
+thumb for chrome
 */
-/*
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
@@ -285,40 +282,40 @@ input[type="range"]::-webkit-slider-thumb {
 #volume::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
 }
 
 /*
-thumb for mozilla browser
+thumb for moz
 */
-/*
+
 input[type="range"]::-moz-range-thumb {
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
 }
 
 #volume::-moz-range-thumb {
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
 }
 
 /*
-thumb hover, active, focus states for chrome browser
+thumb hover, active, focus states for chrome
 */
-/*
+
 input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: 1px 1px 1px 7px rgba(250, 250, 250, 0.2);
   border: 1px solid var(--text);
@@ -337,9 +334,9 @@ input[type="range"]:focus::-webkit-slider-thumb {
 }
 
 /*
-thumb hover, active, focus states for mozilla browser
+thumb hover, active, focus states for moz
 */
-/*
+
 input[type="range"]::-moz-range-thumb:hover {
   box-shadow: 1px 1px 1px 7px rgba(250, 250, 250, 0.2);
   border: 1px solid var(--text);
@@ -357,4 +354,4 @@ input[type="range"]:focus::-moz-range-thumb {
   border: 1px solid var(--text);
 
 }
-*/
+

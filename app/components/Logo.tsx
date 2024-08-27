@@ -11,11 +11,11 @@ export default function Logo({ height, width }: LogoProps) {
   return (
     <Image
       src={darkMode ? darkLogo : lightLogo}
-      alt="ellington willoughby logo"
+      alt="ellington willoughby & the mythical squid"
       height={height}
       width={width}
       priority={true}
-      className="main-logo"
+      className="size-full max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto"
     />
   )
 }

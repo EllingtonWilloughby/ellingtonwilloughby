@@ -10,19 +10,11 @@ export default function Home() {
   return (
       <Container>
         <Header />
-         <div className="">
-          <div className=''>
-            <Logo height={500} width={500} />
+          <div className='max-w-3xl mx-auto'>
+            <Logo height={700} width={700} />
           </div>
-
-          <div className="w-full">
-            <Audio />
-          </div>
-
-          <div className="">
-            <DarkModeButton />
-          </div>
-        </div>
+        <Audio />
+        <DarkModeButton />
       </Container>
   )
 }
