@@ -1,4 +1,4 @@
-import { useDarkMode } from '@/app/lib/context/ColorSchemeContext';
+import { useColorSchemeContext } from '../lib/context/ColorSchemeContext';
 import React from 'react';
 import darkBg from '@/public/images/dk_bg.png';
 import lightBg from '@/public/images/bgmain.svg';
@@ -8,12 +8,12 @@ interface ContainerProps {
 }
 
 export default function Container({ children }: ContainerProps) {
-  const { darkMode } = useDarkMode();
+  const { colorScheme } = useColorSchemeContext();
   return (
     <main
       className="w-full max-w-screen-2xl mx-auto"
       style={{
-        backgroundImage: `url(${darkMode ? darkBg.src : lightBg.src})`,
+        backgroundImage: `url(${colorScheme ? darkBg.src : lightBg.src})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: `center top`,

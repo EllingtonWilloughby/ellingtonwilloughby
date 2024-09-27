@@ -14,7 +14,6 @@ import {
 import NowPlaying from './NowPlaying';
 
 export default function Audio() {
-  const [volumeSlider, setVolumeSlider] = useState<boolean>(false);
   const {
     elapsedTime,
     isPlaying,
@@ -27,58 +26,57 @@ export default function Audio() {
     currentSong
   } = useAudio();
 
+  const getVolumeIcon = () => {
+    if (volume === 0) return <PiSpeakerXFill size={32} />;
+    if (volume < 0.25) return <PiSpeakerNoneFill size={32} />;
+    if (volume < 0.75) return <PiSpeakerLowFill size={32} />;
+    return <PiSpeakerHighFill size={32} />;
+  };
+
   return (
     <section className="relative bottom-6 w-full max-w-xl lg:max-w-3xl mx-auto px-8 mb-8">
       <div className="flex justify-between items-center px-8 md:px-6 py-8">
         <div className="control cursor-pointer inline-block flex-1">
-          <span onClick={handlePlayPause}>
+          <button
+            type="button"
+            onClick={handlePlayPause}
+            aria-label={isPlaying ? 'Pause' : 'Play'}
+          >
             {isPlaying ? <PiPauseFill size={32} /> : <PiPlayFill size={32} />}
-          </span>
+          </button>
         </div>
 
         <div className="control cursor-pointer inline-block flex-1">
-          <span onClick={handlePrevSong}>
+          <button type="button" onClick={handlePrevSong} aria-label="Previous">
             <PiSkipBackFill size={32} />
-          </span>
+          </button>
         </div>
 
         <div className="control cursor-pointer inline-block flex-1">
-          <span onClick={handleNextSong}>
+          <button type="button" onClick={handleNextSong} aria-label="Next">
             <PiSkipForwardFill size={32} />
-          </span>
+          </button>
         </div>
 
-        <div
-          className="control cursor-pointer inline-block"
-          onMouseEnter={() => setVolumeSlider(true)}
-          onMouseLeave={() => setVolumeSlider(false)}
-        >
-          <span onClick={toggleMute}>
-            {volume === 0 ? (
-              <PiSpeakerXFill size={32} />
-            ) : volume < 0.25 ? (
-              <PiSpeakerNoneFill size={32} />
-            ) : volume < 0.75 ? (
-              <PiSpeakerLowFill size={32} />
-            ) : (
-              <PiSpeakerHighFill size={32} />
-            )}
-          </span>
-          <span className="absolute top-1/5 right-0 z-10">
-            {volumeSlider && (
-              <input
-                type="range"
-                id="volume"
-                name="volume"
-                min={0}
-                max={1}
-                step={0.01}
-                value={volume}
-                onChange={handleVolumeChange}
-                className="cursor-pointer"
-              />
-            )}
-          </span>
+        <div className="control cursor-pointer inline-block">
+          <button type="button" onClick={toggleMute} aria-label="Mute/Unmute">
+            {getVolumeIcon()}
+          </button>
+
+          <label htmlFor="volume">
+            <input
+              aria-label="volume"
+              type="range"
+              id="volume"
+              name="volume"
+              min={0}
+              max={1}
+              step={0.01}
+              value={volume}
+              onChange={handleVolumeChange}
+              className="cursor-pointer absolute top-0 w-24 h-2 bg-gray-300 rounded-full"
+            />
+          </label>
         </div>
       </div>
 

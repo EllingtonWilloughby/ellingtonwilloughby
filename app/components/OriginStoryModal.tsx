@@ -1,9 +1,12 @@
 import React from 'react';
 import { PiXBold } from 'react-icons/pi';
 import Modal from 'react-modal';
-import { type OriginModalProps } from '../lib/types';
+import { type IOriginStoryModal } from '../lib/types';
 
-export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
+export default function OriginStoryModal({
+  isOpen,
+  closeModal
+}: IOriginStoryModal) {
   return (
     <div className="origin-modal">
       {isOpen && (
@@ -40,14 +43,10 @@ export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
                   your stepping stone&quot; by the Monkeys to put us kids to
                   sleep. It was loud...and it always worked.
                 </p>
-              </div>
-            </div>
 
-            <div className="max-w-screen-md mx-auto">
-              <h3 className="text-center w-full text-xl subpixel-antialiased">
-                The First Go
-              </h3>
-              <div className="px-6 my-4">
+                <h3 className="text-center w-full text-xl subpixel-antialiased">
+                  The First Go
+                </h3>
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
                   Growing up surrounded by music and musical gear, it was
                   impossible to not want to be a part of it. My father taught my
@@ -59,14 +58,11 @@ export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
                   time we were juniors in High School our own first band had
                   formed.
                 </p>
-              </div>
-            </div>
 
-            <div className="max-w-screen-md mx-auto">
-              <h3 className="text-center w-full text-xl subpixel-antialiased">
-                XKJ
-              </h3>
-              <div className="px-6 my-4">
+                <h3 className="text-center w-full text-xl subpixel-antialiased">
+                  XKJ
+                </h3>
+
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
                   The band was called the Xylophone Killed Jazz, a name that
                   came from a wacky little book written by a wacky little man
@@ -103,14 +99,11 @@ export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
                   cash from playing around town to book some time in a real
                   studio outside of Washington DC!
                 </p>
-              </div>
-            </div>
 
-            <div className="max-w-screen-lg mx-auto">
-              <h3 className="text-center w-full text-xl subpixel-antialiased">
-                Noiseland
-              </h3>
-              <div className="px-6 my-4">
+                <h3 className="text-center w-full text-xl subpixel-antialiased">
+                  Noiseland
+                </h3>
+
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
                   Eventually, the drummer and the lead guitarist both graduated.
                   During our senior year, Nordhaus and I started a new
@@ -122,14 +115,11 @@ export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
                   some good musical ideas scattered among the noise and we ended
                   up releasing two albums as Noiseland.
                 </p>
-              </div>
-            </div>
 
-            <div className="max-w-screen-lg mx-auto">
-              <h3 className="text-center w-full text-xl subpixel-antialiased">
-                The Alphabetically
-              </h3>
-              <div className="px-6 my-4">
+                <h3 className="text-center w-full text-xl subpixel-antialiased">
+                  The Alphabetically
+                </h3>
+
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
                   After college, people moved on, moved out and moved up. A few
                   years later, and by some cosmic orchestration, my brother
@@ -141,14 +131,11 @@ export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
                   Josh handling production, mixing and bass, Jason on electric
                   lead guitar and myself on acoustic and lead vocals.
                 </p>
-              </div>
-            </div>
 
-            <div className="max-w-screen-lg mx-auto">
-              <h3 className="text-center w-full text-xl subpixel-antialiased">
-                Ellington Willoughby and the Andrew Jacksons
-              </h3>
-              <div className="px-6 my-4">
+                <h3 className="text-center w-full text-xl subpixel-antialiased">
+                  Ellington Willoughby and the Andrew Jacksons
+                </h3>
+
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
                   Nordhaus soon switched to electric guitar, I switched to piano
                   and production and Jason jumped on the synthesizers. I had
@@ -161,14 +148,11 @@ export default function OriginModal({ isOpen, closeModal }: OriginModalProps) {
                   Halls in FoPo and we kept playing around town, everywhere from
                   the Star Theatre to the Bunk Bar.
                 </p>
-              </div>
-            </div>
 
-            <div className="max-w-screen-lg mx-auto">
-              <h3 className="text-center w-full text-xl subpixel-antialiased">
-                Ellington Willoughby and the Mythical Squid
-              </h3>
-              <div className="px-6 my-4">
+                <h3 className="text-center w-full text-xl subpixel-antialiased">
+                  Ellington Willoughby and the Mythical Squid
+                </h3>
+
                 <p className="text-sm/4 md:text-lg/6 subpixel-antialiased mt-3 mb-2">
                   Eventually, Jon asked if he could invite a friend to practice,
                   and that friend was Adam. By chance, Adam happened to be my
