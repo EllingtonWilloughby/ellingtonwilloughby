@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { PiMoon, PiMoonStars } from 'react-icons/pi'
-import { useDarkMode } from '../../lib/context/ColorSchemeContext'
+import { useColorScheme } from '../../lib/context/ColorSchemeContext'
 
 export default function DarkModeButton() {
   const { showText, darkMode, toggleDarkMode } = useDarkMode();

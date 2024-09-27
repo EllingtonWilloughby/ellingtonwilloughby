@@ -1,81 +1,86 @@
-'use client'
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import { type DarkModeContextProps, DarkModeProviderProps } from '../types'
+'use client';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 
+import { IColorSchemeContext } from '../types.d';
 
-const DarkModeContext = createContext<DarkModeContextProps | undefined>(undefined)
+const ColorSchemeContext = createContext<IColorSchemeContext | null>(null);
 
-export function DarkModeProvider({ children }: DarkModeProviderProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(false)
-  const [showText, setShowText] = useState<boolean>(false)
-
+export function ColorSchemeProvider({
+  children
+}: {
+  children: React.ReactNode;
+}) {
+  const [colorScheme, setColorScheme] = useState<boolean>(false);
+  const [controlText, setControlText] = useState<boolean>(false);
 
   function checkLocalStorage() {
-    // Check if dark mode preference is stored in localStorage
-    const localDarkMode = localStorage.getItem('darkMode')
-    if (localDarkMode !== null) {
-      // If dark mode preference is stored, return its boolean value
-      return JSON.parse(localDarkMode)
+    // check if color scheme preference is in localStorage
+    const localColorScheme = localStorage.getItem('colorScheme');
+    if (localColorScheme !== null) {
+      return JSON.parse(localColorScheme);
     } else {
-      return null
+      return null;
     }
   }
 
-  const setter = useCallback(function setLocalDarkMode() {
-    const localDarkMode = checkLocalStorage()
-    if (typeof localDarkMode === 'boolean') {
-      setDarkMode(localDarkMode)
+  const setLocalColorScheme = useCallback(() => {
+    const cs = checkLocalStorage();
+    if (typeof cs === 'boolean') {
+      setColorScheme(cs);
     } else {
-      window.matchMedia('(prefers-color-scheme: dark)').matches ? setDarkMode(true) : setDarkMode(false)
-      localStorage.setItem('darkMode', JSON.stringify(darkMode))
+      const scheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setColorScheme(scheme);
+      localStorage.setItem('colorScheme', JSON.stringify(scheme));
     }
-  }, [darkMode])
+  }, []);
 
-
-  function toggleDarkMode() {
-
-    setDarkMode(prevMode => {
-      const newMode = !prevMode
-      localStorage.setItem('darkMode', JSON.stringify(newMode))
-      if (newMode) {
-        document.body.classList.add('dark-mode')
+  // toggle the color scheme and store the new value in localStorage
+  const toggleColorScheme = () => {
+    setColorScheme((prev) => {
+      const newColorScheme = !prev;
+      localStorage.setItem('colorScheme', JSON.stringify(newColorScheme));
+      // set or remove class on body element
+      if (newColorScheme) {
+        document.body.classList.add('dark-mode');
       } else {
-        document.body.classList.remove('dark-mode')
+        document.body.classList.remove('dark-mode');
       }
-      setShowText(true);
+
+      setControlText(true);
       setTimeout(() => {
-        setShowText(false)
-      }, 2000)
-      return newMode
-  })
-}
+        setControlText(false);
+      }, 2000);
+      return newColorScheme;
+    });
+  };
 
   useEffect(() => {
-    setter()
-    const darkMode = JSON.parse(localStorage.getItem('darkMode') || 'false')
-    setDarkMode(darkMode)
-    if (darkMode) {
-      document.body.classList.add('dark-mode')
-    } else {
-      document.body.classList.remove('dark-mode')
-    }
-}, [setter])
+    setLocalColorScheme();
+  }, [setLocalColorScheme]);
 
-const value = { showText, darkMode, toggleDarkMode }
+  const value: IColorSchemeContext = {
+    controlText,
+    colorScheme,
+    toggleColorScheme
+  };
 
   return (
-    <DarkModeContext.Provider value={value}>
+    <ColorSchemeContext.Provider value={value}>
       {children}
-    </DarkModeContext.Provider>
-  )
+    </ColorSchemeContext.Provider>
+  );
 }
 
-export function useDarkMode() {
-  const context = useContext(DarkModeContext)
-
+export function useColorSchemeContext() {
+  const context = useContext(ColorSchemeContext);
   if (!context) {
-    throw new Error('useDarkMode must be used within a DarkModeProvider')
+    throw new Error('useColorSchemeContext must be used within a provider');
   }
-
-  return context
+  return context;
 }

@@ -1,7 +1,7 @@
 export const playlist = [
   {
-    title: 'Day Go',
-    url: '/audio/daygo.mp3',
+    title: 'How Did Your Day Go?',
+    url: '/audio/howdidyourdaygo.mp3',
     duration: '03:03'
   },
   {
