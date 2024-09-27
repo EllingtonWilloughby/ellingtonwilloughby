@@ -28,9 +28,10 @@ export default function Audio() {
   } = useAudio();
 
   return (
-    <section className="relative max-w-screen-md px-12">
-      <div className="w-full flex justify-between">
-        <div className="control">
+    <section className="relative bottom-6 w-full max-w-xl lg:max-w-3xl mx-auto px-8 mb-8">
+      <div className="flex justify-between items-center px-8 md:px-6 py-8">
+        
+        <div className="control cursor-pointer inline-block flex-1">
           <span onClick={handlePlayPause}>
             {isPlaying
               ? <PiPauseFill size={32} />
@@ -38,20 +39,20 @@ export default function Audio() {
           </span>
         </div>
 
-        <div className="control">
+        <div className="control cursor-pointer inline-block flex-1">
           <span onClick={handlePrevSong}>
             <PiSkipBackFill size={32} />
           </span>
         </div>
 
-        <div className="control">
+        <div className="control cursor-pointer inline-block flex-1">
           <span onClick={handleNextSong}>
             <PiSkipForwardFill size={32} />
           </span>
         </div>
 
         <div
-          className="control"
+          className="control cursor-pointer inline-block"
           onMouseEnter={() => setVolumeSlider(true)}
           onMouseLeave={() => setVolumeSlider(false)}
         >
@@ -66,7 +67,8 @@ export default function Audio() {
                   ? <PiSpeakerLowFill size={32} />
                   : <PiSpeakerHighFill size={32} />
             }
-
+          </span>
+            <span className="absolute top-1/5 right-0 z-10">
             {volumeSlider && (
                 <input
                   type="range"
@@ -74,15 +76,15 @@ export default function Audio() {
                   name="volume"
                   min={0}
                   max={1}
-                  step={0.1}
+                  step={0.01}
                   value={volume}
                   onChange={handleVolumeChange}
-                  className="absolute"
+                  className="cursor-pointer"
                 />
             )}
-          </span>
+            </span>
         </div>
-      </div>
+        </div>
 
       <NowPlaying
         isPlaying={isPlaying}

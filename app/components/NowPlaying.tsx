@@ -1,20 +1,21 @@
-import { NowPlayingPropTypes } from '../../lib/types'
+import { NowPlayingPropTypes } from '@/lib/types';
 
-export default function NowPlaying({
-  isPlaying,
-  currentSong,
-  elapsedTime }: NowPlayingPropTypes) {
+export default function NowPlaying({ isPlaying, currentSong, elapsedTime }: NowPlayingPropTypes) {
 
+  const displayText = elapsedTime !== '00:00'
+    ? `${currentSong.title} | ${elapsedTime} of ${currentSong.duration}${isPlaying ? '' : ' (Paused)'}`
+    : '';
 
   return (
-    <div className="max-w-screen-sm w-full mt-2 md:mt-6">
-      <div className="song h-10 pt-4 text-center text-lg/6 font-light subpixel-antialiased">
-        {isPlaying
-          ? `${currentSong.title} | ${elapsedTime} of ${currentSong.duration}`
-            : elapsedTime !== '00:00'
-              ? `${currentSong.title} | ${elapsedTime} of ${currentSong.duration} (Paused)`
-                : ''}
-        </div>
+    <section>{displayText && (
+      <div className="bg-black/50 text-white px-6 py-4 rounded-md shadow-lg text-center max-w-80 mx-auto my-4">
+        {displayText && (
+          <h3 className="text-lg sm:text-xl font-semibold py-4">
+            {displayText}
+          </h3>
+        )}
       </div>
-  )
+    )}
+    </section>
+  );
 }

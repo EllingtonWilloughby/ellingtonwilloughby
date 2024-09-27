@@ -2,54 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-
-  --text: #122f2bff; /*jet*/
-  --background: #fafafaff;; /*seasalt*/
-  --primary: #c1bfc9ff; /*french-gray*/
-  --secondary: #68596bff; /*eggplant*/
-  --accent: #8e9aafff; /*cool-gray*/
-  --auxillary: #373f51ff; /*navy-town*/
+:root {
+  --text: #333333ff;
+  --background: #ffffffff;;
+  --primary: #fef10bff;
+  --secondary: #fd4206ff;
+  --accent: #6edcdcff;
+  --auxillary: #373f51ff;
 }
 
 body.dark-mode {
-  --text: #fafafaff; /*cosmic-latte*/
-  --background: #122f2bff; /*jet*/
-  --primary: #68596bff; /*eggplant*/
-  --secondary: #9a8c98ff; /*rose-quartz*/
-  --accent: #8e9aafff; /*cool-gray*/
-  --auxillary: #f8f4e3ff; /*cosmic-latte*/
-
-  width: 100vw;
-  min-height: 100vh;
+  --text: #ffffffff;
+  --background: #333333ff;
   background-color: var(--background);
   color: var(--text);
 }
 
-html,
 body {
-  font-size: 100%;
-  width: 100vw;
+  max-width: 100dvw;
   min-width: 320px;
-  min-height: 100vh;
+  margin: 0 auto;
+  min-height: 100dvh;
   background-color: var(--background);
   color: var(--text);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-size: 100%;
 }
+
+@media screen and (max-width: 650px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }  
+}
+
+
+/*
 
 a {
   color: var(--text);
@@ -114,10 +115,8 @@ button:hover {
 .main-logo {
   width: 100%;
   margin: 0 auto;
-
-
 }
-/* origin modal */
+
 .origin-modal {
   min-height: 100%;
   width: 100%;
@@ -129,7 +128,6 @@ button:hover {
 .origin-modal-content {
   color: var(--background);
 }
-/* audio player controls */
 
 .control {
   position: relative;
@@ -138,14 +136,10 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
-
-/* Music page classes */
 
 .album-container {
   position: relative;
-  /* Ensure the container only takes the necessary space */
   display: inline-block;
   margin: 0.35rem;
 }
@@ -187,7 +181,6 @@ button:hover {
   font-size: 0.8rem;
 }
 
-/* Classes for table on Shows page */
 
 table {
   width: 100%;
@@ -197,19 +190,11 @@ table {
 tr > td:last-child {
   text-align: right;
 }
-
-/*
-volume range element:
-
-i. the range element
-is handled differently
-depending on the browser
-
-ii. browsers will break
-down the range element
-into two parts:
-"track" & "thumb"
 */
+
+vol.hidden {
+  display: none;
+}
 
 /*
 target the html range element
@@ -225,7 +210,6 @@ input[type="range"] {
   overflow: hidden;
   height: 1rem;
   background: #ccc;
-  transform: rotate(-90deg);
 }
 
 /*
@@ -242,48 +226,48 @@ target the id selector
   overflow: hidden;
   height: 1rem;
   background: #ccc;
-  transform: rotate(-90deg);
+
 }
 
 /*
-track for chrome browser
+track for chrome
 */
 
 input[type='range']::-webkit-slider-runnable-track {
   background: #ccc;
   height: 1rem;
   border-radius: 0.5rem;
-  border: var(--text) 2px solid;
+  border: var(--background) 1px solid;
 }
 
 #volume::-webkit-slider-runnable-track {
   background: #ccc;
   height: 1rem;
   border-radius: 0.5rem;
-  border: var(--text) 2px solid;
+  border: var(--background) 1px solid;
 }
 
 /*
-track for mozilla browser
+track for moz
 */
 
 #volume::-moz-range-track {
   background: #ccc;
   height: 1rem;
   border-radius: 0.5rem;
-  border: var(--text) 2px solid;
+  border: var(--background) 1px solid;
 }
 
 /*
-thumb for chrome browser
+thumb for chrome
 */
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
@@ -292,38 +276,38 @@ input[type="range"]::-webkit-slider-thumb {
 #volume::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
 }
 
 /*
-thumb for mozilla browser
+thumb for moz
 */
 
 input[type="range"]::-moz-range-thumb {
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
 }
 
 #volume::-moz-range-thumb {
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: var(--text);
+  height: 0.9rem;
+  width: 0.9rem;
+  background-color: var(--background);
   border-radius: 50%;
   border: none;
   transition: border 0.2s ease-in-out;
 }
 
 /*
-thumb hover, active, focus states for chrome browser
+thumb hover, active, focus states for chrome
 */
 
 input[type="range"]::-webkit-slider-thumb:hover {
@@ -344,7 +328,7 @@ input[type="range"]:focus::-webkit-slider-thumb {
 }
 
 /*
-thumb hover, active, focus states for mozilla browser
+thumb hover, active, focus states for moz
 */
 
 input[type="range"]::-moz-range-thumb:hover {
@@ -364,3 +348,4 @@ input[type="range"]:focus::-moz-range-thumb {
   border: 1px solid var(--text);
 
 }
+
