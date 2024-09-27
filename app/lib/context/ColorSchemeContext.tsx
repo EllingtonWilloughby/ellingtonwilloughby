@@ -7,7 +7,7 @@ import React, {
   useState
 } from 'react';
 
-import { IColorSchemeContext } from '../types.d';
+import { IColorSchemeContext } from '../types';
 
 const ColorSchemeContext = createContext<IColorSchemeContext | null>(null);
 

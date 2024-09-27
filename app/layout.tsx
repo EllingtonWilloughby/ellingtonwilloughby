@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Cairo_Play } from 'next/font/google';
 import './globals.css';
-import { ColorSchemeProvider } from '@/lib/context/ColorSchemeContext';
+import { ColorSchemeProvider } from '@/app/lib/context/ColorSchemeContext';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const cairo = Cairo_Play({ subsets: ['latin'] });

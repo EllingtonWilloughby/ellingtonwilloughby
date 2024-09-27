@@ -2,19 +2,16 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useColorSchemeContext } from '@/lib/context/ColorSchemeContext';
+import { useColorSchemeContext } from '@/app/lib/context/ColorSchemeContext';
 import { PiHouseFill } from 'react-icons/pi';
 
 export default function Music() {
   const { colorScheme } = useColorSchemeContext();
-  
-  const musicTitle = colorScheme 
-    ? "/images/music_dk.svg" 
-    : "/images/music.svg"
+
+  const musicTitle = colorScheme ? '/images/music_dk.svg' : '/images/music.svg';
 
   return (
     <div className="relative min-h-screen max-w-screen-md w-full mx-auto flex flex-col justify-start items-center p-6">
-      
       <Image
         src={musicTitle}
         height={500}
@@ -85,5 +82,4 @@ export default function Music() {
       </div>
     </div>
   );
-
 }
