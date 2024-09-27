@@ -1,17 +1,22 @@
 export const playlist = [
   {
-    title: 'Living Room',
-    url: '/audio/livingroom.mp3',
-    duration: '04:42'
+    title: 'Day Go',
+    url: '/audio/daygo.mp3',
+    duration: '03:03'
   },
   {
-    title: 'Moon Mission',
-    url: '/audio/moonmission.mp3',
-    duration: '02:53'
+    title: 'Mother Sing',
+    url: '/audio/mothersing.mp3',
+    duration: '04:23'
   },
   {
-    title: 'Tell You',
-    url: '/audio/tellyou.mp3',
-    duration: '05:06'
+    title: 'Lick O Hope',
+    url: '/audio/lickohope.mp3',
+    duration: '04:04'
+  },
+  {
+    title: 'One Foot',
+    url: '/audio/onefoot.mp3',
+    duration: '03:26'
   }
 ];
