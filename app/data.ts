@@ -18,3 +18,26 @@ export const members = [
   { name: 'Dan Miller', instruments: 'bass' },
   { name: 'Adam Robson', instruments: 'drums, trumpet' }
 ];
+
+export const playlist = [
+  {
+    title: 'How Did Your Day Go?',
+    url: '/audio/howdidyourdaygo.mp3',
+    duration: '03:03'
+  },
+  {
+    title: 'Mother Sing',
+    url: '/audio/mothersing.mp3',
+    duration: '04:23'
+  },
+  {
+    title: 'Lick O Hope',
+    url: '/audio/lickohope.mp3',
+    duration: '04:04'
+  },
+  {
+    title: 'One Foot',
+    url: '/audio/onefoot.mp3',
+    duration: '03:26'
+  }
+];

@@ -12,3 +12,9 @@ export interface IMusicians {
   name: string;
   instruments: string;
 }
+
+export interface ISong {
+  title: string;
+  url: string;
+  duration: string;
+}
