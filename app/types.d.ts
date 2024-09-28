@@ -7,3 +7,8 @@ export interface IAboutModal {
   isOpen: boolean;
   onClose: () => void;
 }
+
+export interface IMusicians {
+  name: string;
+  instruments: string;
+}
