@@ -1,4 +1,4 @@
-export interface IThemeContext {
-  theme: string;
-  toggleTheme: () => void;
+export interface INavigationLink {
+  href: string;
+  title: string;
 }
