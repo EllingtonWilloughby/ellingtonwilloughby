@@ -1,4 +1,4 @@
-import { INavigationLink } from '@/types';
+import { IAlbum, INavigationLink } from '@/types';
 export const navlinks: INavigationLink[] = [
   { href: 'home', title: 'Home' },
   { href: 'about', title: 'About' },
@@ -39,5 +39,29 @@ export const playlist = [
     title: 'One Foot',
     url: '/audio/onefoot.mp3',
     duration: '03:26'
+  }
+];
+
+export const albums: IAlbum[] = [
+  {
+    link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
+    src: '/images/safaridanger.png',
+    alt: 'Album cover for Safari Danger',
+    title: 'Safari Danger',
+    released: 'October 20, 2021'
+  },
+  {
+    link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
+    src: '/images/dangersafari.png',
+    alt: 'Album cover for Danger Safari',
+    title: 'Danger Safari',
+    released: 'May 27, 2020'
+  },
+  {
+    link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
+    src: '/images/moonflower.png',
+    alt: 'Album cover for Moon Flower',
+    title: 'Moon Flower',
+    released: 'September 23, 2016'
   }
 ];

@@ -18,3 +18,11 @@ export interface ISong {
   url: string;
   duration: string;
 }
+
+export interface IAlbum {
+  link: string;
+  src: string;
+  alt: string;
+  title: string;
+  released: string;
+}

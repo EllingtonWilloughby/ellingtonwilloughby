@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { PiXCircleBold } from 'react-icons/pi';
+import { X } from '@phosphor-icons/react';
 import { IAboutModal } from '@/types';
 
 export default function AboutModal({ isOpen, onClose }: IAboutModal) {
@@ -33,7 +33,7 @@ export default function AboutModal({ isOpen, onClose }: IAboutModal) {
         }
       }}
     >
-      <PiXCircleBold size={24} onClick={onClose} />
+      <X weight="duotone" size={24} onClick={onClose} />
       <div className="grid grid-flow-row grid-cols-1 grid-rows-8 gap-6">
         <h3 className="font-semibold w-full underline text-xl sm:text-2xl md:text-3xl lg:text-4xl subpixel-antialiased p-2">
           Origin Story
