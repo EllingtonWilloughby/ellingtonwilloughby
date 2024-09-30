@@ -1,145 +1,137 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Howl } from 'howler';
 import { playlist } from '@/data';
+import { ISong } from '@/types';
 
 export default function useAudio() {
-  const [playing, setPlaying] = useState<boolean>(false);
-  const [songIndex, setSongIndex] = useState<number>(0);
-  const [mute, setMute] = useState<boolean>(false);
-  const [volume, setVolume] = useState<number>(0.5);
-  const [seek, setSeek] = useState<number>(0);
-  const [duration, setDuration] = useState<string>('00:00');
-  const [timeElapsed, setElapsedTime] = useState<string>('00:00');
-
   const song = useRef<Howl | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
+  const animationFrame = useRef<number | null>(null);
 
-  // format time mm:ss
-  const formatTime = (seconds: number) => {
+  const [playing, setPlaying] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [volume, setVolume] = useState(0.5);
+  const [mute, setMute] = useState(false);
+  const [currentTime, setCurrentTime] = useState('00:00');
+  const [duration, setDuration] = useState('00:00');
+  const [seek, setSeek] = useState(0);
+
+  const formatTime = (seconds: number): string => {
+    if (isNaN(seconds) || seconds < 0) {
+      return '00:00';
+    }
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const paddedSeconds = secs < 10 ? `0${secs}` : secs;
+
+    return `${paddedMinutes}:${paddedSeconds}`;
   };
 
-  // initialize audio and prepare for playback
+  const updateSeekAndTime = () => {
+    if (song.current) {
+      const currentSeek = song.current.seek() as number;
+      setSeek(currentSeek);
+      setCurrentTime(formatTime(currentSeek));
+      // keep animation loop running
+      animationFrame.current = requestAnimationFrame(updateSeekAndTime);
+    }
+  };
+
+  const togglePlay = () => {
+    if (playing) {
+      song.current?.pause();
+      // stop animation loop
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
+      }
+    } else {
+      song.current?.play();
+      // restart animation loop
+      updateSeekAndTime();
+    }
+    setPlaying(!playing);
+  };
+
+  const toggleMute = () => {
+    if (mute) {
+      song.current?.mute(false);
+    } else {
+      song.current?.mute(true);
+    }
+    setMute(!mute);
+  };
+
+  const previousSong = () => {
+    if (playlist.length === 0) return;
+
+    const newSongIndex =
+      currentIndex > 0 ? currentIndex - 1 : playlist.length - 1;
+    setCurrentIndex(newSongIndex);
+    const newCurrentSong = playlist[newSongIndex];
+
+    setSeek(0);
+    setCurrentTime('00:00');
+    setDuration(newCurrentSong?.duration ?? '00:00');
+  };
+
+  const nextSong = () => {
+    if (playlist.length === 0) return;
+
+    const newSongIndex =
+      currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
+    setCurrentIndex(newSongIndex);
+    const newCurrentSong = playlist[newSongIndex];
+
+    setSeek(0);
+    setCurrentTime('00:00');
+    setDuration(newCurrentSong?.duration ?? '00:00');
+  };
+
   useEffect(() => {
+    // new howl instance for the current song
     song.current = new Howl({
-      src: playlist[songIndex].url,
-      html5: true,
+      src: [playlist[currentIndex].url],
       format: ['mp3'],
+      html5: true,
       preload: true,
       autoplay: false,
       loop: false,
       volume: volume,
       onplay: () => {
-        song.current?.play();
-        song.current?.seek(seek);
-        setPlaying(true);
-        updateSeek();
+        // set duration and update seek & time
+        const durationSeconds = song.current?.duration() || 0;
+        setDuration(formatTime(durationSeconds));
+        updateSeekAndTime();
       },
       onend: () => {
-        setPlaying(false);
         nextSong();
       },
       onpause: () => {
         setPlaying(false);
-        // stop animation loop when song is paused
-        if (animationFrameRef.current) {
-          cancelAnimationFrame(animationFrameRef.current);
-        }
-      },
-      onseek: () => {
-        setSeek(song.current?.seek() as number);
       }
     });
 
-    if (song.current) {
-      song.current.seek(seek);
-    }
-
     return () => {
       song.current?.unload();
-      // stop animation loop on unmount
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
       }
     };
-  }, [songIndex, volume, seek]);
-
-  // update seek and elapsed time every second using animation loop
-  const updateSeek = () => {
-    if (song.current) {
-      const currentSeek = song.current.seek() as number;
-      setSeek(currentSeek);
-      setElapsedTime(formatTime(currentSeek));
-      setDuration(formatTime(song.current.duration()));
-
-      animationFrameRef.current = requestAnimationFrame(updateSeek);
-    }
-  };
-
-  const togglePlay = () => {
-    if (!playing) {
-      song.current?.play();
-      setPlaying(true);
-    } else {
-      song.current?.pause();
-      setPlaying(false);
-    }
-  };
-
-  const toggleMute = () => {
-    if (!mute) {
-      song.current?.mute(true);
-      setMute(true);
-    } else {
-      song.current?.mute(false);
-      setMute(false);
-    }
-  };
-
-  const changeVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const newVolume = parseFloat(event.target.value);
-    song.current?.volume(newVolume);
-    setVolume(newVolume);
-  };
-
-  const previousSong = () => {
-    if (songIndex > 0) {
-      setSongIndex(songIndex - 1);
-    } else {
-      setSongIndex(playlist.length - 1);
-    }
-  };
-
-  const nextSong = () => {
-    if (songIndex < playlist.length - 1) {
-      setSongIndex(songIndex + 1);
-    } else {
-      setSongIndex(0);
-    }
-  };
-
-  const currentSong = () => {
-    return playlist[songIndex];
-  };
+  }, [currentIndex, volume]);
 
   return {
     playing,
-    songIndex,
     mute,
-    volume,
+    currentIndex,
+    currentTime,
     duration,
-    timeElapsed,
     seek,
-    song,
+    volume,
     togglePlay,
     toggleMute,
-    changeVolume,
     previousSong,
     nextSong,
-    currentSong
+    setVolume
   };
 }

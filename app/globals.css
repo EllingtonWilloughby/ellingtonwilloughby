@@ -9,10 +9,7 @@
 }
 
 :root {
-  --white: #ffffffff;
-  --black: #333333ff;
-
-  --text: #373f51ff;
+  --text: #444140ff;
   --background: #eaededff;
   --primary: #6edcdcff;
   --secondary: #fef10bff;
@@ -36,6 +33,8 @@ body {
   font-size: 1.4rem;
   line-height: 1.6;
   font-weight: 400;
+  color: var(--text);
+  background-color: var(--background);
   height: 100vh;
   width: 100%;
   z-index: -99;
@@ -43,24 +42,29 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --white: #ffffffff;
-    --black: #333333ff;
-
     --text: #eaededff;
-    --background: #373f51ff;
+    --background: #444140ff;
     --primary: #fef10bff;
     --secondary: #6edcdcff;
     --accent: #fd4206ff;
-    color: var(--white);
   }
 
   body {
-    color: var(--text);
     background-image: url('/gif/bg_dark.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    color: var(--text);
+    background-color: var(--background);
+    opacity: 0.6;
+    backdrop-filter: brightness(60%);
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
   }
 }
 
@@ -74,7 +78,7 @@ body {
 }
 
 a {
-  color: var(--black);
+  color: var(--text);
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
