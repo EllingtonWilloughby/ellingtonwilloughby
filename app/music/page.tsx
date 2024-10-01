@@ -9,16 +9,16 @@ import { House } from '@phosphor-icons/react';
 export default function MusicPage() {
   return (
     <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-2">
-      <section className="relative w-full flex flex-col justify-start items-center flex-1 max-h-40">
-        <div className="link-container absolute top-0 left-0 flex flex-col justify-center items-center p-2">
-          <Link href="/" className="">
+      <section className="w-full relative max-h-40">
+        <div className="link-container relative flex flex-col justify-center items-center p-2">
+          <Link href="/" className="absolute top-4 left-0">
             <House weight="duotone" size={24} />
           </Link>
-          <span className="link-label">Home</span>
+          <span className="link-label absolute top-2 left-5">Home</span>
         </div>
-        <div className="text-center font-normal text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-16">
+        <h2 className="font-normal text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-16">
           Music
-        </div>
+        </h2>
       </section>
 
       <ul className="max-w-xs mx-auto p-2">
