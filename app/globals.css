@@ -43,33 +43,24 @@ body {
   z-index: -99;
 }
 
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  position: relative;
-  z-index: 1;
-  padding: 1.2rem;
+.link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
-.album-link-label {
+.link-label {
   padding: 0.5rem;
   font-size: 1.1rem;
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
 
-.album-link:hover .album-link-label {
-  opacity: 1;
-}
-
-.link-label {
-  font-size: 1.1rem;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.home-link:hover .link-label {
+.link-container:hover .link-label {
   opacity: 1;
 }
 
@@ -97,6 +88,14 @@ button:hover {
   background-color: var(--secondary);
   color: var(--background);
   border: var(--background) 1px solid;
+}
+
+@media screen and (max-width: 568px) {
+  button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

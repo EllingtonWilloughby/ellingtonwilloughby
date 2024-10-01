@@ -27,54 +27,72 @@ export default function AudioPlayer() {
 
   const currentSong = playlist[currentIndex];
   return (
-    <div className="max-w-screen-sm mx-auto w-full relative flex flex-col justify-center items-center p-2">
+    <section className="max-w-screen-sm mx-auto w-full relative flex flex-col justify-center items-center p-2">
       {playing && (
-        <h4 className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
+        <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
           {`Now Playing: ${currentSong.title}`}
-        </h4>
+        </div>
       )}
       <div className="w-full flex justify-between items-center p-2">
-        <button onClick={togglePlay}>
-          {playing ? (
-            <Pause weight="duotone" size="36" />
-          ) : (
-            <Play weight="duotone" size="36" />
-          )}
-        </button>
+        <div className="link-container">
+          <button onClick={togglePlay}>
+            {playing ? (
+              <Pause weight="duotone" size="24" />
+            ) : (
+              <Play weight="duotone" size="24" />
+            )}
+          </button>
+          <label className="link-label">{playing ? 'Pause' : 'Play'}</label>
+        </div>
 
-        <button onClick={previousSong}>
-          <SkipBack weight="duotone" size="36" />
-        </button>
+        <div className="link-container">
+          <button onClick={previousSong}>
+            <SkipBack weight="duotone" size="24" />
+          </button>
+          <label className="link-label">Previous</label>
+        </div>
 
-        <button id="" name="" onClick={nextSong}>
-          <SkipForward weight="duotone" size="36" />
-        </button>
+        <div className="link-container">
+          <button onClick={nextSong}>
+            <SkipForward weight="duotone" size="24" />
+          </button>
+          <label className="link-label">Next</label>
+        </div>
 
-        <button id="mute" name="mute" onClick={toggleMute}>
-          {mute ? (
-            <SpeakerSimpleX weight="duotone" size="36" />
-          ) : (
-            <SpeakerSimpleSlash weight="duotone" size="36" />
-          )}
-        </button>
+        <div className="link-container">
+          <button onClick={toggleMute}>
+            {mute ? (
+              <SpeakerSimpleX weight="duotone" size="24" />
+            ) : (
+              <SpeakerSimpleSlash weight="duotone" size="24" />
+            )}
+          </button>
+          <label className="link-label">{mute ? 'Unmute' : 'Mute'}</label>
+        </div>
 
-        <input
-          id="volume"
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={volume}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setVolume(parseFloat(e.target.value))
-          }
-        />
+        <div className="link-container">
+          <input
+            id="volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setVolume(parseFloat(e.target.value))
+            }
+          />
+          <label className="link-label">Volume</label>
+        </div>
       </div>
 
-      <section className="">
-        <span className="">{currentTime}</span>/
-        <span className="">{duration}</span>
-      </section>
-    </div>
+      <div className="w-full p-2">
+        {playing && (
+          <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
+            {`${currentTime} / ${duration}`}
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

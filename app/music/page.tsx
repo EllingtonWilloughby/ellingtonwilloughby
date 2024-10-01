@@ -10,7 +10,7 @@ export default function MusicPage() {
   return (
     <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-2">
       <section className="relative w-full flex flex-col justify-start items-center flex-1 max-h-40">
-        <div className="home-link absolute top-0 left-0 flex flex-col justify-center items-center p-2">
+        <div className="link-container absolute top-0 left-0 flex flex-col justify-center items-center p-2">
           <Link href="/" className="">
             <House weight="duotone" size={24} />
           </Link>
@@ -25,7 +25,7 @@ export default function MusicPage() {
         {albums.map((album: IAlbum) => (
           <div
             key={album.src}
-            className="album-link w-full flex flex-col justify-center items-center p-2"
+            className="link-container w-full flex flex-col justify-center items-center p-2"
           >
             <li className="flex flex-col justify-center items-center p-6">
               <Link href={album.link} className="text-center">
@@ -36,7 +36,7 @@ export default function MusicPage() {
                   height={500}
                   priority
                 />
-                <label className="album-link-label">{album.title}</label>
+                <label className="link-label">{album.title}</label>
               </Link>
             </li>
           </div>

@@ -14,7 +14,7 @@ export default function AboutPage() {
   return (
     <div className="page-container relative min-h-screen max-w-screen-xl mx-auto flex flex-col p-2">
       <section className="relative w-full flex flex-col justify-start items-center flex-1 max-h-40">
-        <div className="home-link absolute top-0 left-0 flex flex-col justify-center items-center p-2">
+        <div className="link-container absolute top-0 left-0 flex flex-col justify-center items-center p-2">
           <Link href="/" className="">
             <House weight="duotone" size={24} />
           </Link>
