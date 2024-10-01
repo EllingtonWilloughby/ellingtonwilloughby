@@ -27,12 +27,13 @@ export default function AudioPlayer() {
 
   const currentSong = playlist[currentIndex];
   return (
-    <div className="max-w-screen-sm mx-auto w-full container relative flex flex-col justify-center items-center p-2">
-      <h4 className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
-        {`Now Playing: ${currentSong.title}`}
-      </h4>
+    <div className="max-w-screen-sm mx-auto w-full relative flex flex-col justify-center items-center p-2">
+      {playing && (
+        <h4 className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
+          {`Now Playing: ${currentSong.title}`}
+        </h4>
+      )}
       <div className="w-full flex justify-between items-center p-2">
-        <label htmlFor="playpause">{playing ? 'Pause' : 'Play'}</label>
         <button onClick={togglePlay}>
           {playing ? (
             <Pause weight="duotone" size="36" />
@@ -41,22 +42,22 @@ export default function AudioPlayer() {
           )}
         </button>
 
-        <label htmlFor="back">Skip Back</label>
         <button onClick={previousSong}>
           <SkipBack weight="duotone" size="36" />
         </button>
 
-        <label htmlFor="forward">Skip Forward</label>
         <button id="" name="" onClick={nextSong}>
           <SkipForward weight="duotone" size="36" />
         </button>
 
-        <label htmlFor="mute">Click to Mute</label>
         <button id="mute" name="mute" onClick={toggleMute}>
-          {mute ? <SpeakerSimpleX /> : <SpeakerSimpleSlash />}
+          {mute ? (
+            <SpeakerSimpleX weight="duotone" size="36" />
+          ) : (
+            <SpeakerSimpleSlash weight="duotone" size="36" />
+          )}
         </button>
 
-        <label htmlFor="volume">Volume: {Math.round(volume * 100)}%</label>
         <input
           id="volume"
           type="range"
@@ -71,8 +72,8 @@ export default function AudioPlayer() {
       </div>
 
       <section className="">
-        <div className="">{currentTime}</div> / <div className="">{duration}</div>
-        
+        <span className="">{currentTime}</span>/
+        <span className="">{duration}</span>
       </section>
     </div>
   );
