@@ -17,29 +17,50 @@ export default function ContactPage() {
           </Link>
           <span className="link-label">Home</span>
         </div>
-        <div className="text-center font-normal text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-16">
+        <h2 className="text-center font-normal text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-16">
           Contact
+        </h2>
+      </section>
+
+      <section className="min-h-96 w-full border-2 border-red-400 max-w-screen-lg mx-auto flex flex-col justify-around items-center p-2">
+        <h3 className="text-center leading-7 font-normal text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased">
+          Reach out to Ellington Willoughby & the Mythical Squid by emailing us
+          at{' '}
+          <Link
+            href="mailto:ellingtonwilloughby@gmail.com"
+            className="font-semibold subpixel-antialiased"
+          >
+            this link
+          </Link>
+          , or on our socials through any of the links below:
+        </h3>
+        <div className="flex justify-center items-center p-2">
+          <article className="link-container">
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/EllingtonWilloughby"
+            >
+              <FacebookLogo weight="duotone" size="32" />
+            </Link>
+            <label className="link-label">Facebook</label>
+          </article>
+
+          <article className="link-container">
+            <Link target="_blank" rel="noopener noreferrer" href="#">
+              <InstagramLogo weight="duotone" size="32" />
+            </Link>
+            <label className="link-label">Instagram</label>
+          </article>
+
+          <article className="link-container">
+            <Link target="_blank" rel="noopener noreferrer" href="#">
+              <SpotifyLogo weight="duotone" size="32" />
+            </Link>
+            <label className="link-label">Spotify</label>
+          </article>
         </div>
       </section>
-      <h3>
-        Reach out to Ellington Willoughby & the Mythical Squid by emailing us
-        <Link href="mailto:ellingtonwilloughby@gmail.com">here</Link>, or on out
-        socials through any of the links below:
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.facebook.com/EllingtonWilloughby"
-        >
-          <FacebookLogo weight="duotone" size="32" />
-        </Link>
-        <Link target="_blank" rel="noopener noreferrer" href="#">
-          <InstagramLogo weight="duotone" size="32" />
-        </Link>
-        <Link target="_blank" rel="noopener noreferrer" href="#">
-          <SpotifyLogo weight="duotone" size="32" />
-        </Link>
-        Spotify
-      </h3>
     </div>
   );
 }
