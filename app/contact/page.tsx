@@ -1,12 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import {
-  House,
-  FacebookLogo,
-  InstagramLogo,
-  SpotifyLogo
-} from '@phosphor-icons/react';
+import { House } from '@phosphor-icons/react';
 import SocialIcons from '@/contact/SocialIcons';
 export default function ContactPage() {
   return (

@@ -1,8 +1,7 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Howl } from 'howler';
 import { playlist } from '@/data';
-import { ISong } from '@/types';
 
 export default function useAudio() {
   const song = useRef<Howl | null>(null);
@@ -118,7 +117,7 @@ export default function useAudio() {
         cancelAnimationFrame(animationFrame.current);
       }
     };
-  }, [currentIndex, volume]);
+  }, [currentIndex, volume, nextSong, updateSeekAndTime]);
 
   return {
     playing,
