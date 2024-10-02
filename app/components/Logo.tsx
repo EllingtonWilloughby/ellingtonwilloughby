@@ -23,9 +23,16 @@ export default function Logo() {
           alt="logo"
           width={500}
           height={500}
+          priority
         />
       ) : (
-        <Image src="/images/logo.svg" alt="logo" width={500} height={500} />
+        <Image
+          src="/images/logo.svg"
+          alt="logo"
+          width={500}
+          height={500}
+          priority
+        />
       )}
     </div>
   );

@@ -1,5 +1,4 @@
-import useAudio from '../hooks/useAudio';
-import { playlist } from '../data';
+import { ChangeEvent } from 'react';
 import {
   Pause,
   Play,
@@ -8,78 +7,82 @@ import {
   SpeakerSimpleSlash,
   SpeakerSimpleX
 } from '@phosphor-icons/react';
-import { ChangeEvent } from 'react';
+import useAudio from '@/hooks/useAudio';
 import './AudioPlayer.css';
 
 export default function AudioPlayer() {
   const {
-    playing,
-    mute,
-    currentIndex,
-    currentTime,
-    duration,
+    song,
+    playback,
     volume,
-    togglePlay,
-    toggleMute,
-    previousSong,
-    nextSong,
-    setVolume
+    muted,
+    duration,
+    displayTime,
+    handlePlay,
+    handleVolumeChange,
+    handleMuteToggle,
+    handlePreviousSong,
+    handleNextSong
   } = useAudio();
 
-  const currentSong = playlist[currentIndex];
+  const changeVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(event.target.value);
+    handleVolumeChange(event);
+  };
+
   return (
     <div className="relative w-full max-w-screen-sm mx-auto">
       <section className="w-full text-center">
         <div className="min-h-28 w-full text-center">
-          {playing && (
+          {playback && (
             <span className="text-center text-base md:text-lg subpixel-antialiased">
-              {`Current song: ${currentSong.title}`}
+              {`Current song: ${song.title}`}
             </span>
           )}
-
-          {playing && (
-            <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
-              {`${currentTime} / ${duration}`}
-            </div>
+          <br />
+          {playback && (
+            <span className="text-center text-base md:text-lg subpixel-antialiased">
+              {`${displayTime} / ${duration}`}
+            </span>
           )}
         </div>
       </section>
 
       <section className="w-full flex justify-evenly items-center">
         <div className="link-container">
-          <button onClick={togglePlay}>
-            {playing ? (
+          <button onClick={handlePlay}>
+            {playback ? (
               <Pause weight="duotone" size="24" />
             ) : (
               <Play weight="duotone" size="24" />
             )}
           </button>
-          <label className="link-label">{playing ? 'Pause' : 'Play'}</label>
+          <label className="link-label">{playback ? 'Pause' : 'Play'}</label>
         </div>
 
         <div className="link-container">
-          <button onClick={previousSong}>
+          <button onClick={handlePreviousSong}>
             <SkipBack weight="duotone" size="24" />
           </button>
           <label className="link-label">Previous</label>
         </div>
 
         <div className="link-container">
-          <button onClick={nextSong}>
+          <button onClick={handleNextSong}>
             <SkipForward weight="duotone" size="24" />
           </button>
           <label className="link-label">Next</label>
         </div>
 
         <div className="link-container">
-          <button onClick={toggleMute}>
-            {mute ? (
+          <button onClick={handleMuteToggle}>
+            {muted ? (
               <SpeakerSimpleX weight="duotone" size="24" />
             ) : (
               <SpeakerSimpleSlash weight="duotone" size="24" />
             )}
           </button>
-          <label className="link-label">{mute ? 'Unmute' : 'Mute'}</label>
+          <label className="link-label">{muted ? 'Unmute' : 'Mute'}</label>
         </div>
 
         <div className="link-container vol">
@@ -90,9 +93,7 @@ export default function AudioPlayer() {
             max="1"
             step="0.01"
             value={volume}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setVolume(parseFloat(e.target.value))
-            }
+            onChange={changeVolume}
           />
           <label className="link-label vol-link">Volume</label>
         </div>

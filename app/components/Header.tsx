@@ -8,7 +8,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="max-w-screen-sm min-w-96 mx-auto h-1/5 px-6 py-12">
+    <header className="max-w-screen-sm min-w-96 mx-auto h-1/5 px-6 py-8">
       <nav className="min-w-60 w-full flex flex-col justify-center items-center">
         <ul className="w-full flex justify-between items-center">
           {navlinks

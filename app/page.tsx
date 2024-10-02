@@ -1,5 +1,5 @@
 'use client';
-import AudioPlayer from '@/components/AudioPlayer';
+import AudioPlayer from '@/components/audio-player/AudioPlayer';
 import Header from '@/components/Header';
 import Logo from '@/components/Logo';
 export default function Home() {

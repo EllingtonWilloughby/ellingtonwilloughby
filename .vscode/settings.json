@@ -1,0 +1,12 @@
+{
+  "turboConsoleLog.addSemicolonInTheEnd": true,
+  "turboConsoleLog.delimiterInsideMessage": "|",
+  "turboConsoleLog.includeFileNameAndLineNum": true,
+  "turboConsoleLog.insertEmptyLineAfterLogMessage": true,
+  "turboConsoleLog.insertEmptyLineBeforeLogMessage": true,
+  "turboConsoleLog.logFunction": "info",
+  "turboConsoleLog.logMessagePrefix": "🩻→",
+  "turboConsoleLog.logMessageSuffix": "📌",
+  "turboConsoleLog.logType": "debug",
+  "turboConsoleLog.quote": "'"
+}
