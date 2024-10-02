@@ -21,11 +21,11 @@ export default function Logo() {
         <Image
           src="/images/logo_dark.svg"
           alt="logo"
-          width={700}
-          height={700}
+          width={500}
+          height={500}
         />
       ) : (
-        <Image src="/images/logo.svg" alt="logo" width={700} height={700} />
+        <Image src="/images/logo.svg" alt="logo" width={500} height={500} />
       )}
     </div>
   );

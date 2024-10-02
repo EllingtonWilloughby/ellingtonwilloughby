@@ -6,14 +6,12 @@ import { House } from '@phosphor-icons/react';
 export default function ShowsPage() {
   return (
     <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-2">
-      <section className="w-full relative max-h-40">
-        <div className="link-container relative flex flex-col justify-center items-center p-2">
-          <Link href="/" className="absolute top-4 left-0">
-            <House weight="duotone" size={24} />
-          </Link>
-          <span className="link-label absolute top-2 left-5">Home</span>
-        </div>
-        <h2 className="font-normal text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-16">
+      <section className="relative max-h-40 w-full">
+        <Link href="/" className="link-container absolute top-4 left-4">
+          <House weight="duotone" size={24} />
+          <span className="link-label absolute top-4 left-6">Home</span>
+        </Link>
+        <h2 className="min-h-20 w-full text-center text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-10">
           Shows
         </h2>
       </section>

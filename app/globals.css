@@ -9,6 +9,7 @@
 }
 
 :root {
+  --thumb: #4e4e4efe;
   --text: #444140ff;
   --background: #eaededff;
   --primary: #6edcdcff;
@@ -55,10 +56,14 @@ a:hover {
 }
 
 button {
-  min-height: 2.2rem;
+  min-height: 2.4rem;
   min-width: 2.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--text);
   background-color: none;
+  border-radius: 0.3rem;
   transition: all 0.3s ease-in-out;
 }
 
@@ -68,20 +73,27 @@ button:hover {
 }
 
 .link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 2.2rem;
   width: 2.2rem;
   transition: all 0.3s ease-in-out;
   border-radius: 0.3rem;
+  cursor: pointer;
 }
 
 .link-label {
   font-size: 1.1rem;
   opacity: 0;
   transition: all 0.3s ease-in-out;
+  border-radius: 0.3rem;
 }
 
 .link-container:hover .link-label {
   opacity: 1;
+  cursor: pointer;
 }
 
 .album-link-container {
@@ -99,6 +111,7 @@ button:hover {
 
 .album-link-container:hover .album-link-label {
   opacity: 1;
+  cursor: pointer;
 }
 
 .find-out-more {

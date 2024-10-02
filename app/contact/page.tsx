@@ -7,17 +7,16 @@ import {
   InstagramLogo,
   SpotifyLogo
 } from '@phosphor-icons/react';
+import SocialIcons from '@/contact/SocialIcons';
 export default function ContactPage() {
   return (
     <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-2">
-      <section className="w-full relative max-h-40">
-        <div className="link-container relative flex flex-col justify-center items-center p-2">
-          <Link href="/" className="absolute top-4 left-0">
-            <House weight="duotone" size={24} />
-          </Link>
-          <span className="link-label absolute top-2 left-5">Home</span>
-        </div>
-        <h2 className="font-normal text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-16">
+      <section className="relative max-h-40 w-full">
+        <Link href="/" className="link-container absolute top-4 left-4">
+          <House weight="duotone" size={24} />
+          <span className="link-label absolute top-4 left-6">Home</span>
+        </Link>
+        <h2 className="min-h-20 w-full text-center text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-10">
           Contact
         </h2>
       </section>
@@ -34,32 +33,7 @@ export default function ContactPage() {
           </Link>
           , or on our socials through any of the links below:
         </h3>
-        <div className="flex justify-center items-center p-2">
-          <article className="link-container">
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.facebook.com/EllingtonWilloughby"
-            >
-              <FacebookLogo weight="duotone" size="32" />
-            </Link>
-            <label className="link-label">Facebook</label>
-          </article>
-
-          <article className="link-container">
-            <Link target="_blank" rel="noopener noreferrer" href="#">
-              <InstagramLogo weight="duotone" size="32" />
-            </Link>
-            <label className="link-label">Instagram</label>
-          </article>
-
-          <article className="link-container">
-            <Link target="_blank" rel="noopener noreferrer" href="#">
-              <SpotifyLogo weight="duotone" size="32" />
-            </Link>
-            <label className="link-label">Spotify</label>
-          </article>
-        </div>
+        <SocialIcons />
       </section>
     </div>
   );

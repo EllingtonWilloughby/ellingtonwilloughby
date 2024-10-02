@@ -9,6 +9,7 @@ import {
   SpeakerSimpleX
 } from '@phosphor-icons/react';
 import { ChangeEvent } from 'react';
+import './AudioPlayer.css';
 
 export default function AudioPlayer() {
   const {
@@ -28,12 +29,20 @@ export default function AudioPlayer() {
   const currentSong = playlist[currentIndex];
   return (
     <div className="relative w-full max-w-screen-sm mx-auto">
-      <section className="min-h-28 w-full text-center">
-        {playing && (
-          <span className="text-center text-base md:text-lg subpixel-antialiased p-2">
-            {`Now Playing: ${currentSong.title}`}
-          </span>
-        )}
+      <section className="w-full text-center">
+        <div className="min-h-28 w-full text-center">
+          {playing && (
+            <span className="text-center text-base md:text-lg subpixel-antialiased">
+              {`Current song: ${currentSong.title}`}
+            </span>
+          )}
+
+          {playing && (
+            <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
+              {`${currentTime} / ${duration}`}
+            </div>
+          )}
+        </div>
       </section>
 
       <section className="w-full flex justify-evenly items-center">
@@ -73,7 +82,7 @@ export default function AudioPlayer() {
           <label className="link-label">{mute ? 'Unmute' : 'Mute'}</label>
         </div>
 
-        <div className="link-container">
+        <div className="link-container vol">
           <input
             id="volume"
             type="range"
@@ -85,16 +94,8 @@ export default function AudioPlayer() {
               setVolume(parseFloat(e.target.value))
             }
           />
-          <label className="link-label">Volume</label>
+          <label className="link-label vol-link">Volume</label>
         </div>
-      </section>
-
-      <section className="min-h-20 w-full">
-        {playing && (
-          <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
-            {`${currentTime} / ${duration}`}
-          </div>
-        )}
       </section>
     </div>
   );
