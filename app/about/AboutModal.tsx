@@ -22,7 +22,7 @@ export default function AboutModal({ isOpen, onClose }: IAboutModal) {
         content: {
           maxHeight: '90vh',
           overflowY: 'auto',
-          padding: '1.75rem',
+          padding: '1rem',
           border: 'var(--text) 1px solid',
           borderRadius: '0.5rem',
           boxShadow:

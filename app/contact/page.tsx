@@ -22,7 +22,7 @@ export default function ContactPage() {
         </h2>
       </section>
 
-      <section className="min-h-96 w-full border-2 border-red-400 max-w-screen-lg mx-auto flex flex-col justify-around items-center p-2">
+      <section className="min-h-96 w-full max-w-screen-lg mx-auto flex flex-col justify-around items-center p-2">
         <h3 className="text-center leading-7 font-normal text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased">
           Reach out to Ellington Willoughby & the Mythical Squid by emailing us
           at{' '}

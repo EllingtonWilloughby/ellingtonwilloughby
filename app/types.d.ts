@@ -11,6 +11,7 @@ export interface IAboutModal {
 export interface IMusicians {
   name: string;
   instruments: string;
+  link?: string;
 }
 
 export interface ISong {

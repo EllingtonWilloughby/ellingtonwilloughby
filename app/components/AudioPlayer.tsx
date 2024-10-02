@@ -27,13 +27,16 @@ export default function AudioPlayer() {
 
   const currentSong = playlist[currentIndex];
   return (
-    <section className="max-w-screen-sm mx-auto w-full relative flex flex-col justify-center items-center p-2">
-      {playing && (
-        <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
-          {`Now Playing: ${currentSong.title}`}
-        </div>
-      )}
-      <div className="w-full flex justify-between items-center p-2">
+    <div className="relative w-full max-w-screen-sm mx-auto">
+      <section className="min-h-28 w-full text-center">
+        {playing && (
+          <span className="text-center text-base md:text-lg subpixel-antialiased p-2">
+            {`Now Playing: ${currentSong.title}`}
+          </span>
+        )}
+      </section>
+
+      <section className="w-full flex justify-evenly items-center">
         <div className="link-container">
           <button onClick={togglePlay}>
             {playing ? (
@@ -84,15 +87,15 @@ export default function AudioPlayer() {
           />
           <label className="link-label">Volume</label>
         </div>
-      </div>
+      </section>
 
-      <div className="w-full p-2">
+      <section className="min-h-20 w-full">
         {playing && (
           <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased p-2">
             {`${currentTime} / ${duration}`}
           </div>
         )}
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

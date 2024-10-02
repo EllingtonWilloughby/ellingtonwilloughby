@@ -1,26 +1,41 @@
 import React from 'react';
 import { members } from '@/data';
+import { IMusicians } from '@/types';
+import Link from 'next/link';
 export default function Musicians() {
   return (
-    <section>
-      <div className="text-center font-normal subpixel-antialiased underline p-2">
+    <div>
+      <h3 className="text-center font-normal subpixel-antialiased underline p-2">
         Members
-      </div>
+      </h3>
 
-      <div className="w-full display flex flex-col justify-center items-center">
-        {members.map(
-          (musician: { name: string; instruments: string }, index: number) => (
-            <div className="card p-2" key={index}>
-              <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl font-normal subpixel-antialiased">
-                {musician.name}
-              </p>
-              <p className="text-center text-xs sm:text-sm md:text-base lg:text-lg font-normal subpixel-antialiased">
-                {musician.instruments}
-              </p>
-            </div>
-          )
-        )}
-      </div>
-    </section>
+      <section className="w-full display flex flex-col justify-center items-center">
+        {members.map((musician: IMusicians, index: number) => (
+          <div className="p-2" key={index}>
+            {musician.link ? (
+              <>
+                <Link href={musician.link} className="text-center">
+                  <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased">
+                    {musician.name}
+                  </p>
+                </Link>
+                <p className="text-center text-xs sm:text-sm md:text-base lg:text-lg subpixel-antialiased">
+                  {musician.instruments}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased">
+                  {musician.name}
+                </p>
+                <p className="text-center text-xs sm:text-sm md:text-base lg:text-lg subpixel-antialiased">
+                  {musician.instruments}
+                </p>
+              </>
+            )}
+          </div>
+        ))}
+      </section>
+    </div>
   );
 }

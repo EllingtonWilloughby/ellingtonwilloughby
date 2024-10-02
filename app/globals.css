@@ -43,27 +43,6 @@ body {
   z-index: -99;
 }
 
-.link-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-.link-label {
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.link-container:hover .link-label {
-  opacity: 1;
-}
-
 a {
   color: var(--text);
   text-decoration: none;
@@ -76,18 +55,65 @@ a:hover {
 }
 
 button {
+  min-height: 2.2rem;
+  min-width: 2.4rem;
   color: var(--text);
-  background-color: var(--primary);
-  border: var(--text) 1px solid;
-  padding: 0.5rem 0.9rem;
+  background-color: none;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  color: var(--primary);
+  border: var(--primary) 1px solid;
+}
+
+.link-container {
+  height: 2.2rem;
+  width: 2.2rem;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.3rem;
+}
+
+.link-label {
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.link-container:hover .link-label {
+  opacity: 1;
+}
+
+.album-link-container {
+  min-height: 17rem;
+  min-width: 17rem;
   transition: all 0.3s ease-in-out;
   border-radius: 0.4rem;
 }
 
-button:hover {
-  background-color: var(--secondary);
-  color: var(--background);
-  border: var(--background) 1px solid;
+.album-link-label {
+  font-size: 1.4rem;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.album-link-container:hover .album-link-label {
+  opacity: 1;
+}
+
+.find-out-more {
+  min-height: 2.2rem;
+  min-width: 2.4rem;
+  border-radius: 0.3rem;
+  border: var(--text) 1px solid;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: none;
+  transition: all 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 568px) {
