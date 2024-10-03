@@ -1,21 +1,19 @@
-'use client'
-import darkLogo from '../../public/images/ew_logo_dk.svg'
-import lightLogo from '../../public/images/ew_logo.svg'
+'use client';
 import Image from 'next/image';
-import { LogoProps } from '../../lib/types'
-import { useDarkMode } from '@/lib/context/ColorSchemeContext';
+import { ILogo } from '../lib/types';
+import { useColorSchemeContext } from '../lib/context/ColorSchemeContext';
 
-export default function Logo({ height, width }: LogoProps) {
-  const { darkMode } = useDarkMode()
+export default function Logo({ height, width }: ILogo) {
+  const { colorScheme } = useColorSchemeContext();
 
   return (
     <Image
-      src={darkMode ? darkLogo : lightLogo}
+      src={colorScheme ? '/images/ew_logo_dk.svg' : '/images/ew_logo.svg'}
       alt="ellington willoughby & the mythical squid"
       height={height}
       width={width}
       priority={true}
       className="size-full max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto"
     />
-  )
+  );
 }
