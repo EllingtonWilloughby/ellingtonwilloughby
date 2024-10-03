@@ -5,9 +5,7 @@ Ellington Willoughby & the Mythical Squid. The project was built using Next.js
 14, Tailwind CSS, and ESLint, and features an audio player on the home page.
 GitHub Actions was integrated as well, for continuous integration.
 
-## Features
-
-1. Audio Player
+## Audio Player
 
 The homepage features an audio player built using Howler.js to allow users
 to play and interact with the band’s music. The audio player includes play/pause
