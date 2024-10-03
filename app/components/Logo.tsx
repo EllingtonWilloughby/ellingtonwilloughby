@@ -19,7 +19,7 @@ export default function Logo() {
     <div className="max-w-screen-sm mx-auto flex justify-center items-start">
       {darkMode ? (
         <Image
-          src="/images/logo_dark.svg"
+          src="/images/logo_i_dark.svg"
           alt="logo"
           width={800}
           height={800}
@@ -27,7 +27,7 @@ export default function Logo() {
         />
       ) : (
         <Image
-          src="/images/logo.svg"
+          src="/images/logo_i_light.svg"
           alt="logo"
           width={800}
           height={800}

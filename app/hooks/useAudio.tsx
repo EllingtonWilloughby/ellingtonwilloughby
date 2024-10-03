@@ -1,8 +1,7 @@
 'use client';
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import { playlist } from '@/data';
-import { ISong } from '@/types';
 
 export default function useAudio() {
   const [playback, setPlayback] = useState<boolean>(false);
@@ -14,7 +13,56 @@ export default function useAudio() {
   const song = playlist[currentIndex];
   const songRef = useRef<Howl | null>(null);
 
+  const handleVolumeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newVolume = parseFloat(event.target.value);
+      setVolume(newVolume);
+      songRef.current?.volume(newVolume);
+    },
+    [setVolume]
+  );
+
+  const handleMuteToggle = useCallback(() => {
+    setMuted((prevMute: boolean) => {
+      const newMute = !prevMute;
+      songRef.current?.mute(newMute);
+      return newMute;
+    });
+  }, [setMuted]);
+
+  const handleChangeSong = useCallback((newIndex: number) => {
+    setCurrentIndex(newIndex);
+    setDisplayTime('00:00');
+    setPlayback(false);
+  }, []);
+
+  const handlePreviousSong = useCallback(() => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : playlist.length - 1;
+    handleChangeSong(newIndex);
+  }, [currentIndex, handleChangeSong]);
+
+  const handleNextSong = useCallback(() => {
+    const newIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
+    handleChangeSong(newIndex);
+  }, [currentIndex, handleChangeSong]);
+
+  const formatTime = (seconds: number): string => {
+    if (isNaN(seconds) || seconds < 0) {
+      return '00:00';
+    }
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const paddedSeconds = secs < 10 ? `0${secs}` : secs;
+
+    return `${paddedMinutes}:${paddedSeconds}`;
+  };
+
   useEffect(() => {
+    if (songRef.current) {
+      songRef.current.unload();
+    }
+
     songRef.current = new Howl({
       src: [song.url],
       html5: true,
@@ -40,60 +88,15 @@ export default function useAudio() {
     return () => {
       songRef.current?.unload();
     };
-  }, [currentIndex]);
+  }, [currentIndex, song.url, song.duration, handleNextSong]);
 
   const handlePlay = useCallback(() => {
     if (songRef.current?.playing()) {
       songRef.current.pause();
-      setPlayback(false);
     } else {
       songRef.current?.play();
-      setPlayback(true);
     }
-  }, [songRef]);
-
-  const handleVolumeChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newVolume = parseFloat(event.target.value);
-      setVolume(newVolume);
-      songRef.current?.volume(newVolume);
-    },
-    [songRef]
-  );
-
-  const handleMuteToggle = useCallback(() => {
-    setMuted((prevMute: boolean) => !prevMute);
-    songRef.current?.mute(!muted);
-  }, [muted]);
-
-  const handleChangeSong = useCallback((newIndex: number) => {
-    setCurrentIndex(newIndex);
-    setDisplayTime('00:00');
-    setPlayback(false);
-    // removed currentIndex dep here
   }, []);
-
-  const handlePreviousSong = () => {
-    const newIndex = currentIndex > 0 ? currentIndex - 1 : playlist.length - 1;
-    handleChangeSong(newIndex);
-  };
-
-  const handleNextSong = () => {
-    const newIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
-    handleChangeSong(newIndex);
-  };
-
-  const formatTime = (seconds: number): string => {
-    if (isNaN(seconds) || seconds < 0) {
-      return '00:00';
-    }
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    const paddedSeconds = secs < 10 ? `0${secs}` : secs;
-
-    return `${paddedMinutes}:${paddedSeconds}`;
-  };
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -105,7 +108,7 @@ export default function useAudio() {
     }
 
     return () => clearInterval(intervalId);
-  }, [playback, songRef]);
+  }, [playback]);
 
   return {
     song,
