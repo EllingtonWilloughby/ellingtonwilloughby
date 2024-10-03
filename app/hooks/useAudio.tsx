@@ -1,19 +1,68 @@
 'use client';
-import { useRef, useState, useEffect } from 'react';
-import { Howl } from 'howler';
+import { useRef, useState, useEffect, useCallback } from 'react';
+import { Howl, Howler } from 'howler';
 import { playlist } from '@/data';
 
 export default function useAudio() {
-  const song = useRef<Howl | null>(null);
-  const animationFrame = useRef<number | null>(null);
+  const [playback, setPlayback] = useState<boolean>(false);
+  const [volume, setVolume] = useState<number>(0.5);
+  const [muted, setMuted] = useState<boolean>(false);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [duration, setDuration] = useState<string>('00:00');
+  const [elapsedTime, setElapsedTime] = useState<string>('00:00');
+  const song = playlist[currentIndex];
+  const songRef = useRef<Howl | null>(null);
 
-  const [playing, setPlaying] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [volume, setVolume] = useState(0.5);
-  const [mute, setMute] = useState(false);
-  const [currentTime, setCurrentTime] = useState('00:00');
-  const [duration, setDuration] = useState('00:00');
-  const [seek, setSeek] = useState(0);
+  const handlePlay = useCallback(() => {
+    if (songRef.current) {
+      if (Howler.ctx.state === 'suspended') {
+        Howler.ctx.resume().then(() => {
+          if (!songRef.current?.playing()) {
+            songRef.current?.play();
+          }
+        });
+      } else {
+        if (songRef.current.playing()) {
+          songRef.current.pause();
+        } else {
+          songRef.current.play();
+        }
+      }
+    }
+  }, []);
+
+  const handleVolumeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newVolume = parseFloat(event.target.value);
+      setVolume(newVolume);
+      songRef.current?.volume(newVolume);
+    },
+    [setVolume]
+  );
+
+  const handleMuteToggle = useCallback(() => {
+    setMuted((prevMute: boolean) => {
+      const newMute = !prevMute;
+      songRef.current?.mute(newMute);
+      return newMute;
+    });
+  }, [setMuted]);
+
+  const handleChangeSong = useCallback((newIndex: number) => {
+    setCurrentIndex(newIndex);
+    setElapsedTime('00:00');
+    setPlayback(false);
+  }, []);
+
+  const handlePreviousSong = useCallback(() => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : playlist.length - 1;
+    handleChangeSong(newIndex);
+  }, [currentIndex, handleChangeSong]);
+
+  const handleNextSong = useCallback(() => {
+    const newIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
+    handleChangeSong(newIndex);
+  }, [currentIndex, handleChangeSong]);
 
   const formatTime = (seconds: number): string => {
     if (isNaN(seconds) || seconds < 0) {
@@ -27,110 +76,62 @@ export default function useAudio() {
     return `${paddedMinutes}:${paddedSeconds}`;
   };
 
-  const updateSeekAndTime = () => {
-    if (song.current) {
-      const currentSeek = song.current.seek() as number;
-      setSeek(currentSeek);
-      setCurrentTime(formatTime(currentSeek));
-      // keep animation loop running
-      animationFrame.current = requestAnimationFrame(updateSeekAndTime);
-    }
-  };
-
-  const togglePlay = () => {
-    if (playing) {
-      song.current?.pause();
-      // stop animation loop
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current);
-      }
-    } else {
-      song.current?.play();
-      // restart animation loop
-      updateSeekAndTime();
-    }
-    setPlaying(!playing);
-  };
-
-  const toggleMute = () => {
-    if (mute) {
-      song.current?.mute(false);
-    } else {
-      song.current?.mute(true);
-    }
-    setMute(!mute);
-  };
-
-  const previousSong = () => {
-    if (playlist.length === 0) return;
-
-    const newSongIndex =
-      currentIndex > 0 ? currentIndex - 1 : playlist.length - 1;
-    setCurrentIndex(newSongIndex);
-    const newCurrentSong = playlist[newSongIndex];
-
-    setSeek(0);
-    setCurrentTime('00:00');
-    setDuration(newCurrentSong?.duration ?? '00:00');
-  };
-
-  const nextSong = () => {
-    if (playlist.length === 0) return;
-
-    const newSongIndex =
-      currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
-    setCurrentIndex(newSongIndex);
-    const newCurrentSong = playlist[newSongIndex];
-
-    setSeek(0);
-    setCurrentTime('00:00');
-    setDuration(newCurrentSong?.duration ?? '00:00');
-  };
-
   useEffect(() => {
-    // new howl instance for the current song
-    song.current = new Howl({
-      src: [playlist[currentIndex].url],
-      format: ['mp3'],
+    if (songRef.current) {
+      songRef.current.unload();
+    }
+
+    songRef.current = new Howl({
+      src: [song.url],
       html5: true,
-      preload: true,
-      autoplay: false,
+      preload: 'metadata',
       loop: false,
-      volume: volume,
-      onplay: () => {
-        // set duration and update seek & time
-        const durationSeconds = song.current?.duration() || 0;
-        setDuration(formatTime(durationSeconds));
-        updateSeekAndTime();
+      autoplay: false,
+      volume: 0.5,
+      onload: () => {
+        setDuration(song.duration);
       },
-      onend: () => {
-        nextSong();
+      onplay: () => {
+        setPlayback(true);
       },
       onpause: () => {
-        setPlaying(false);
+        setPlayback(false);
+      },
+      onend: () => {
+        handleNextSong();
       }
     });
 
     return () => {
-      song.current?.unload();
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current);
-      }
+      songRef.current?.unload();
     };
-  }, [currentIndex, volume, nextSong, updateSeekAndTime]);
+  }, [currentIndex, handleNextSong]);
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    if (playback && songRef.current) {
+      intervalId = setInterval(() => {
+        const currentSeconds = songRef.current?.seek() as number;
+        setElapsedTime(formatTime(currentSeconds));
+      }, 1000);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [playback]);
 
   return {
-    playing,
-    mute,
-    currentIndex,
-    currentTime,
-    duration,
-    seek,
+    song,
+    playback,
     volume,
-    togglePlay,
-    toggleMute,
-    previousSong,
-    nextSong,
-    setVolume
+    muted,
+    currentIndex,
+    elapsedTime,
+    duration,
+    songRef,
+    handlePlay,
+    handleVolumeChange,
+    handleMuteToggle,
+    handlePreviousSong,
+    handleNextSong
   };
 }

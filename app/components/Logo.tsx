@@ -16,16 +16,17 @@ export default function Logo() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-start p-2">
+    <div className="max-w-screen-sm mx-auto flex justify-center items-start">
       {darkMode ? (
-        <Image
-          src="/images/logo_dark.svg"
-          alt="logo"
-          width={500}
-          height={500}
-        />
+        <Image src="/gif/bg_dark.gif" alt="logo" width={800} height={800} />
       ) : (
-        <Image src="/images/logo.svg" alt="logo" width={500} height={500} />
+        <Image
+          src="/images/logo_i_light.svg"
+          alt="logo"
+          width={800}
+          height={800}
+          priority
+        />
       )}
     </div>
   );
