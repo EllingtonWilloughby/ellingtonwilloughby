@@ -17,24 +17,22 @@
   --accent: #fd4206ff;
 }
 
-html,
-body {
-  height: 100%;
+html {
+  height: 100dvh;
+  width: 100dvw;
   margin: 0;
   padding: 0;
 }
 
 body {
   position: relative;
-  display: flex;
-  flex-direction: column;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.4rem;
   line-height: 1.6;
   font-weight: 400;
   color: var(--text);
-  background-color: var(--background);
+  background-color: transparent;
   min-height: 100vh;
   width: 100%;
   z-index: -99;
@@ -75,8 +73,6 @@ a:hover {
 }
 
 button {
-  min-height: 2.4rem;
-  min-width: 2.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,6 +80,7 @@ button {
   background-color: none;
   border-radius: 0.3rem;
   transition: all 0.3s ease-in-out;
+  padding: 0.5rem;
 }
 
 button:hover {
@@ -98,8 +95,6 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 2.2rem;
-  width: 2.2rem;
   transition: all 0.3s ease-in-out;
   border-radius: 0.3rem;
 }

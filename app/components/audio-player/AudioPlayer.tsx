@@ -29,30 +29,28 @@ export default function AudioPlayer() {
   };
 
   return (
-    <div className="relative w-full max-w-screen-md mx-auto">
-      <section className="w-full text-center">
-        <div className="min-h-28 w-full text-center">
-          {playback && (
-            <span className="text-center text-base md:text-lg subpixel-antialiased">
-              {`Current song: ${song.title}`}
-            </span>
-          )}
-          <br />
-          {playback && (
-            <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
-              {`${elapsedTime} / ${duration}`}
-            </div>
-          )}
-        </div>
+    <div className="relative min-h-60 w-full max-w-screen-md mx-auto p-2">
+      <section className="min-h-28 w-full text-center">
+        {playback && (
+          <span className="text-center text-base md:text-lg subpixel-antialiased">
+            {`Current song: ${song.title}`}
+          </span>
+        )}
+        <br />
+        {playback && (
+          <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
+            {`${elapsedTime} / ${duration}`}
+          </div>
+        )}
       </section>
 
       <section className="w-full flex justify-evenly items-center">
         <div className="link-container">
           <button onClick={handlePlay}>
             {playback ? (
-              <Pause weight="duotone" size="24" className="player-icon" />
+              <Pause weight="duotone" className="player-icon" />
             ) : (
-              <Play weight="duotone" size="24" className="player-icon" />
+              <Play weight="duotone" className="player-icon" />
             )}
           </button>
           <label className="link-label">{playback ? 'Pause' : 'Play'}</label>
@@ -60,14 +58,14 @@ export default function AudioPlayer() {
 
         <div className="link-container">
           <button onClick={handlePreviousSong}>
-            <SkipBack weight="duotone" size="24" className="player-icon" />
+            <SkipBack weight="duotone" className="player-icon" />
           </button>
           <label className="link-label">Previous</label>
         </div>
 
         <div className="link-container">
           <button onClick={handleNextSong}>
-            <SkipForward weight="duotone" size="24" className="player-icon" />
+            <SkipForward weight="duotone" className="player-icon" />
           </button>
           <label className="link-label">Next</label>
         </div>
@@ -75,17 +73,9 @@ export default function AudioPlayer() {
         <div className="link-container">
           <button onClick={handleMuteToggle}>
             {muted ? (
-              <SpeakerSimpleX
-                weight="duotone"
-                size="24"
-                className="player-icon"
-              />
+              <SpeakerSimpleX weight="duotone" className="player-icon" />
             ) : (
-              <SpeakerSimpleSlash
-                weight="duotone"
-                size="24"
-                className="player-icon"
-              />
+              <SpeakerSimpleSlash weight="duotone" className="player-icon" />
             )}
           </button>
           <label className="link-label">{muted ? 'Unmute' : 'Mute'}</label>

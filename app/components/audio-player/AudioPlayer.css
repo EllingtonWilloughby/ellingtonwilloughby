@@ -106,8 +106,8 @@ input[type='range']:focus::-moz-range-thumb {
 }
 
 .player-icon {
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 @media screen and (min-width: 641px) {
@@ -145,7 +145,7 @@ input[type='range']:focus::-moz-range-thumb {
   }
 
   .player-icon {
-    height: 2.85rem;
-    width: 2.85rem;
+    height: 3rem;
+    width: 3rem;
   }
 }
