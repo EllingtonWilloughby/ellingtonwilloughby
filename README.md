@@ -1,47 +1,58 @@
-# NextJS
+# Ellington Willoughby & the Mythical Squid
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project is the website for Portland, Oregon-based psychadelic-rock band
+Ellington Willoughby & the Mythical Squid. The project was built using Next.js
+14, Tailwind CSS, and ESLint, and features an audio player on the home page.
+GitHub Actions was integrated as well, for continuous integration.
 
-## Getting Started
+## Features
 
-First, run the development server:
+1. Audio Player
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The homepage features an audio player built using Howler.js to allow users
+to play and interact with the band’s music. The audio player includes play/pause
+functionality, volume control, and previous/next track navigation.
+
+## Technologies Used
+
+- Next.js 14: A powerful React framework for server-side rendering and static
+  site generation.
+- Tailwind CSS: Utility-first CSS framework for custom styling.
+- Howler.js: Used for audio playback.
+- ESLint: Ensures code quality and consistency.
+- GitHub Actions: Automated workflow for building and testing the project
+  on every push.
+
+## Project Setup
+
+To run the project locally:
+
+### Clone the repository
+
+```sh
+git clone https://github.com/yourusername/band-website.git
+cd band-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Start the development server
 
-## Learn More
+```sh
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Open your browser and navigate to `http://localhost:3000`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Continuous Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project uses GitHub Actions to run automated checks:
 
-## Deploy on Vercel
+- The workflow is triggered on each push to the repository.
+- ESLint is used to maintain code quality.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Tailwind Responsive Design Breakpoints
-
-0px     -   639px     mobile
-640px   -   767px     small
-768px   -   1023px    medium
-1024px  -   1279px    large
-1280px  -   1535px    x-large
-1536px  -   all       2x-large
+To view the build status or logs, visit the Actions tab in the repository.

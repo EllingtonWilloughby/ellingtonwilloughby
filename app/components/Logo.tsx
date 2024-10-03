@@ -1,19 +1,33 @@
-'use client';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ILogo } from '../lib/types';
-import { useColorSchemeContext } from '../lib/context/ColorSchemeContext';
 
-export default function Logo({ height, width }: ILogo) {
-  const { colorScheme } = useColorSchemeContext();
+export default function Logo() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setDarkMode(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) =>
+      setDarkMode(event.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   return (
-    <Image
-      src={colorScheme ? '/images/ew_logo_dk.svg' : '/images/ew_logo.svg'}
-      alt="ellington willoughby & the mythical squid"
-      height={height}
-      width={width}
-      priority={true}
-      className="size-full max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto"
-    />
+    <div className="max-w-screen-sm mx-auto flex justify-center items-start">
+      {darkMode ? (
+        <Image src="/gif/bg_dark.gif" alt="logo" width={800} height={800} />
+      ) : (
+        <Image
+          src="/images/logo_i_light.svg"
+          alt="logo"
+          width={800}
+          height={800}
+          priority
+        />
+      )}
+    </div>
   );
 }

@@ -1,29 +1,39 @@
 import type { Metadata } from 'next';
-import { Cairo_Play } from 'next/font/google';
+import localFont from 'next/font/local';
+import Footer from './components/footer/Footer';
 import './globals.css';
-import { ColorSchemeProvider } from '@/app/lib/context/ColorSchemeContext';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import './darkmode.css';
 
-const cairo = Cairo_Play({ subsets: ['latin'] });
+const cairoPlaySans = localFont({
+  src: './fonts/CairoPlayVF.ttf',
+  variable: '--font-cairo-play-sans',
+  weight: '100 900'
+});
+
+const geistMono = localFont({
+  src: './fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900'
+});
 
 export const metadata: Metadata = {
-  title: 'Ellington Willoughby',
-  description: 'Ellington Willoughby & the Mythical Squid'
+  title: 'Ellington Willoughby & the Mythical Squid',
+  description: 'Portland, OR, US'
 };
 
 export default function RootLayout({
   children
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <ColorSchemeProvider>
-        <body className={cairo.className}>
-          {children}
-          <SpeedInsights />
-        </body>
-      </ColorSchemeProvider>
+      <body
+        className={`${cairoPlaySans.variable} ${geistMono.variable} antialiased`}
+      >
+        <main className="main">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

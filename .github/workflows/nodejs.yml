@@ -1,5 +1,3 @@
-# Sample workflow for building and deploying a Node.js
-
 name: Node.js CI
 
 on:
