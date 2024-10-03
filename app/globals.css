@@ -9,7 +9,7 @@
 }
 
 :root {
-  --thumb: #4e4e4efe;
+  --thumb: #4e4e4eff;
   --text: #444140ff;
   --background: #eaededff;
   --primary: #6edcdcff;
@@ -114,24 +114,6 @@ button:hover {
   cursor: pointer;
 }
 
-.album-link-container {
-  min-height: 17rem;
-  min-width: 17rem;
-  transition: all 0.3s ease-in-out;
-  border-radius: 0.4rem;
-}
-
-.album-link-label {
-  font-size: 1.4rem;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.album-link-container:hover .album-link-label {
-  opacity: 1;
-  cursor: pointer;
-}
-
 .find-out-more {
   min-height: 2.2rem;
   min-width: 2.4rem;
@@ -145,14 +127,6 @@ button:hover {
   color: var(--text);
   background-color: none;
   transition: all 0.3s ease-in-out;
-}
-
-@media screen and (max-width: 568px) {
-  button {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-    border-radius: 0.2rem;
-  }
 }
 
 @layer utilities {

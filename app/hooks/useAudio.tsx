@@ -9,9 +9,17 @@ export default function useAudio() {
   const [muted, setMuted] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [duration, setDuration] = useState<string>('00:00');
-  const [displayTime, setDisplayTime] = useState<string>('00:00');
+  const [elapsedTime, setElapsedTime] = useState<string>('00:00');
   const song = playlist[currentIndex];
   const songRef = useRef<Howl | null>(null);
+
+  const handlePlay = useCallback(() => {
+    if (songRef.current?.playing()) {
+      songRef.current.pause();
+    } else {
+      songRef.current?.play();
+    }
+  }, []);
 
   const handleVolumeChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +40,7 @@ export default function useAudio() {
 
   const handleChangeSong = useCallback((newIndex: number) => {
     setCurrentIndex(newIndex);
-    setDisplayTime('00:00');
+    setElapsedTime('00:00');
     setPlayback(false);
   }, []);
 
@@ -90,20 +98,12 @@ export default function useAudio() {
     };
   }, [currentIndex, song.url, song.duration, handleNextSong]);
 
-  const handlePlay = useCallback(() => {
-    if (songRef.current?.playing()) {
-      songRef.current.pause();
-    } else {
-      songRef.current?.play();
-    }
-  }, []);
-
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
     if (playback && songRef.current) {
       intervalId = setInterval(() => {
         const currentSeconds = songRef.current?.seek() as number;
-        setDisplayTime(formatTime(currentSeconds));
+        setElapsedTime(formatTime(currentSeconds));
       }, 1000);
     }
 
@@ -116,7 +116,7 @@ export default function useAudio() {
     volume,
     muted,
     currentIndex,
-    displayTime,
+    elapsedTime,
     duration,
     songRef,
     handlePlay,
