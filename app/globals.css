@@ -139,6 +139,7 @@ button:hover {
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --thumb: #ffffff;
     --text: #eaededff;
     --background: #444140ff;
     --primary: #6edcdcff;

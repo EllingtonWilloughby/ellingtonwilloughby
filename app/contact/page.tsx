@@ -26,7 +26,7 @@ export default function ContactPage() {
           >
             this link
           </Link>
-          , or on our socials through any of the links below:
+          , or through any of the links below!
         </h3>
         <SocialIcons />
       </section>

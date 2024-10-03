@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${cairoPlaySans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );
