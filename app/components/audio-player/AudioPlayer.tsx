@@ -1,5 +1,4 @@
 import useAudio from '@/hooks/useAudio';
-import { playlist } from '@/data';
 import {
   Pause,
   Play,
@@ -16,10 +15,8 @@ export default function AudioPlayer() {
     playback,
     volume,
     muted,
-    currentIndex,
     elapsedTime,
     duration,
-    songRef,
     handlePlay,
     handleVolumeChange,
     handleMuteToggle,
@@ -28,7 +25,6 @@ export default function AudioPlayer() {
   } = useAudio();
 
   const changeVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(event.target.value);
     handleVolumeChange(event);
   };
 
