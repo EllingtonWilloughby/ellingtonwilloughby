@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import { playlist } from '@/data';
 
 export default function useAudio() {
