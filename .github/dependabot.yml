@@ -4,10 +4,12 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+    ignores:
+      - dependency-name: 'eslint'
     commit-message:
       # Prefix all commit messages with "npm: "
-      prefix: "npm"
+      prefix: 'npm'
