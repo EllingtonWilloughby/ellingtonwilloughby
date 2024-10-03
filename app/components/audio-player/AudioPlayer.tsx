@@ -1,4 +1,3 @@
-import { ChangeEvent } from 'react';
 import {
   Pause,
   Play,
@@ -26,12 +25,11 @@ export default function AudioPlayer() {
   } = useAudio();
 
   const changeVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(event.target.value);
     handleVolumeChange(event);
   };
 
   return (
-    <div className="relative w-full max-w-screen-md mx-auto">
+    <div className="relative w-full max-w-screen-md mx-auto flex flex-col flex-auto">
       <section className="w-full text-center">
         <div className="min-h-28 w-full text-center">
           {playback && (
