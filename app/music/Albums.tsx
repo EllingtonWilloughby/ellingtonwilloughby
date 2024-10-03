@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IAlbum } from '@/types';
 import { albums } from '@/data';
-import './Albums.css';
 
 export default function Albums() {
   return (
