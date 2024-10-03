@@ -16,6 +16,7 @@ export default function useAudio() {
   const handlePlay = useCallback(() => {
     if (songRef.current) {
       if (Howler.ctx.state === 'suspended') {
+        // Resume the audio context after a user gesture
         Howler.ctx.resume().then(() => {
           if (!songRef.current?.playing()) {
             songRef.current?.play();
@@ -105,7 +106,7 @@ export default function useAudio() {
     return () => {
       songRef.current?.unload();
     };
-  }, [currentIndex, handleNextSong]);
+  }, [currentIndex, song.url, song.duration, handleNextSong]);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -118,7 +119,6 @@ export default function useAudio() {
 
     return () => clearInterval(intervalId);
   }, [playback]);
-
   return {
     song,
     playback,
