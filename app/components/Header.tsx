@@ -8,9 +8,9 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="max-w-screen-md mx-auto h-1/5 px-6 py-12">
-      <nav className="min-w-60 w-full flex flex-col justify-center items-center">
-        <ul className="w-full flex justify-around items-center">
+    <header className="w-full h-1/5 p-8">
+      <nav className="w-full h-full p-2">
+        <ul className="flex justify-between items-center p-2">
           {navlinks
             .filter((navlink: INavigationLink) => navlink.href !== pathname)
             .map((navlink: INavigationLink) => (
