@@ -71,6 +71,7 @@ a {
 a:hover {
   color: var(--accent);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 button {
@@ -88,6 +89,8 @@ button {
 button:hover {
   color: var(--primary);
   border: var(--primary) 1px solid;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .link-container {
@@ -99,7 +102,6 @@ button:hover {
   width: 2.2rem;
   transition: all 0.3s ease-in-out;
   border-radius: 0.3rem;
-  cursor: pointer;
 }
 
 .link-label {

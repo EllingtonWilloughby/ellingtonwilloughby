@@ -14,10 +14,20 @@ export default function useAudio() {
   const songRef = useRef<Howl | null>(null);
 
   const handlePlay = useCallback(() => {
-    if (songRef.current?.playing()) {
-      songRef.current.pause();
-    } else {
-      songRef.current?.play();
+    if (songRef.current) {
+      if (Howler.ctx.state === 'suspended') {
+        Howler.ctx.resume().then(() => {
+          if (!songRef.current?.playing()) {
+            songRef.current?.play();
+          }
+        });
+      } else {
+        if (songRef.current.playing()) {
+          songRef.current.pause();
+        } else {
+          songRef.current.play();
+        }
+      }
     }
   }, []);
 
@@ -81,7 +91,6 @@ export default function useAudio() {
       onload: () => {
         setDuration(song.duration);
       },
-      // these were just added
       onplay: () => {
         setPlayback(true);
       },
@@ -96,7 +105,7 @@ export default function useAudio() {
     return () => {
       songRef.current?.unload();
     };
-  }, [currentIndex, song.url, song.duration, handleNextSong]);
+  }, [currentIndex, handleNextSong]);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
