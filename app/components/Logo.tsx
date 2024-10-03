@@ -1,21 +1,39 @@
-'use client'
-import darkLogo from '../../public/images/ew_logo_dk.svg'
-import lightLogo from '../../public/images/ew_logo.svg'
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { LogoProps } from '../../lib/types'
-import { useDarkMode } from '@/lib/context/ColorSchemeContext';
 
-export default function Logo({ height, width }: LogoProps) {
-  const { darkMode } = useDarkMode()
+export default function Logo() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setDarkMode(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) =>
+      setDarkMode(event.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   return (
-    <Image
-      src={darkMode ? darkLogo : lightLogo}
-      alt="ellington willoughby & the mythical squid"
-      height={height}
-      width={width}
-      priority={true}
-      className="size-full max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto"
-    />
-  )
+    <div className="max-w-screen-sm mx-auto flex justify-center items-start">
+      {darkMode ? (
+        <Image
+          src="/images/logo_dark.svg"
+          alt="logo"
+          width={800}
+          height={800}
+          priority
+        />
+      ) : (
+        <Image
+          src="/images/logo.svg"
+          alt="logo"
+          width={800}
+          height={800}
+          priority
+        />
+      )}
+    </div>
+  );
 }
