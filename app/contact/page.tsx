@@ -1,29 +1,35 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useDarkMode } from '@/lib/context/ColorSchemeContext';
-import { PiHouseFill } from 'react-icons/pi';
-
-export default function Contact() {
-  const { darkMode } = useDarkMode();
-
+import { House } from '@phosphor-icons/react';
+import SocialIcons from '@/contact/SocialIcons';
+export default function ContactPage() {
   return (
-      <div className="relative min-h-screen max-w-screen-md w-full mx-auto flex flex-col justify-start items-center p-6">
-      {darkMode
-        ? (<Image src="/images/contact_dk.svg" height={500} width={500} alt="contact heading" className="-mt-20 -mb-20" />)
-        : (<Image src="/images/conteact.svg" height={500} width={500} alt="contact heading" className="-mt-20 -mb-20" />)}
-      <Link href="/" className="absolute top-8 left-8"><PiHouseFill size={24} /></Link>
+    <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-2">
+      <section className="relative max-h-40 w-full">
+        <Link href="/" className="link-container absolute top-4 left-4">
+          <House weight="duotone" size={24} />
+          <span className="link-label absolute top-2 left-8">Home</span>
+        </Link>
+        <h2 className="min-h-20 w-full text-center text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-10">
+          Contact
+        </h2>
+      </section>
 
-      <div className="w-full mx-auto text-center text-base/5 sm:text-lg/6 md:text-xl/7 subpixel-antialiased mt-8">
-        <span className="text-center text-base/6 sm:text-lg/7 subpixel-antialiased">Reach out to Ellington Willoughby & the Mythical Squid by emailing <Link
-          href="mailto:ellingtonwilloughby@gmail.com"
-          className="text-base/6 sm:text-lg/7 underline subpixel-antialiased">{` ellingtonwilloughby@gmail.com`}</Link>, or by reaching out on our <Link href="https://www.facebook.com/EllingtonWilloughby" className="text-base/6 sm:text-lg/7 underline subpixel-antialiased">Facebook</Link>.</span>
-      <p className="my-4 text-center text-base/6 sm:text-lg/7 subpixel-antialiased">Peace!</p>
-      </div>
-      <Image src="/images/j.jpeg" height={500} width={500} alt="hi j! bye j!" className="px-4" />
-      <p className="text-center text-base/6 sm:text-lg/7 mt-2">Say hi Jay!</p>
-      </div>
+      <section className="w-full max-w-screen-md mx-auto flex flex-col justify-around items-center flex-auto rounded-lg shadow-lg backdrop-blur-xl backdrop-saturate-50 p-4 min-h-96">
+        <h3 className="text-center leading-7 font-normal text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased">
+          Reach out to Ellington Willoughby & the Mythical Squid by emailing us
+          at{' '}
+          <Link
+            href="mailto:ellingtonwilloughby@gmail.com"
+            className="font-semibold subpixel-antialiased"
+          >
+            this link
+          </Link>
+          , or through any of the links below!
+        </h3>
+        <SocialIcons />
+      </section>
+    </div>
   );
-
 }
