@@ -31,7 +31,7 @@ export default function AudioPlayer() {
   };
 
   return (
-    <div className="relative w-full max-w-screen-sm mx-auto">
+    <div className="relative w-full max-w-screen-md mx-auto">
       <section className="w-full text-center">
         <div className="min-h-28 w-full text-center">
           {playback && (
@@ -52,9 +52,9 @@ export default function AudioPlayer() {
         <div className="link-container">
           <button onClick={handlePlay}>
             {playback ? (
-              <Pause weight="duotone" size="24" />
+              <Pause weight="duotone" size="24" className="player-icon" />
             ) : (
-              <Play weight="duotone" size="24" />
+              <Play weight="duotone" size="24" className="player-icon" />
             )}
           </button>
           <label className="link-label">{playback ? 'Pause' : 'Play'}</label>
@@ -62,14 +62,14 @@ export default function AudioPlayer() {
 
         <div className="link-container">
           <button onClick={handlePreviousSong}>
-            <SkipBack weight="duotone" size="24" />
+            <SkipBack weight="duotone" size="24" className="player-icon" />
           </button>
           <label className="link-label">Previous</label>
         </div>
 
         <div className="link-container">
           <button onClick={handleNextSong}>
-            <SkipForward weight="duotone" size="24" />
+            <SkipForward weight="duotone" size="24" className="player-icon" />
           </button>
           <label className="link-label">Next</label>
         </div>
@@ -77,9 +77,17 @@ export default function AudioPlayer() {
         <div className="link-container">
           <button onClick={handleMuteToggle}>
             {muted ? (
-              <SpeakerSimpleX weight="duotone" size="24" />
+              <SpeakerSimpleX
+                weight="duotone"
+                size="24"
+                className="player-icon"
+              />
             ) : (
-              <SpeakerSimpleSlash weight="duotone" size="24" />
+              <SpeakerSimpleSlash
+                weight="duotone"
+                size="24"
+                className="player-icon"
+              />
             )}
           </button>
           <label className="link-label">{muted ? 'Unmute' : 'Mute'}</label>

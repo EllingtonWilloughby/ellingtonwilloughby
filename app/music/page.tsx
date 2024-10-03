@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { House } from '@phosphor-icons/react';
-import Albums from '@/music/Albums';
+import Albums from '@/music/albums/Albums';
 
 export default function MusicPage() {
   return (
