@@ -1,86 +1,56 @@
 'use client';
-import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import OriginStoryModal from '../components/OriginStoryModal';
-import { useColorSchemeContext } from '@/app/lib/context/ColorSchemeContext';
-import { PiHouseFill } from 'react-icons/pi';
-
+import React, { useState } from 'react';
+import { House } from '@phosphor-icons/react';
+import AboutModal from './AboutModal';
+import Musicians from './Musicians';
 export default function AboutPage() {
-  const { colorScheme } = useColorSchemeContext();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const aboutImage = colorScheme ? '/images/about_dk.svg' : '/images/About.svg';
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const members = [
-    {
-      name: 'Tim Gottgetreu',
-      instruments: 'vocals, piano, acoustic guitar, percussion'
-    },
-    { name: 'Jason Gottgetreu', instruments: 'drums, percussion, synthesizer' },
-    { name: 'Joshua Cloudt', instruments: 'electric guitar, pedal board' },
-    { name: 'Jonathan Boyette', instruments: 'electric guitar, organ' },
-    { name: 'Dan Miller', instruments: 'bass' },
-    { name: 'Adam Robson', instruments: 'drums, trumpet' }
-  ];
+  const toggleModal = (currentOpenState: boolean) => {
+    setIsOpen(!currentOpenState);
+  };
 
   return (
-    <div className="relative min-h-screen w-full max-w-screen-lg mx-auto flex flex-col items-center justify-start p-6">
-      <Image
-        src={aboutImage}
-        height={500}
-        width={500}
-        alt="about heading"
-        className="-mt-20 -mb-20 pt-6"
-      />
+    <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-4">
+      <section className="relative max-h-40 w-full">
+        <Link href="/" className="link-container absolute top-4 left-4">
+          <House weight="duotone" size={24} />
+          <span className="link-label absolute top-2 left-8">Home</span>
+        </Link>
+        <h2 className="min-h-20 w-full text-center text-3xl md:text-4xl lg:text-5xl subpixel-antialiased p-10">
+          About
+        </h2>
+      </section>
 
-      <Link href="/" className="absolute top-8 left-8 text-sm">
-        <PiHouseFill size={24} />
-      </Link>
+      <section className="w-full max-w-screen-md mx-auto flex flex-col justify-between items-center flex-auto rounded-lg shadow-lg backdrop-blur-xl backdrop-saturate-50 p-4">
+        <div className="min-h-60 w-full flex flex-col justify-between items-center">
+          <p className="text-center leading-7 text-sm sm:text-base md:text-lf lg:text-xl subpixel-antialiased p-2">
+            Ellington Willoughby & the Mythical Squid is a psychedelic-pop band
+            from SE Portland, Oregon.
+          </p>
 
-      <div className="container flex flex-col justify-start items-center">
-        <p className="text-center text-base/4 sm:text-lg/5 md:text-xl/6 subpixel-antialiased mt-8 px-2">
-          Ellington Willoughby and the Mythical Squid is a psychedelic-pop band
-          from SE Portland, Oregon.
-        </p>
-        <p className="text-center text-base/4 sm:text-lg/5 md:text-xl/6 subpixel-antialiased my-8 px-6">
-          Funky Grooves to accompany you on a journey that is both far out &
-          close to home.
-        </p>
+          <p className="text-center leading-7 text-sm sm:text-base md:text-lg lg:text-xl subpixel-antialiased p-2">
+            Funky Grooves to accompany you on a journey that is both far out &
+            close to home.
+          </p>
+          <button
+            type="button"
+            onClick={() => toggleModal(isOpen)}
+            aria-label="Find out more about the band"
+            className="find-out-more text-base md:text-lg lg:text-xl subpixel-antialiased"
+          >
+            Find out more
+          </button>
+        </div>
 
-        <button
-          type="button"
-          aria-label="find out more about the band"
-          onClick={openModal}
-          className="text-sm/5 sm:text-base/6 md:text-lg/7 subpixel-antialiased py-2 underline p-2 rounded-lg"
-        >
-          Find out more
-        </button>
-      </div>
+        <div className="min-h-72 w-full">
+          <Musicians />
+        </div>
+      </section>
 
-      <div className="flex flex-col items-center justify-center mt-4">
-        <p className="text-xl my-4 subpixel-antialiased">Members:</p>
-        {members.map((member: { name: string; instruments: string }, index) => (
-          <div className="container" key={index}>
-            <p className="text-base font-semibold text-center subpixel-antialiased">
-              {member.name}
-            </p>
-            <p className="text-sm text-center subpixel-antialiased">
-              {member.instruments}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <div className="w-full h-full">
-        <OriginStoryModal isOpen={isOpen} closeModal={closeModal} />
+      <div className="">
+        <AboutModal isOpen={isOpen} onClose={() => toggleModal(isOpen)} />
       </div>
     </div>
   );
