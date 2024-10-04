@@ -50,7 +50,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/bg_lt.svg');
+  background-image: url('/images/bg_light.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,6 +73,8 @@ a:hover {
 }
 
 button {
+  min-height: 3rem;
+  min-width: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,7 +82,6 @@ button {
   background-color: none;
   border-radius: 0.3rem;
   transition: all 0.3s ease-in-out;
-  padding: 0.5rem;
 }
 
 button:hover {
@@ -91,6 +92,8 @@ button:hover {
 }
 
 .link-container {
+  min-width: 3rem;
+  min-height: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
