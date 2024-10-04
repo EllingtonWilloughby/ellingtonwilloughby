@@ -1,15 +1,16 @@
 import Image from 'next/image';
+import './Footer.css';
 
 export default function Footer() {
   return (
-    <footer className="border-2 border-black bg-transparent min-h-40 max-h-40">
+    <div className="relative max-w-screen-lg mx-auto">
       <Image
         src="/images/logo_ii_light.png"
-        width={160}
-        height={160}
+        width={100}
+        height={100}
         alt="Logo"
-        className="bg-transparent min-h-40 max-h-40"
+        className="foot-logo absolute bottom-0 right-0"
       ></Image>
-    </footer>
+    </div>
   );
 }

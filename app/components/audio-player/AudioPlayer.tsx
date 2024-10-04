@@ -30,21 +30,21 @@ export default function AudioPlayer() {
 
   return (
     <div className="relative min-h-60 w-full max-w-screen-md mx-auto p-2">
-      <section className="min-h-28 w-full text-center">
+      <section className="min-h-32 w-full text-center flex flex-col items-center justify-end m-4">
         {playback && (
-          <span className="text-center text-base md:text-lg subpixel-antialiased">
-            {`Current song: ${song.title}`}
-          </span>
-        )}
-        <br />
-        {playback && (
-          <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
-            {`${elapsedTime} / ${duration}`}
+          <div className="now-playing">
+            <span className="text-center text-base md:text-lg subpixel-antialiased">
+              {`Current song: ${song.title}`}
+            </span>
+            <br />
+            <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
+              {`${elapsedTime} / ${duration}`}
+            </div>
           </div>
         )}
       </section>
 
-      <section className="w-full flex justify-evenly items-center">
+      <section className="min-h-28 w-full flex justify-evenly items-center">
         <div className="link-container">
           <button onClick={handlePlay}>
             {playback ? (
