@@ -1,12 +1,5 @@
 @media (prefers-color-scheme: dark) {
-  :root {
-    --thumb: #ffffff;
-    --text: #eaededff;
-    --background: #444140ff;
-    --primary: #6edcdcff;
-    --secondary: #fef10bff;
-    --accent: #fd4206ff;
-  }
+  
 
   html {
     height: 100%;
@@ -14,14 +7,7 @@
     padding: 0;
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    color: var(--text);
-    background-color: var(--background);
-    min-height: 100vh;
-    z-index: -99;
-  }
+  
 
   .main {
     position: relative;

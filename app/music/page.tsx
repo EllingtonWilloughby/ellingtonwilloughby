@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { House } from '@phosphor-icons/react';
 import Albums from '@/music/albums/Albums';
@@ -15,7 +16,7 @@ export default function MusicPage() {
         </h2>
       </section>
 
-      <section className="w-full max-w-screen-md mx-auto flex flex-col justify-between items-center flex-auto rounded-lg shadow-lg backdrop-blur-xl backdrop-saturate-50 p-2">
+      <section className="w-full max-w-screen-md mx-auto flex flex-col justify-between items-center flex-auto rounded-lg shadow-lg backdrop-blur-xl bg-opacity-60 p-2">
         <Albums />
       </section>
     </div>

@@ -15,6 +15,9 @@
   --primary: #6edcdcff;
   --secondary: #fef10bff;
   --accent: #fd4206ff;
+
+  --background-image-dark: url('/gif/bg_dark.gif');
+  --background-image-light: url('/images/bg_light.svg');
 }
 
 html {
@@ -26,8 +29,6 @@ html {
 
 body {
   position: relative;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.4rem;
   line-height: 1.6;
   font-weight: 400;
@@ -35,29 +36,50 @@ body {
   background-color: transparent;
   min-height: 100vh;
   width: 100%;
-  z-index: -99;
+  z-index: -10;
+  font-family: --font-cairo-play-sans, sans-serif;
 }
 
-.main {
+main {
   position: relative;
   z-index: 1;
 }
 
-.main::before {
-  content: '';
-  position: absolute;
+.background-image {
+  background-image: var(--background-image-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/bg_light.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  opacity: 0.4;
-  z-index: -1;
-  pointer-events: none;
+  z-index: -5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --thumb: #ffffff;
+    --text: #eaededff;
+    --background: #444140ff;
+    --primary: #6edcdcff;
+    --secondary: #fef10bff;
+    --accent: #fd4206ff;
+  }
+
+  .background-image {
+    background-image: var(--background-image-dark);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+  }
 }
 
 a {
@@ -99,14 +121,13 @@ button:hover {
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  border-radius: 0.3rem;
 }
 
 .link-label {
-  font-size: 1.1rem;
+  height: 2.5rem;
+  width: 2.5rem;
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  border-radius: 0.3rem;
 }
 
 .link-container:hover .link-label {
