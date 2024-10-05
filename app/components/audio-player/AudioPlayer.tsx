@@ -1,3 +1,4 @@
+'use client';
 import useAudio from '@/hooks/useAudio';
 import {
   Pause,

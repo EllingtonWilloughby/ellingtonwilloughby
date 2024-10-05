@@ -1,5 +1,3 @@
-'use client';
-import React from 'react';
 import Link from 'next/link';
 import { House } from '@phosphor-icons/react';
 import Albums from '@/music/albums/Albums';
