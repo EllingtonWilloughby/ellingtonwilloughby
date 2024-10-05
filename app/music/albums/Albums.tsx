@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IAlbum } from '@/types';
 import { albums } from '@/data';
+import './Albums.css';
 
 export default function Albums() {
   return (
@@ -9,9 +10,9 @@ export default function Albums() {
       {albums.map((album: IAlbum) => (
         <div
           key={album.src}
-          className="album-link-container w-full flex flex-col justify-center items-center p-2"
+          className="w-full flex flex-col justify-center items-center p-2"
         >
-          <li className="flex flex-col justify-center items-center p-6">
+          <li className="album-link-container flex flex-col justify-start items-center p-12">
             <Link href={album.link} className="text-center">
               <Image
                 src={album.src}

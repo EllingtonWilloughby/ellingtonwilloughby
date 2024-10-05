@@ -8,7 +8,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full h-1/5 p-8">
+    <header className="w-full h-20 p-8">
       <nav className="w-full h-full p-2">
         <ul className="flex justify-between items-center p-2">
           {navlinks

@@ -1,0 +1,23 @@
+.social-link-container {
+  min-width: 3rem;
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-link-label {
+  height: 2.5rem;
+  width: 2.5rem;
+  opacity: 0;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-link-container:hover .social-link-label {
+  opacity: 1;
+  cursor: pointer;
+}

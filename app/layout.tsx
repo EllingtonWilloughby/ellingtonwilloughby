@@ -31,7 +31,6 @@ export default function RootLayout({
         className={`${cairoPlaySans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="background-image"></div>
-
         <main>{children}</main>
         <Footer />
       </body>

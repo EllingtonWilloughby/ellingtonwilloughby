@@ -1,6 +1,6 @@
 .album-link-container {
-  min-height: 17rem;
-  min-width: 17rem;
+  min-height: 13rem;
+  min-width: 13rem;
   transition: all 0.3s ease-in-out;
   border-radius: 0.4rem;
 }

@@ -4,22 +4,24 @@ import {
   InstagramLogo,
   SpotifyLogo
 } from '@phosphor-icons/react';
+import './SocialIcons.css';
 
 export default function SocialIcons() {
   return (
-    <div className="w-full flex justify-around items-center p-2">
-      <article className="link-container">
+    <div className="w-full flex justify-between items-center">
+      <article className="social-link-container">
         <Link
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.facebook.com/EllingtonWilloughby"
+          className="flex justify-center items-center text-center"
         >
           <FacebookLogo weight="duotone" size="40" />
         </Link>
-        <label className="link-label">Facebook</label>
+        <label className="social-link-label">Facebook</label>
       </article>
 
-      <article className="link-container">
+      <article className="social-link-container">
         <Link
           target="_blank"
           rel="noopener noreferrer"
@@ -27,10 +29,10 @@ export default function SocialIcons() {
         >
           <InstagramLogo weight="duotone" size="40" />
         </Link>
-        <label className="link-label">Instagram</label>
+        <label className="social-link-label">Instagram</label>
       </article>
 
-      <article className="link-container">
+      <article className="social-link-container">
         <Link
           target="_blank"
           rel="noopener noreferrer"
@@ -38,7 +40,7 @@ export default function SocialIcons() {
         >
           <SpotifyLogo weight="duotone" size="40" />
         </Link>
-        <label className="link-label">Spotify</label>
+        <label className="social-link-label">Spotify</label>
       </article>
     </div>
   );
