@@ -3,16 +3,9 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Footer from '@/components/Footer';
 
-const cairoPlaySans = localFont({
-  src: './fonts/CairoPlayVF.ttf',
-  variable: '--font-cairo-play-sans',
-  weight: '100 900'
-});
-
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900'
+const karla = localFont({
+  src: './fonts/Karla-VariableFont_wght.ttf',
+  variable: '--font-karla'
 });
 
 export const metadata: Metadata = {
@@ -27,11 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${cairoPlaySans.variable} ${geistMono.variable} antialiased relative`}
-      >
+      <body>
         <div className="background-image"></div>
-        <main className="page">{children}</main>
+        <main className={`${karla.variable} page subpixel-antialiased`}>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="max-w-screen-lg mx-auto w-full py-4 flex justify-start items-baseline">
+    <footer className="bottom-0 w-full py-4 flex justify-start items-baseline">
       <Image
         src="/images/logo_ii_light.png"
         width={80}
