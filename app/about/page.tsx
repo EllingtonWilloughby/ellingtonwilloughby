@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { House, MusicNoteSimple } from '@phosphor-icons/react';
+import { House } from '@phosphor-icons/react';
 import AboutModal from './AboutModal';
 import Musicians from './Musicians';
 import './About.css';
