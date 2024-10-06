@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import Modal from 'react-modal';
 import { X } from '@phosphor-icons/react';
 import { IAboutModal } from '@/types';

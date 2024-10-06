@@ -21,6 +21,7 @@ export interface ISong {
 }
 
 export interface IAlbum {
+  id: number;
   link: string;
   src: string;
   alt: string;

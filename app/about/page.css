@@ -1,0 +1,21 @@
+.modal-button {
+  padding: 0.5rem 1rem;
+  border: solid var(--primary) 2px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  background-color: none;
+  padding: 0.2rem 0.5rem;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  margin: 2.5rem;
+}
+
+.modal-button:hover {
+  color: var(--secondary);
+  border: solid var(--secondary) 2px;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
+'use client';
 import useAudio from '@/hooks/useAudio';
 import {
   Pause,
@@ -29,15 +30,15 @@ export default function AudioPlayer() {
   };
 
   return (
-    <div className="relative min-h-60 w-full max-w-screen-md mx-auto p-2">
-      <section className="min-h-32 w-full text-center flex flex-col items-center justify-end m-4">
+    <div className="relative min-h-40 w-full mb-4">
+      <section className="min-h-16 h-full w-full text-center">
         {playback && (
           <div className="now-playing">
-            <span className="text-center text-base md:text-lg subpixel-antialiased">
+            <span className="text-center text-sm md:text-base font-semibold subpixel-antialiased">
               {`Current song: ${song.title}`}
             </span>
             <br />
-            <div className="text-center text-base md:text-lg font-semibold subpixel-antialiased">
+            <div className="text-center text-sm md:text-base subpixel-antialiased">
               {`${elapsedTime} / ${duration}`}
             </div>
           </div>
@@ -45,43 +46,61 @@ export default function AudioPlayer() {
       </section>
 
       <section className="min-h-28 w-full flex justify-evenly items-center">
-        <div className="link-container">
-          <button onClick={handlePlay}>
+        <div className=" control-card">
+          <button
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            onClick={handlePlay}
+            aria-label={playback ? 'Pause Song' : 'Play Song'}
+          >
             {playback ? (
               <Pause weight="duotone" className="player-icon" />
             ) : (
               <Play weight="duotone" className="player-icon" />
             )}
           </button>
-          <label className="link-label">{playback ? 'Pause' : 'Play'}</label>
+          <label className=" control-label">
+            {playback ? 'Pause' : 'Play'}
+          </label>
         </div>
 
-        <div className="link-container">
-          <button onClick={handlePreviousSong}>
+        <div className="control-card">
+          <button
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            onClick={handlePreviousSong}
+            aria-label="Play Previous Song"
+          >
             <SkipBack weight="duotone" className="player-icon" />
           </button>
-          <label className="link-label">Previous</label>
+          <label className="control-label">Previous</label>
         </div>
 
-        <div className="link-container">
-          <button onClick={handleNextSong}>
+        <div className="control-card">
+          <button
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            onClick={handleNextSong}
+            aria-label="Play Next Song"
+          >
             <SkipForward weight="duotone" className="player-icon" />
           </button>
-          <label className="link-label">Next</label>
+          <label className="control-label">Next</label>
         </div>
 
-        <div className="link-container">
-          <button onClick={handleMuteToggle}>
+        <div className="control-card">
+          <button
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            onClick={handleMuteToggle}
+            aria-label={muted ? 'Mute Audio' : 'Unmute Audio'}
+          >
             {muted ? (
               <SpeakerSimpleX weight="duotone" className="player-icon" />
             ) : (
               <SpeakerSimpleSlash weight="duotone" className="player-icon" />
             )}
           </button>
-          <label className="link-label">{muted ? 'Unmute' : 'Mute'}</label>
+          <label className="control-label">{muted ? 'Unmute' : 'Mute'}</label>
         </div>
 
-        <div className="link-container vol">
+        <div className="control-card vol">
           <input
             id="volume"
             type="range"
@@ -90,8 +109,9 @@ export default function AudioPlayer() {
             step="0.01"
             value={volume}
             onChange={changeVolume}
+            aria-label="Adjust Volume"
           />
-          <label className="link-label vol-link">Volume</label>
+          <label className="control-label vol-label">Volume</label>
         </div>
       </section>
     </div>

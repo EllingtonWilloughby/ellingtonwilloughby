@@ -1,0 +1,28 @@
+.social-link-container {
+  min-width: 5rem;
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-link-label {
+  color: var(--primary);
+  font-size: 0.8rem;
+  opacity: 0;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-link-container:hover .social-link-label {
+  color: var(--primary);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.social-icon {
+  color: var(-secondary);
+}

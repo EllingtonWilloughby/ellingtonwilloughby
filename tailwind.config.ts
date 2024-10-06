@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import postcss from 'postcss';
 
 const config: Config = {
   content: [
@@ -8,9 +9,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: '375px',
+        xs: '512px'
+      },
       colors: {
+        root: 'var(--root)',
+        counterpart: 'var(--counterpart)',
+        text: 'var(--text)',
         background: 'var(--background)',
-        foreground: 'var(--foreground)'
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+        hover: 'var(--hover)',
+        active: 'var(--active)'
       }
     }
   },

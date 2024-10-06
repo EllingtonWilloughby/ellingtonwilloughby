@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Footer from './components/footer/Footer';
 import './globals.css';
-import './darkmode.css';
+import Footer from '@/components/Footer';
 
 const cairoPlaySans = localFont({
   src: './fonts/CairoPlayVF.ttf',
@@ -29,9 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cairoPlaySans.variable} ${geistMono.variable} antialiased`}
+        className={`${cairoPlaySans.variable} ${geistMono.variable} antialiased relative`}
       >
-        <main className="main">{children}</main>
+        <div className="background-image"></div>
+        <main className="page">{children}</main>
         <Footer />
       </body>
     </html>

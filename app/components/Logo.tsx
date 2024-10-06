@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
@@ -16,18 +17,15 @@ export default function Logo() {
   }, []);
 
   return (
-    <div className="max-w-screen-sm mx-auto flex justify-center items-start">
-      {darkMode ? (
-        <Image src="/gif/bg_dark.gif" alt="logo" width={800} height={800} />
-      ) : (
-        <Image
-          src="/images/logo_i_light.svg"
-          alt="logo"
-          width={800}
-          height={800}
-          priority
-        />
-      )}
+    <div className="mx-auto flex justify-center items-start max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg">
+      <Image
+        src={darkMode ? '/images/logo_i_dark.svg' : '/images/logo_i_light.svg'}
+        alt="Ellington Willoughby & the Mythical Squid band logo"
+        width={500}
+        height={500}
+        className="w-full min-w-96"
+        priority
+      />
     </div>
   );
 }
