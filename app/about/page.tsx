@@ -24,7 +24,7 @@ export default function AboutPage() {
           </Link>
         </div>
         <div className="w-full flex justify-around items-center">
-          <h2 className="page-title">Music</h2>
+          <h2 className="page-title">About</h2>
         </div>
       </section>
 

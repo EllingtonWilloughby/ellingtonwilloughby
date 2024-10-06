@@ -1,6 +1,6 @@
 .social-link-container {
-  min-width: 3rem;
-  min-height: 3rem;
+  min-width: 5rem;
+  min-height: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +10,7 @@
 }
 
 .social-link-label {
+  color: var(--primary);
   font-size: 0.8rem;
   opacity: 0;
   text-align: center;
@@ -20,4 +21,8 @@
   color: var(--primary);
   opacity: 1;
   cursor: pointer;
+}
+
+.social-icon {
+  color: var(-secondary);
 }

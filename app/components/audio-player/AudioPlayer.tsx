@@ -30,25 +30,25 @@ export default function AudioPlayer() {
   };
 
   return (
-    <div className="border-lime-300 border-2 relative min-h-40 w-full mb-12">
-      <section className="border-lime-400 border-2 min-h-16 h-full w-full text-center">
+    <div className="relative min-h-40 w-full mb-4">
+      <section className="min-h-16 h-full w-full text-center">
         {playback && (
-          <div className="border-lime-500 border-2 now-playing">
-            <span className="border-lime-600 border-2 text-center text-sm md:text-base font-semibold subpixel-antialiased">
+          <div className="now-playing">
+            <span className="text-center text-sm md:text-base font-semibold subpixel-antialiased">
               {`Current song: ${song.title}`}
             </span>
             <br />
-            <div className="border-lime-600 border-2 text-center text-sm md:text-base subpixel-antialiased">
+            <div className="text-center text-sm md:text-base subpixel-antialiased">
               {`${elapsedTime} / ${duration}`}
             </div>
           </div>
         )}
       </section>
 
-      <section className="border-lime-400 border-2 min-h-28 w-full flex justify-evenly items-center">
-        <div className="border-lime-500 border-2  control-card">
+      <section className="min-h-28 w-full flex justify-evenly items-center">
+        <div className=" control-card">
           <button
-            className="border-lime-600 border-2 control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={handlePlay}
             aria-label={playback ? 'Pause Song' : 'Play Song'}
           >
@@ -58,38 +58,36 @@ export default function AudioPlayer() {
               <Play weight="duotone" className="player-icon" />
             )}
           </button>
-          <label className=" border-lime-800 border-2 control-label">
+          <label className=" control-label">
             {playback ? 'Pause' : 'Play'}
           </label>
         </div>
 
-        <div className="border-lime-500 border-2 control-card">
+        <div className="control-card">
           <button
-            className="border-lime-600 border-2 control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={handlePreviousSong}
             aria-label="Play Previous Song"
           >
             <SkipBack weight="duotone" className="player-icon" />
           </button>
-          <label className="border-lime-700 border-2 control-label">
-            Previous
-          </label>
+          <label className="control-label">Previous</label>
         </div>
 
-        <div className="border-lime-400 border-2 control-card">
+        <div className="control-card">
           <button
-            className="border-lime-400 border-2 control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={handleNextSong}
             aria-label="Play Next Song"
           >
             <SkipForward weight="duotone" className="player-icon" />
           </button>
-          <label className="border-lime-400 border-2 control-label">Next</label>
+          <label className="control-label">Next</label>
         </div>
 
-        <div className="border-lime-400 border-2 control-card">
+        <div className="control-card">
           <button
-            className="border-lime-400 border-2 control-button focus:outline-none focus:ring-2 focus:ring-primary"
+            className="control-button focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={handleMuteToggle}
             aria-label={muted ? 'Mute Audio' : 'Unmute Audio'}
           >
@@ -99,12 +97,10 @@ export default function AudioPlayer() {
               <SpeakerSimpleSlash weight="duotone" className="player-icon" />
             )}
           </button>
-          <label className="border-lime-400 border-2 control-label">
-            {muted ? 'Unmute' : 'Mute'}
-          </label>
+          <label className="control-label">{muted ? 'Unmute' : 'Mute'}</label>
         </div>
 
-        <div className="border-lime-400 border-2 control-card vol">
+        <div className="control-card vol">
           <input
             id="volume"
             type="range"
@@ -115,9 +111,7 @@ export default function AudioPlayer() {
             onChange={changeVolume}
             aria-label="Adjust Volume"
           />
-          <label className="border-lime-400 border-2 control-label vol-label">
-            Volume
-          </label>
+          <label className="control-label vol-label">Volume</label>
         </div>
       </section>
     </div>

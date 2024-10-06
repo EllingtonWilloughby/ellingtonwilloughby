@@ -21,9 +21,9 @@ export default function Logo() {
       <Image
         src={darkMode ? '/images/logo_i_dark.svg' : '/images/logo_i_light.svg'}
         alt="Ellington Willoughby & the Mythical Squid band logo"
-        width={900}
-        height={900}
-        className="w-full h-auto border-4 border-zinc-800"
+        width={500}
+        height={500}
+        className="w-full min-w-96"
         priority
       />
     </div>

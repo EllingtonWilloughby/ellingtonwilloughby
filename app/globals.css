@@ -7,7 +7,6 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-height: 100%;
   font-family: --font-cairo-play-sans, Arial, sans-serif;
 }
 
@@ -35,16 +34,13 @@ body {
 }
 
 main {
-  min-height: 100vh;
   height: 100%;
-
   width: 100%;
   z-index: 0;
   color: var(--text);
 }
 
 .page {
-  border: red solid 1px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -55,9 +51,9 @@ main {
 }
 
 .page-title {
-  font-size: 2rem;
+  font-size: 2.3rem;
   margin-top: 0.7rem;
-  margin-bottom: 1.3rem;
+  margin-bottom: 0.4rem;
   text-align: center;
 }
 
@@ -115,8 +111,6 @@ a:hover {
 }
 
 footer {
-  text-align: center;
-  padding: 1.7rem 8rem;
   width: 100%;
   position: relative;
   bottom: 0;
@@ -129,15 +123,15 @@ footer {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --root: #ffffffff;
+    --root: #ccccccff;
     --counterpart: #000000ff;
-    --text: #444140ff;
-    --background: #eaededff;
-    --primary: #6edcdcff;
-    --secondary: #fef10bff;
-    --accent: #fd4206ff;
-    --hovercolor: #888888ff;
-    --activecolor: #888888ff;
+    --text: #333333ff;
+    --background: #ebebd3ff;
+    --primary: #84b0b0ff;
+    --secondary: #cbc10dff;
+    --accent: #ca4f07ff;
+    --hover: #beb7a4ff;
+    --active: #768888ff;
     --background-image-light: url('/images/bg_light.svg');
   }
 }
@@ -145,14 +139,14 @@ footer {
 @media (prefers-color-scheme: dark) {
   :root {
     --root: #000000ff;
-    --counterpart: #ffffffff;
-    --text: #eaededff;
-    --background: #444140ff;
-    --primary: #6edcdcff;
-    --secondary: #fef10bff;
-    --accent: #fd4206ff;
-    --hovercolor: #888888ff;
-    --activecolor: #888888ff;
+    --counterpart: #ccccccff;
+    --text: #ebebd3ff;
+    --background: #333333ff;
+    --primary: #84b0b0ff;
+    --secondary: #cbc10dff;
+    --accent: #ca4f07ff;
+    --hover: #b3b7a4ff;
+    --active: #768888ff;
     --background-image-dark: url('/gif/bg_dark.gif');
   }
 
