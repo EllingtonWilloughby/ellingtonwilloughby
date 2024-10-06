@@ -8,9 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: '375px',
+        xs: '512px'
+      },
       colors: {
+        text: 'var(--text)',
         background: 'var(--background)',
-        foreground: 'var(--foreground)'
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)'
       }
     }
   },

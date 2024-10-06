@@ -2,25 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-height: 100%;
+  font-family: --font-cairo-play-sans, Arial, sans-serif;
 }
 
-html,
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  width: 100dvw;
-  width: 100%;
-  position: relative;
-  font-size: 1.4rem;
-  line-height: 1.6;
-  font-weight: 400;
-  color: var(--text);
+  width: 100vw;
   background-color: transparent;
   z-index: -2;
-  font-family: --font-cairo-play-sans, sans-serif;
 }
 
 .background-image {
@@ -37,14 +34,72 @@ body {
 }
 
 main {
-  position: relative;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   z-index: 0;
+  color: var(--text);
+}
+
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-top: 0.7rem;
+  margin-bottom: 1.3rem;
+  text-align: center;
+}
+
+.home-link-container {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.home-link-label {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.home-link-container:hover .home-link-label {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.home-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.home-link svg {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 a {
   color: var(--text);
+  font-weight: 500;
   text-decoration: none;
   transition: transform 0.4s ease-in-out;
 }
@@ -55,63 +110,30 @@ a:hover {
   transform: scale(1.1);
 }
 
-.control-card {
-  max-height: 4rem;
-  min-width: 4rem;
-  max-width: 4rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+footer {
   text-align: center;
-  transition: all 0.3s ease-in-out;
+  padding: 1.7rem 8rem;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
 }
 
-button {
-  height: 3rem;
-  width: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text);
-  background-color: none;
-  padding: 0.2rem 0.5rem;
-  transition: all 0.3s ease-in-out;
-}
-
-button:hover {
-  color: var(--primary);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.control-label {
-  font-size: 0.8rem;
-  opacity: 0;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-
-.control-card:hover .control-label {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.control-card svg {
-  height: 1.75rem;
-  width: 1.75rem;
+footer {
+  flex-shrink: 0;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --root: #ffffffff;
-    --alpha: #000000ff;
+    --counterpart: #000000ff;
     --text: #444140ff;
     --background: #eaededff;
     --primary: #6edcdcff;
     --secondary: #fef10bff;
     --accent: #fd4206ff;
+    --hovercolor: #888888ff;
+    --activecolor: #888888ff;
     --background-image-light: url('/images/bg_light.svg');
   }
 }
@@ -119,12 +141,14 @@ button:hover {
 @media (prefers-color-scheme: dark) {
   :root {
     --root: #000000ff;
-    --alpha: #ffffffff;
+    --counterpart: #ffffffff;
     --text: #eaededff;
     --background: #444140ff;
     --primary: #6edcdcff;
     --secondary: #fef10bff;
     --accent: #fd4206ff;
+    --hovercolor: #888888ff;
+    --activecolor: #888888ff;
     --background-image-dark: url('/gif/bg_dark.gif');
   }
 

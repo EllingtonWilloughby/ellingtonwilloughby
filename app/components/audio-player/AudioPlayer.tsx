@@ -47,7 +47,7 @@ export default function AudioPlayer() {
 
       <section className="min-h-28 w-full flex justify-evenly items-center">
         <div className="control-card">
-          <button onClick={handlePlay}>
+          <button className="control-button" onClick={handlePlay}>
             {playback ? (
               <Pause weight="duotone" className="player-icon" />
             ) : (
@@ -58,21 +58,21 @@ export default function AudioPlayer() {
         </div>
 
         <div className="control-card">
-          <button onClick={handlePreviousSong}>
+          <button className="control-button" onClick={handlePreviousSong}>
             <SkipBack weight="duotone" className="player-icon" />
           </button>
           <label className="control-label">Previous</label>
         </div>
 
         <div className="control-card">
-          <button onClick={handleNextSong}>
+          <button className="control-button" onClick={handleNextSong}>
             <SkipForward weight="duotone" className="player-icon" />
           </button>
           <label className="control-label">Next</label>
         </div>
 
         <div className="control-card">
-          <button onClick={handleMuteToggle}>
+          <button className="control-button" onClick={handleMuteToggle}>
             {muted ? (
               <SpeakerSimpleX weight="duotone" className="player-icon" />
             ) : (

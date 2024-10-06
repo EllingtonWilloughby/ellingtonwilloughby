@@ -61,6 +61,7 @@ export const playlist = [
 
 export const albums: IAlbum[] = [
   {
+    id: 1,
     link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
     src: '/images/safaridanger.png',
     alt: 'Album cover for Safari Danger',
@@ -68,6 +69,7 @@ export const albums: IAlbum[] = [
     released: 'October 20, 2021'
   },
   {
+    id: 2,
     link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
     src: '/images/dangersafari.png',
     alt: 'Album cover for Danger Safari',
@@ -75,6 +77,7 @@ export const albums: IAlbum[] = [
     released: 'May 27, 2020'
   },
   {
+    id: 3,
     link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
     src: '/images/moonflower.png',
     alt: 'Album cover for Moon Flower',

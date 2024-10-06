@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { House } from '@phosphor-icons/react';
-import './Shows.css';
+
 export default function ShowsPage() {
   return (
     <div className="min-h-full w-full sm:max-w-96 md:max-w-screen-sm lg:max-w-screen-md mx-auto">

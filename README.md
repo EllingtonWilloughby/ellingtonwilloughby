@@ -54,3 +54,24 @@ This project uses GitHub Actions to run automated checks:
 - ESLint is used to maintain code quality.
 
 To view the build status or logs, visit the Actions tab in the repository.
+
+## Responsive Design
+
+It is recommended to work mobile first when developing projects, and tools
+like TailwindCSS support this approach. The following are the breakpoints set
+for this project, allowing for the content to become fluid, and as such to
+provide a user experience that generates minimal friction between the User
+Agent and the User Interface.
+
+### Breakpoints for various screen sizes
+
+Each of the following breakpoints represents a minimum-width at which the
+viewport triggers a change in the layout of the content.
+
+- 'mobile': '375px',
+- 'xs': '512px',
+- 'sm': '640px',
+- 'md': '768px',
+- 'lg': '1024px',
+- 'xl': '1280px',
+- '2xl': '1536px'

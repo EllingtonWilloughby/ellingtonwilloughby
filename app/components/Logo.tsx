@@ -17,7 +17,7 @@ export default function Logo() {
   }, []);
 
   return (
-    <div className="max-w-screen-sm mx-auto flex justify-center items-start">
+    <div className="container max-w-60 mobile:max-w-80 xs:max-w-96 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg flex justify-center items-start">
       {darkMode ? (
         <Image
           src="/images/logo_i_dark.svg"

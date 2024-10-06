@@ -6,19 +6,19 @@ import './Albums.css';
 
 export default function Albums() {
   return (
-    <ul className="w-full">
+    <ul className="min-h-full w-full flex flex-col justify-start items-center border-2 border-purple-400">
       {albums.map((album: IAlbum) => (
-        <div
-          key={album.src}
-          className="w-full flex flex-col justify-center items-center p-2"
-        >
-          <li className="album-link-container flex flex-col justify-start items-center p-12">
-            <Link href={album.link} className="text-center">
+        <div key={album.src} className={`w-full`}>
+          <li className="{`album-link-container flex flex-col justify-center items-center`}">
+            <Link
+              href={album.link}
+              className="text-center w-full flex flex-col justify-center items-center"
+            >
               <Image
                 src={album.src}
                 alt={album.alt}
-                width={500}
-                height={500}
+                width={300}
+                height={300}
                 className="rounded-lg shadow-lg"
                 priority
               />
