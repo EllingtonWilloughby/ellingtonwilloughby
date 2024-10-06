@@ -17,23 +17,15 @@ export default function Logo() {
   }, []);
 
   return (
-    <div className="container max-w-60 mobile:max-w-80 xs:max-w-96 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg flex justify-center items-start">
-      {darkMode ? (
-        <Image
-          src="/images/logo_i_dark.svg"
-          alt="logo"
-          width={800}
-          height={800}
-        />
-      ) : (
-        <Image
-          src="/images/logo_i_light.svg"
-          alt="logo"
-          width={800}
-          height={800}
-          priority
-        />
-      )}
+    <div className="mx-auto flex justify-center items-start max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg">
+      <Image
+        src={darkMode ? '/images/logo_i_dark.svg' : '/images/logo_i_light.svg'}
+        alt="Ellington Willoughby & the Mythical Squid band logo"
+        width={900}
+        height={900}
+        className="w-full h-auto border-4 border-zinc-800"
+        priority
+      />
     </div>
   );
 }

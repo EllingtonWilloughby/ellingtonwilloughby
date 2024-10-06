@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { INavigationLink } from '@/types';
 import { navlinks } from '@/data';
 
-export default function Header() {
+export default function Navigation() {
   const pathname = usePathname();
 
   return (

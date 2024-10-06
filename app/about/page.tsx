@@ -15,8 +15,8 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="border-pink-400 border-2 page min-h-full w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto p-4">
-      <section className="border-2 border-red-600 relative min-h-24 w-full flex justify-center items-center p-4">
+    <div className="page min-h-full w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto p-4">
+      <section className="relative min-h-24 w-full flex justify-center items-center p-4">
         <div className="home-link-container">
           <Link href="/" className="home-link">
             <House weight="duotone" size={32} />
@@ -28,7 +28,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-2 border-green-700 h-full w-full flex flex-col justify-start items-center flex-auto py-2 px-4 my-8">
+      <section className="h-full w-full flex flex-col justify-start items-center flex-auto py-2 px-4 my-8">
         <div className="min-h-60 w-full flex flex-col justify-around items-center">
           <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased px-4 py-8">
             Ellington Willoughby & the Mythical Squid is a psychedelic-pop band
@@ -52,14 +52,13 @@ export default function AboutPage() {
           </button>
         </div>
 
-        <div className="border-2 border-purple-200min-h-60 w-full">
+        <div className="min-h-60 w-full">
           <Musicians />
         </div>
       </section>
 
       <div className="">
-        <AboutModal isOpen={isOpen} onClose={() => toggleModal(isOpen)}
-          />
+        <AboutModal isOpen={isOpen} onClose={() => toggleModal(isOpen)} />
       </div>
     </div>
   );
