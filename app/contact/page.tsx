@@ -14,13 +14,15 @@ export default function ContactPage() {
           </Link>
         </div>
         <div className="w-full flex justify-around items-center">
-          <h2 className="page-title">Contact</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl subpixel-antialiased py-4 my-6">
+            Contact
+          </h2>
         </div>
       </section>
 
-      <section className="h-full w-full flex flex-col justify-evenly items-center flex-auto py-2 px-4 my-8">
+      <section className="h-full w-full flex flex-col justify-start items-center flex-auto py-2 px-4 my-8">
         <div className="text-center text-sm sm:text-base md:text-lg lg:text-xl leading-9 subpixel-antialiased p-6">
-          <p className="grid-rows-1 rows-span-1 p-6">
+          <p className="p-6">
             Reach out to Ellington Willoughby & the Mythical Squid by emailing
             us at{' '}
             <Link
@@ -32,7 +34,7 @@ export default function ContactPage() {
             , or on our socials through any of the links below:
           </p>
         </div>
-        <div className="min-h-20 w-full flex items-end ">
+        <div className="min-h-20 w-full flex items-end">
           <SocialIcons />
         </div>
       </section>

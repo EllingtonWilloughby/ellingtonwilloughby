@@ -24,12 +24,14 @@ export default function AboutPage() {
           </Link>
         </div>
         <div className="w-full flex justify-around items-center">
-          <h2 className="page-title">About</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl subpixel-antialiased py-4 my-6">
+            About
+          </h2>
         </div>
       </section>
 
-      <section className="h-full w-full flex flex-col justify-start items-center flex-auto py-2 px-4 my-8">
-        <div className="min-h-60 w-full flex flex-col justify-around items-center">
+      <section className="h-full w-full flex flex-col justify-start items-center flex-auto py-2 px-4">
+        <div className="min-h-60 w-full flex flex-col justify-start items-center">
           <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl subpixel-antialiased px-4 py-8">
             Ellington Willoughby & the Mythical Squid is a psychedelic-pop band
             from SE Portland, Oregon.
@@ -41,7 +43,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center items-start">
           <button
             type="button"
             onClick={() => toggleModal(isOpen)}

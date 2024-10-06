@@ -12,7 +12,9 @@ export default function ShowsPage() {
             <div className="home-link-label">Home</div>
           </Link>
         </div>
-        <h2 className="page-title">Shows</h2>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl subpixel-antialiased py-4 my-6">
+          Shows
+        </h2>
       </section>
       <div className="w-full max-w-screen-md mx-auto flex flex-col justify-between items-center flex-auto p-8">
         Coming Soon...

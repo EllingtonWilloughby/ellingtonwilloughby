@@ -14,7 +14,7 @@ export default function MusicPage() {
           </Link>
         </div>
         <div className="w-full flex justify-around items-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl subpixel-antialiased">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl subpixel-antialiased py-4 my-6">
             Music
           </h2>
         </div>
