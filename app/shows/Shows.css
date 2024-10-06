@@ -1,0 +1,21 @@
+.home-link-container {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.home-link-label {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.home-link-container:hover .home-link-label {
+  opacity: 1;
+  cursor: pointer;
+}

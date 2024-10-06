@@ -14,7 +14,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full max-w-screen-xl mx-auto p-8">
+    <div className="border-2 border-blue-300 relative min-h-screen w-full max-w-screen-lg mx-auto p-6">
       <section className="relative max-h-40 w-full">
         <Link href="/" className="link-container absolute top-4 left-4">
           <House weight="duotone" size={32} />
