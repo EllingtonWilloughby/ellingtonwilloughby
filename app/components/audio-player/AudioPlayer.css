@@ -88,15 +88,6 @@ input[type='range']::-moz-range-thumb:focus {
   @apply h-12 w-12 flex justify-center items-center text-text transition-all duration-300;
 }
 
-.control-button:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 5px var(--primary), 0 0 0 8px var(--counterpart); /* Create a padded focus ring */
-}
-.control-button:focus-visible {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 5px var(--primary), 0 0 0 8px var(--counterpart); /* Create a padded focus ring */
-}
-
 .control-button:hover {
   color: var(--primary);
   cursor: pointer;
@@ -109,8 +100,7 @@ input[type='range']::-moz-range-thumb:focus {
   transition: all 0.3s ease-in-out;
 }
 
-.control-card:hover .control-label,
-.control-card:focus-within .control-label {
+.control-card:hover .control-label {
   opacity: 1;
   color: var(--primary);
 }
