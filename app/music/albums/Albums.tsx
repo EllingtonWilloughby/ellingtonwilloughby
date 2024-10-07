@@ -6,26 +6,32 @@ import './Albums.css';
 
 export default function Albums() {
   return (
-    <ul className="min-h-full w-full flex flex-col justify-start items-center">
+    <ul className="w-full flex flex-col justify-center items-center space-y-8">
+      {' '}
+      {/* Add space between items */}
       {albums.map((album: IAlbum) => (
-        <div key={album.src} className={`w-full`}>
-          <li className="{`album-link-container flex flex-col justify-center items-center`}">
-            <Link
-              href={album.link}
-              className="text-center w-full flex flex-col justify-center items-center"
-            >
-              <Image
-                src={album.src}
-                alt={album.alt}
-                width={300}
-                height={300}
-                className="rounded-lg shadow-lg h-auto max-w-60 sm:max-w-72 md:max-w-80 lg:max-w-96"
-                priority
-              />
-              <label className="album-link-label">{album.title}</label>
-            </Link>
-          </li>
-        </div>
+        <li
+          key={album.src}
+          className="album-link w-full flex flex-col justify-center items-center rounded-lg"
+        >
+          <Link
+            href={album.link}
+            className="relative w-full flex flex-col justify-center items-center"
+          >
+            <Image
+              src={album.src}
+              alt={album.alt}
+              width={200}
+              height={200}
+              className="rounded-lg shadow-lg h-auto max-w-60 sm:max-w-72 md:max-w-80 lg:max-w-96 z-20"
+              priority
+            />
+            {/* <label className="absolute bottom-4 text-lg font-semibold px-2 py-1 rounded-lg"> */}
+            <label className="p-2 font-semibold text-center subpixel-antialiased">
+              {album.title}
+            </label>
+          </Link>
+        </li>
       ))}
     </ul>
   );

@@ -30,21 +30,7 @@ export default function AudioPlayer() {
   };
 
   return (
-    <div className="relative min-h-40 w-full mb-4">
-      <section className="min-h-16 h-full w-full text-center">
-        {playback && (
-          <div className="now-playing">
-            <span className="text-center text-sm md:text-base font-semibold subpixel-antialiased">
-              {`Current song: ${song.title}`}
-            </span>
-            <br />
-            <div className="text-center text-sm md:text-base subpixel-antialiased">
-              {`${elapsedTime} / ${duration}`}
-            </div>
-          </div>
-        )}
-      </section>
-
+    <div className="relative min-h-40 w-full">
       <section className="min-h-28 w-full flex justify-evenly items-center">
         <div className=" control-card">
           <button
@@ -113,6 +99,19 @@ export default function AudioPlayer() {
           />
           <label className="control-label vol-label">Volume</label>
         </div>
+      </section>
+      <section className="min-h-16 h-full w-full text-center">
+        {playback && (
+          <div className="now-playing">
+            <span className="text-center text-sm md:text-base font-semibold subpixel-antialiased">
+              {`Current song: ${song.title}`}
+            </span>
+            <br />
+            <div className="text-center text-sm md:text-base subpixel-antialiased">
+              {`${elapsedTime} / ${duration}`}
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );
