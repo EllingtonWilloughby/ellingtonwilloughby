@@ -1,4 +1,4 @@
-import { IAlbum, INavigationLink } from '@/types';
+import { INavigationLink } from '@/types';
 export const navlinks: INavigationLink[] = [
   { href: 'home', title: 'Home' },
   { href: 'about', title: 'About' },
