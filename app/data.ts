@@ -58,30 +58,3 @@ export const playlist = [
     duration: '03:26'
   }
 ];
-
-export const albums: IAlbum[] = [
-  {
-    id: 1,
-    link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
-    src: '/images/safaridanger.png',
-    alt: 'Album cover for Safari Danger',
-    title: 'Safari Danger',
-    released: 'October 20, 2021'
-  },
-  {
-    id: 2,
-    link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
-    src: '/images/dangersafari.png',
-    alt: 'Album cover for Danger Safari',
-    title: 'Danger Safari',
-    released: 'May 27, 2020'
-  },
-  {
-    id: 3,
-    link: 'https://ellingtonwilloughby.bandcamp.com/album/safari-danger',
-    src: '/images/moonflower.png',
-    alt: 'Album cover for Moon Flower',
-    title: 'Moon Flower',
-    released: 'September 23, 2016'
-  }
-];
