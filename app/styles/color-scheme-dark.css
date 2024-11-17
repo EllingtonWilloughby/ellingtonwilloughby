@@ -1,0 +1,27 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #000000ff;
+    --white: #ccccccff;
+
+    --text: #ebebd3ff;
+    --background: #333333ff;
+    --primary: #84b0b0ff;
+    --secondary: #cbc10dff;
+    --accent: #ca4f07ff;
+
+    --background-image-dark: url("/gif/bg_dark.gif");
+  }
+
+  .background-image {
+    background-image: var(--background-image-dark);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}

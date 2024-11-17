@@ -1,7 +1,7 @@
-'use client';
-import Modal from 'react-modal';
-import { X } from '@phosphor-icons/react';
-import { IAboutModal } from '@/types';
+"use client";
+import Modal from "react-modal";
+import { X } from "@phosphor-icons/react";
+import { IAboutModal } from "@/lib/types";
 
 export default function AboutModal({ isOpen, onClose }: IAboutModal) {
   return (
@@ -13,24 +13,24 @@ export default function AboutModal({ isOpen, onClose }: IAboutModal) {
       contentLabel="Origin"
       style={{
         overlay: {
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
           zIndex: 100,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         },
         content: {
-          maxHeight: '90vh',
-          overflowY: 'auto',
-          padding: '1rem',
-          border: 'var(--text) 1px solid',
-          borderRadius: '0.5rem',
+          maxHeight: "90vh",
+          overflowY: "auto",
+          padding: "1rem",
+          border: "var(--text) 1px solid",
+          borderRadius: "0.5rem",
           boxShadow:
-            '0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 11px rgba(0, 0, 0, 0.1)',
-          backgroundColor: 'var(--background)',
-          color: 'var(--text)',
-          position: 'relative'
-        }
+            "0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 11px rgba(0, 0, 0, 0.1)",
+          backgroundColor: "var(--background)",
+          color: "var(--text)",
+          position: "relative",
+        },
       }}
       className="max-w-screen-md mx-auto"
     >

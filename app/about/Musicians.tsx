@@ -1,7 +1,7 @@
-import React from 'react';
-import { members } from '@/data';
-import { IMusicians } from '@/types';
-import Link from 'next/link';
+import React from "react";
+import { members } from "@/lib/members";
+import { IMusicians } from "@/lib/types";
+import Link from "next/link";
 export default function Musicians() {
   return (
     <div>

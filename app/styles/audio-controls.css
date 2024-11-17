@@ -1,0 +1,31 @@
+.playlist {
+  width: 100%;
+  height: auto;
+  border: none;
+  background: none;
+  text-align: left;
+  font-weight: 600;
+}
+
+.control-btn {
+  min-width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-label {
+  opacity: 0;
+  font-weight: 600;
+  font-size: calc(5px + 1vmin);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.control-btn:hover .control-label {
+  opacity: 1;
+}
+
+.control-btn:active {
+  transform: translateY(2px);
+}

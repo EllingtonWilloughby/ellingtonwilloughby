@@ -1,9 +1,10 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import "@/styles/not-found.css";
 
 export default function NotFoundPage() {
-  const gifUrl = '/gif/notfound.webp';
+  const gifUrl = "/gif/notfound.webp";
 
   return (
     <div className="relative h-full w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto flex flex-col justify-center items-center flex-1 text-center z-10 p-4">
