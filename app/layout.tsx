@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="background-image"></div>
-        <main>{children}</main>
+        <main className={`${karla.className}`}>{children}</main>
       </body>
     </html>
   );

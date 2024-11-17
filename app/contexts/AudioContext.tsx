@@ -80,6 +80,7 @@ export function AudioProvider({
       console.error("Howl initialization error:", error);
       throw error;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSongChange = useCallback(

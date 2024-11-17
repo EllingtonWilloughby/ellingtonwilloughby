@@ -28,7 +28,7 @@ export default function AudioControls() {
       const value = ((volume ?? 0) * 100).toFixed(2);
       volumeSliderRef.current.style.backgroundSize = `${value}% 100%`;
     }
-  }, [volume]);
+  }, [volume, volumeSliderRef]);
 
   const volumeChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleVolumeChange?.(event);

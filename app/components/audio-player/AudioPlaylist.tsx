@@ -13,7 +13,7 @@ export default function AudioPlaylist() {
             className={`${currentIndex === index ? "active" : ""}`}
           >
             <button
-              className="max-w-fit w-full flex justify-between text-xs md:text-sm subpixel-antialiased"
+              className="max-w-fit w-full flex justify-between text-xs md:text-sm subpixel-antialiased underline hover:scale-105 my-1"
               onClick={() => handleSongChange && handleSongChange(index)}
             >
               {track.id}. {track.title}
