@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body,
 html {
   margin: 0;
   padding: 0;
@@ -20,7 +19,6 @@ body {
 }
 
 .background-image {
-  min-height: 100vh;
   width: 100%;
   background-image: var(--background-image-light);
   background-size: cover;
@@ -33,30 +31,24 @@ body {
 }
 
 main {
-  min-height: 100vh;
   height: 100%;
   width: 100%;
   z-index: 0;
   color: var(--text);
 }
-/* 
-.page {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  text-align: center;
-  z-index: 1;
+
+a {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.4s ease-in-out;
 }
 
-.page-title {
-  font-size: 2.3rem;
-  margin-top: 0.7rem;
-  margin-bottom: 0.4rem;
-  text-align: center;
-} */
+a:hover {
+  color: var(--primary);
+  cursor: pointer;
+  transform: scale(1.1);
+}
 
 .home-link-container {
   height: 3rem;
@@ -98,48 +90,11 @@ main {
   height: 1.8rem;
 }
 
-a {
-  color: var(--text);
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 0.4s ease-in-out;
-}
-
-a:hover {
-  color: var(--primary);
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
 footer {
   width: 100%;
   position: relative;
   bottom: 0;
   left: 0;
-}
-
-footer {
-  flex-shrink: 0;
-}
-
-/* not found page */
-
-.link-btn {
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--text);
-  padding: 0.4rem 0.9rem;
-  border-radius: 0.3rem;
-  border: var(--text) 1px solid;
-  background-color: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.link-btn:hover {
-  color: var(--accent);
-  border: var(--accent) 1px solid;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 @media (prefers-color-scheme: light) {
@@ -153,38 +108,9 @@ footer {
     --accent: #ca4f07ff;
     --hover: #beb7a4ff;
     --active: #768888ff;
-    --background-image-light: url('/images/bg_light.svg');
+    --background-image-light: url("/images/bg_light.svg");
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --root: #000000ff;
-    --counterpart: #ccccccff;
-    --text: #ebebd3ff;
-    --background: #333333ff;
-    --primary: #84b0b0ff;
-    --secondary: #cbc10dff;
-    --accent: #ca4f07ff;
-    --hover: #b3b7a4ff;
-    --active: #768888ff;
-    --background-image-dark: url('/gif/bg_dark.gif');
-  }
-
-  .background-image {
-    background-image: var(--background-image-dark);
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

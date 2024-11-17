@@ -1,0 +1,17 @@
+.link-btn {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.3rem;
+  border: var(--text) 1px solid;
+  background-color: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.link-btn:hover {
+  color: var(--accent);
+  border: var(--accent) 1px solid;
+  text-decoration: none;
+  cursor: pointer;
+}

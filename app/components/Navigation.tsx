@@ -1,19 +1,17 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { INavigationLink } from '@/types';
-import { navlinks } from '@/data';
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { INavigationLink } from "@/lib/types";
+import { navlinks } from "@/data";
 
 export default function Navigation() {
   const pathname = usePathname();
 
-  // Helper function to normalize path (remove trailing slashes)
-
-  const normalizePath = (path: string) => path.replace(/\/$/, '');
+  const normalizePath = (path: string) => path.replace(/\/$/, "");
 
   return (
-    <nav className="w-full h-full py-8 px-6 md:py-8 md:px-12">
+    <nav className="w-full py-8 px-6 md:py-8 md:px-12">
       <ul className="flex justify-between items-center gap-x-4 p-2">
         {navlinks
           .filter(
