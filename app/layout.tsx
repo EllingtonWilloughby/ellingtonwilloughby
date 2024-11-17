@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="background-image border-2 border-cyan-600"></div>
+        <div className="background-image"></div>
         <main>{children}</main>
       </body>
     </html>
