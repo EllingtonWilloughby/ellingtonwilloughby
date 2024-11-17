@@ -99,18 +99,19 @@ footer {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --root: #ccccccff;
-    --counterpart: #000000ff;
+    --white: #ccccccff;
+    --black: #000000ff;
+
     --text: #333333ff;
     --background: #ebebd3ff;
     --primary: #84b0b0ff;
     --secondary: #cbc10dff;
     --accent: #ca4f07ff;
-    --hover: #beb7a4ff;
-    --active: #768888ff;
+
     --background-image-light: url("/images/bg_light.svg");
   }
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

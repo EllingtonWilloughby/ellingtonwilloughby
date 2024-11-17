@@ -1,6 +1,7 @@
 import { useAudioContext } from "@/contexts/AudioContext";
 import { playlist } from "@/data";
 import { ISong } from "@/lib/types";
+import "@/styles/audio-playlist.css";
 
 export default function AudioPlaylist() {
   const { currentIndex, handleSongChange } = useAudioContext() ?? {};

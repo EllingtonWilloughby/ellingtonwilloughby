@@ -10,20 +10,20 @@ export default function Logo() {
     <div className="mx-auto flex justify-center items-start max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg">
       {theme ? (
         <Image
-          src="/images/logo_i_dark.svg"
+          src="/images/logo_i_light.svg"
           alt="Ellington Willoughby & the Mythical Squid band logo"
-          width={300}
-          height={300}
-          className="w-full max-w-80 border-2 border-orange-300"
+          width={440}
+          height={440}
+          className="w-full min-w-96"
           priority
         />
       ) : (
         <Image
-          src="/images/logo_i_light.svg"
+          src="/images/logo_i_dark.svg"
           alt="Ellington Willoughby & the Mythical Squid band logo"
-          width={500}
-          height={500}
-          className="w-full min-w-96"
+          width={440}
+          height={440}
+          className="w-full"
           priority
         />
       )}
