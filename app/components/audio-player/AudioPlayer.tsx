@@ -16,11 +16,12 @@ export default function AudioPlayer() {
   return (
     <>
       <div
-        className={`card rounded-xl shadow-lg min-w-80 w-full mx-auto ${
+        className={`card rounded-xl shadow-lg min-w-60 w-full mx-auto px-2 ${
           isVisible ? "visible" : ""
         }`}
       >
         <AudioNowPlaying />
+        <hr className="dashed-line" />
         <AudioPlaylist />
         <AudioControls />
       </div>

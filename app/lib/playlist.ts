@@ -3,7 +3,7 @@ import { ISong } from "./types";
 export const playlist: ISong[] = [
   {
     id: 1,
-    title: "How Did Your Day Go?",
+    title: "How'd Your Day Go?",
     album: "Safari Danger",
     artist: "Ellington Willoughby",
     url: "/audio/howdidyourdaygo.mp3",

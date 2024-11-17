@@ -5,12 +5,13 @@
   transform: translateX(-50%);
   opacity: 0;
   width: 100%;
-  max-width: 30rem;
+  max-width: 25rem;
+  margin: 0 auto;
   visibility: hidden;
   transition: all 0.5s ease-in-out;
   z-index: 10;
   backdrop-filter: blur(5px);
-  background-color: #222222ff;
+  background-color: #292a31aa;
   color: #ffffffff;
 }
 
@@ -51,6 +52,22 @@
 
 .toggle-btn:hover .toggle-label {
   opacity: 1;
+}
+
+.dashed-line {
+  padding: 0.5rem 0;
+  border: none;
+  border-top: 1px dashed #e9e9da;
+  height: 0;
+  margin: 0 auto;
+  border-image: repeating-linear-gradient(
+    to right,
+    #e9e9da 0,
+    #e9e9da 1.2rem,
+    transparent 15px,
+    transparent 30px
+  );
+  border-image-slice: 1;
 }
 
 #volume,

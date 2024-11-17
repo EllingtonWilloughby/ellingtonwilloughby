@@ -5,7 +5,7 @@ export default function AudioNowPlaying() {
   const { song, playback, elapsed, duration } = useAudioContext() ?? {};
 
   return (
-    <section className="flex flex-col items-center justify-center w-full text-center min-h-24">
+    <section className="flex flex-col items-center justify-center w-full text-center min-h-20">
       {playback && (
         <article className="subpixel-antialiased">
           <div className={`text-sm sm:text-base md:text-lg lg:text-xl`}>

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { INavigationLink } from "@/lib/types";
-import { navlinks } from "@/data";
+import { navlinks } from "@/lib/navlinks";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -11,7 +11,7 @@ export default function Navigation() {
   const normalizePath = (path: string) => path.replace(/\/$/, "");
 
   return (
-    <nav className="w-full py-8 px-6 md:py-8 md:px-12">
+    <nav className="w-full max-w-screen-md mx-auto py-8 px-6 md:py-8 md:px-12 md:mt-8">
       <ul className="flex justify-between items-center gap-x-4 p-2">
         {navlinks
           .filter(

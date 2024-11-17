@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import { Howl } from "howler";
 import { IAudioContext } from "@/lib/types";
-import { playlist } from "@/data";
+import { playlist } from "@/lib/playlist";
 
 const AudioContext = createContext<IAudioContext | null>(null);
 
