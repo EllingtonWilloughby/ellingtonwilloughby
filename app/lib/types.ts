@@ -43,6 +43,10 @@ export interface IAudioContext {
   song: ISong;
   currentIndex: number;
   playback: boolean;
+  volume: number;
+  setVolume: React.Dispatch<React.SetStateAction<number>>;
+  mute: boolean;
+  setMute: React.Dispatch<React.SetStateAction<boolean>>;
   handleVolumeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleMuteChange: () => void;
   handlePlayPause: () => void;
@@ -51,9 +55,12 @@ export interface IAudioContext {
   handleNextSong: () => void;
   elapsed: string;
   duration: string;
-  volume: number;
-  setVolume: React.Dispatch<React.SetStateAction<number>>;
-  mute: boolean;
-  setMute: React.Dispatch<React.SetStateAction<boolean>>;
+  error?: string | null;
   volumeSliderRef: React.RefObject<HTMLInputElement>;
 }
+
+export type TAudioProviderProps = {
+  children: React.ReactNode;
+  initialVolume?: number;
+  initialIndex: number;
+};

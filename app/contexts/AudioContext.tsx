@@ -6,85 +6,48 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useMemo,
 } from "react";
-import { Howl } from "howler";
-import { IAudioContext } from "@/lib/types";
+import { Howl, Howler } from "howler";
 import { playlist } from "@/lib/playlist";
+
+import type { IAudioContext } from "@/lib/types";
+import type { TAudioProviderProps } from "@/lib/types";
 
 const AudioContext = createContext<IAudioContext | null>(null);
 
-export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+const formatTime = (seconds: number): string => {
+  if (!seconds || !Number.isFinite(seconds) || seconds < 0) {
+    return "00:00";
+  }
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+};
+
+export function AudioProvider({
+  children,
+  initialVolume = 0.5,
+  initialIndex = 0,
+}: TAudioProviderProps) {
+  const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
   const [playback, setPlayback] = useState<boolean>(false);
-  const [volume, setVolume] = useState<number>(0.5);
+  const [volume, setVolume] = useState<number>(initialVolume);
   const [mute, setMute] = useState<boolean>(false);
   const [elapsed, setElapsed] = useState<string>("00:00");
   const [duration, setDuration] = useState<string>("00:00");
+  const [error, setError] = useState<string | null>(null);
 
   const songRef = useRef<Howl | null>(null);
   const volumeSliderRef = useRef<HTMLInputElement>(null);
-  const song = playlist[currentIndex];
+  const frameRef = useRef<number>();
 
-  const formatTime = (seconds: number): string => {
-    if (!Number.isFinite(seconds) || seconds < 0) {
-      return "00:00";
-    }
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(
-      2,
-      "0"
-    )}`;
-  };
+  const song = useMemo(() => playlist[currentIndex], [currentIndex]);
 
-  const handlePlayPause = useCallback(() => {
-    if (!songRef.current) return;
-
-    if (Howler.ctx.state === "suspended") {
-      try {
-        Howler.ctx.resume();
-      } catch (error) {
-        console.error(
-          `There was an error resuming the audio context: ${error}`
-        );
-      }
-    }
-
-    if (songRef.current.playing()) {
-      songRef.current.pause();
-    } else {
-      songRef.current.play();
-    }
-  }, []);
-
-  const handleVolumeChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newVolume = parseFloat(event.target.value);
-      setVolume(newVolume);
-      songRef.current?.volume(newVolume);
-    },
-    [setVolume]
-  );
-
-  const handleMuteChange = useCallback(() => {
-    setMute((prevMute: boolean) => {
-      const newMute = !prevMute;
-      songRef.current?.mute(newMute);
-      return newMute;
-    });
-  }, []);
-
-  const handleSongChange = useCallback(
-    (newIndex: number) => {
-      if (songRef.current) {
-        songRef.current.unload();
-      }
-
-      setCurrentIndex(newIndex);
-
-      const selectedSong = playlist[newIndex].url;
+  const initializeHowl = useCallback((songUrl: string): Howl => {
+    try {
       const newSong = new Howl({
-        src: [selectedSong],
+        src: [songUrl],
         html5: true,
         preload: "metadata",
         autoplay: false,
@@ -93,24 +56,110 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         onload: () => {
           const durationSeconds = newSong.duration() as number;
           setDuration(formatTime(durationSeconds));
+          setError(null);
         },
-        onplay: () => {
-          setPlayback(true);
+        onloaderror: (_id, error) => {
+          setError(`Failed to load audio: ${error}`);
+          console.error("Audio load error:", error);
         },
-        onpause: () => {
+        onplayerror: (_id, error) => {
+          setError(`Failed to play audio: ${error}`);
+          console.error("Audio play error:", error);
+        },
+        onplay: () => setPlayback(true),
+        onpause: () => setPlayback(false),
+        onend: () => handleNextSong(),
+        onstop: () => {
           setPlayback(false);
-        },
-        onend: () => {
-          handleNextSong();
+          setElapsed("00:00");
         },
       });
+      return newSong;
+    } catch (error) {
+      setError(`Failed to initialize audio: ${error}`);
+      console.error("Howl initialization error:", error);
+      throw error;
+    }
+  }, []);
 
-      songRef.current = newSong;
-      songRef.current.volume(volume);
-      songRef.current.play();
+  const handleSongChange = useCallback(
+    (newIndex: number) => {
+      if (newIndex < 0 || newIndex >= playlist.length) {
+        setError("Invalid song index");
+        return;
+      }
+
+      try {
+        if (songRef.current) {
+          songRef.current.stop();
+          songRef.current.unload();
+        }
+
+        setCurrentIndex(newIndex);
+        const selectedSong = playlist[newIndex]?.url;
+
+        if (!selectedSong) {
+          setError("Invalid song URL");
+          return;
+        }
+
+        songRef.current = initializeHowl(selectedSong);
+        songRef.current.play();
+      } catch (error) {
+        setError(`Failed to change song: ${error}`);
+        console.error("Song change error:", error);
+      }
     },
-    [volume]
+    [initializeHowl]
   );
+
+  const handleVolumeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newVolume = parseFloat(event.target.value);
+      setVolume(newVolume);
+      if (mute && newVolume > 0) {
+        setMute(false);
+      }
+      if (songRef.current) {
+        songRef.current.volume(newVolume);
+      }
+    },
+    [mute]
+  );
+
+  const handleMuteChange = useCallback(() => {
+    setMute((prevMute) => {
+      const newMute = !prevMute;
+      if (songRef.current) {
+        if (newMute) {
+          songRef.current.mute(true);
+        } else {
+          songRef.current.mute(false);
+          songRef.current.volume(volume);
+        }
+      }
+      return newMute;
+    });
+  }, [volume]);
+
+  const handlePlayPause = useCallback(async () => {
+    if (!songRef.current) return;
+
+    try {
+      if (Howler.ctx.state === "suspended") {
+        await Howler.ctx.resume();
+      }
+
+      if (songRef.current.playing()) {
+        songRef.current.pause();
+      } else {
+        songRef.current.play();
+      }
+    } catch (error) {
+      setError(`Playback error: ${error}`);
+      console.error("Play/Pause error:", error);
+    }
+  }, []);
 
   const handleNextSong = useCallback(() => {
     const nextIndex = currentIndex < playlist.length - 1 ? currentIndex + 1 : 0;
@@ -123,65 +172,111 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   }, [currentIndex, handleSongChange]);
 
   useEffect(() => {
-    if (songRef.current) {
-      songRef.current.volume(volume); // Apply volume on mount
-    }
-  }, [volume]);
+    const handler = setTimeout(() => {
+      if (songRef.current && !mute) {
+        songRef.current.volume(volume);
+      }
+    }, 200);
+    return () => clearTimeout(handler);
+  }, [volume, mute]);
 
   useEffect(() => {
-    if (playback && songRef.current) {
-      const intervalId = setInterval(() => {
-        const currentSeconds = songRef.current?.seek() as number;
-        setElapsed(formatTime(currentSeconds));
-      }, 1000);
-      return () => clearInterval(intervalId);
+    if (!playlist.length) {
+      setError("Playlist is empty");
+      return;
     }
+
+    const selectedSong = playlist[currentIndex]?.url;
+    if (!selectedSong) {
+      setError("Invalid song URL");
+      return;
+    }
+
+    try {
+      songRef.current = initializeHowl(selectedSong);
+    } catch (error) {
+      setError(`Initialization error: ${error}`);
+    }
+
+    return () => {
+      if (songRef.current) {
+        songRef.current.stop();
+        songRef.current.unload();
+      }
+    };
+  }, [currentIndex, initializeHowl]);
+
+  useEffect(() => {
+    const updateElapsed = () => {
+      if (playback && songRef.current) {
+        const currentSeconds = songRef.current.seek() as number;
+        setElapsed(formatTime(currentSeconds));
+      }
+      frameRef.current = requestAnimationFrame(updateElapsed);
+    };
+
+    if (playback) {
+      updateElapsed();
+    }
+
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
   }, [playback]);
 
-  useEffect(() => {
-    const selectedSong = playlist[currentIndex].url;
-    const newSong = new Howl({
-      src: [selectedSong],
-      html5: true,
+  const contextValue = useMemo(
+    () => ({
+      playlist,
+      song,
+      currentIndex,
+      playback,
       volume,
-      onplay: () => setPlayback(true),
-      onend: () => setPlayback(false),
-    });
-    songRef.current = newSong;
-    songRef.current.volume(volume);
-  }, []);
+      setVolume,
+      mute,
+      setMute,
+      handleVolumeChange,
+      handleMuteChange,
+      handlePlayPause,
+      handleSongChange,
+      handlePreviousSong,
+      handleNextSong,
+      elapsed,
+      duration,
+      error,
+      volumeSliderRef,
+    }),
+    [
+      song,
+      currentIndex,
+      playback,
+      volume,
+      mute,
+      elapsed,
+      duration,
+      error,
+      handleVolumeChange,
+      handleMuteChange,
+      handlePlayPause,
+      handleSongChange,
+      handlePreviousSong,
+      handleNextSong,
+    ]
+  );
 
   return (
-    <AudioContext.Provider
-      value={{
-        playlist,
-        song,
-        currentIndex,
-        playback,
-        handleVolumeChange,
-        handleMuteChange,
-        handlePlayPause,
-        handleSongChange,
-        handlePreviousSong,
-        handleNextSong,
-        elapsed,
-        duration,
-        volume,
-        setVolume,
-        mute,
-        setMute,
-        volumeSliderRef,
-      }}
-    >
+    <AudioContext.Provider value={contextValue}>
       {children}
     </AudioContext.Provider>
   );
-};
+}
 
+// Hook
 export const useAudioContext = () => {
   const context = useContext(AudioContext);
-  if (context === undefined) {
-    throw new Error("useAudioContext must be used within a provider");
+  if (context === null) {
+    throw new Error("useAudioContext must be used within AudioProvider");
   }
   return context;
 };
