@@ -15,25 +15,11 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: transparent;
-  z-index: -2;
-}
-
-.background-image {
-  width: 100%;
-  background-image: var(--background-image-light);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 
 main {
   height: 100%;
   width: 100%;
-  z-index: 0;
   color: var(--text);
 }
 
@@ -72,8 +58,24 @@ footer {
   }
 }
 
+.background-image {
+  height: 100%;
+  width: 100%;
+  background-image: var(--background-image-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+img {
+  transition: opacity 0.3s ease;
 }

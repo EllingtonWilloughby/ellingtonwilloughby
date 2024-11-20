@@ -92,7 +92,6 @@ export function AudioProvider({
 
       try {
         if (songRef.current) {
-          songRef.current.stop();
           songRef.current.unload();
         }
 
@@ -105,13 +104,16 @@ export function AudioProvider({
         }
 
         songRef.current = initializeHowl(selectedSong);
-        songRef.current.play();
+
+        if (playback) {
+          songRef.current.play();
+        }
       } catch (error) {
         setError(`Failed to change song: ${error}`);
         console.error("Song change error:", error);
       }
     },
-    [initializeHowl]
+    [initializeHowl, playback]
   );
 
   const handleVolumeChange = useCallback(

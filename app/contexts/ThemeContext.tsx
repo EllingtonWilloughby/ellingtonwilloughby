@@ -1,15 +1,20 @@
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import useTheme from "@/hooks/useTheme";
 
-const ThemeContext = createContext({
-  theme: false,
-  toggleTheme: () => {},
-});
+type ThemeContextType = {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const theme = useTheme();
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 
