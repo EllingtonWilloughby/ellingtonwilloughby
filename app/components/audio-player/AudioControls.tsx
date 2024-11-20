@@ -37,7 +37,7 @@ export default function AudioControls() {
   };
 
   return (
-    <div className="min-h-32 w-full max-w-96 mx-auto flex flex-col justify-between items-center my-4">
+    <div className="min-h-32 w-full max-w-96 mx-auto flex flex-col justify-between items-center">
       <section className="w-full flex justify-between">
         <button onClick={handlePreviousSong} className="control-btn">
           <SkipBack weight="regular" size={32} />

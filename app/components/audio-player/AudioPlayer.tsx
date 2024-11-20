@@ -21,7 +21,6 @@ export default function AudioPlayer() {
         }`}
       >
         <AudioNowPlaying />
-        <hr className="dashed-line" />
         <AudioPlaylist />
         <AudioControls />
       </div>
